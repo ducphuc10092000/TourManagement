@@ -1,0 +1,395 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TOURMANAGEMENTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CT_DIADIEM_TOUR">
+          <Key>
+            <PropertyRef Name="ID_CT_DIADIEM_TOUR" />
+          </Key>
+          <Property Name="ID_CT_DIADIEM_TOUR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDDIADIEM" Type="int" Nullable="false" />
+          <Property Name="IDTOUR" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DIADIEM">
+          <Key>
+            <PropertyRef Name="IDDIADIEM" />
+          </Key>
+          <Property Name="IDDIADIEM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TENDIADIEM" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TINHTHANH" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MOTA" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NGUOIDUNG">
+          <Key>
+            <PropertyRef Name="IDND" />
+          </Key>
+          <Property Name="IDND" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDNV" Type="int" Nullable="false" />
+          <Property Name="USERNAME" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PASS" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NHANVIEN">
+          <Key>
+            <PropertyRef Name="IDNV" />
+          </Key>
+          <Property Name="IDNV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TENNV" Type="nvarchar(max)" />
+          <Property Name="DIACHI" Type="nvarchar(max)" />
+          <Property Name="SDT" Type="nvarchar(max)" />
+          <Property Name="EMAIL" Type="nvarchar(max)" />
+          <Property Name="NGAYSINH" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="QUANLY">
+          <Key>
+            <PropertyRef Name="IDQL" />
+          </Key>
+          <Property Name="IDQL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDNV" Type="int" Nullable="false" />
+          <Property Name="ROLES" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TOUR">
+          <Key>
+            <PropertyRef Name="IDTOUR" />
+          </Key>
+          <Property Name="IDTOUR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TENTOUR" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="GIATOUR" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TINHTRANG" Type="bit" />
+        </EntityType>
+        <Association Name="FK_CT_DIADIEM_TOUR_DIADIEM">
+          <End Role="DIADIEM" Type="Self.DIADIEM" Multiplicity="1" />
+          <End Role="CT_DIADIEM_TOUR" Type="Self.CT_DIADIEM_TOUR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DIADIEM">
+              <PropertyRef Name="IDDIADIEM" />
+            </Principal>
+            <Dependent Role="CT_DIADIEM_TOUR">
+              <PropertyRef Name="IDDIADIEM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CT_DIADIEM_TOUR_TOUR">
+          <End Role="TOUR" Type="Self.TOUR" Multiplicity="1" />
+          <End Role="CT_DIADIEM_TOUR" Type="Self.CT_DIADIEM_TOUR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TOUR">
+              <PropertyRef Name="IDTOUR" />
+            </Principal>
+            <Dependent Role="CT_DIADIEM_TOUR">
+              <PropertyRef Name="IDTOUR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_NGUOIDUNG_NHANVIEN">
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
+          <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="IDNV" />
+            </Principal>
+            <Dependent Role="NGUOIDUNG">
+              <PropertyRef Name="IDNV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_QUANLY_NHANVIEN">
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
+          <End Role="QUANLY" Type="Self.QUANLY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="IDNV" />
+            </Principal>
+            <Dependent Role="QUANLY">
+              <PropertyRef Name="IDNV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TOURMANAGEMENTModelStoreContainer">
+          <EntitySet Name="CT_DIADIEM_TOUR" EntityType="Self.CT_DIADIEM_TOUR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DIADIEM" EntityType="Self.DIADIEM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NGUOIDUNG" EntityType="Self.NGUOIDUNG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QUANLY" EntityType="Self.QUANLY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TOUR" EntityType="Self.TOUR" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CT_DIADIEM_TOUR_DIADIEM" Association="Self.FK_CT_DIADIEM_TOUR_DIADIEM">
+            <End Role="DIADIEM" EntitySet="DIADIEM" />
+            <End Role="CT_DIADIEM_TOUR" EntitySet="CT_DIADIEM_TOUR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CT_DIADIEM_TOUR_TOUR" Association="Self.FK_CT_DIADIEM_TOUR_TOUR">
+            <End Role="TOUR" EntitySet="TOUR" />
+            <End Role="CT_DIADIEM_TOUR" EntitySet="CT_DIADIEM_TOUR" />
+          </AssociationSet>
+          <AssociationSet Name="fk_NGUOIDUNG_NHANVIEN" Association="Self.fk_NGUOIDUNG_NHANVIEN">
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+            <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />
+          </AssociationSet>
+          <AssociationSet Name="fk_QUANLY_NHANVIEN" Association="Self.fk_QUANLY_NHANVIEN">
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+            <End Role="QUANLY" EntitySet="QUANLY" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TOURMANAGEMENTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CT_DIADIEM_TOUR">
+          <Key>
+            <PropertyRef Name="ID_CT_DIADIEM_TOUR" />
+          </Key>
+          <Property Name="ID_CT_DIADIEM_TOUR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDDIADIEM" Type="Int32" Nullable="false" />
+          <Property Name="IDTOUR" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DIADIEM" Relationship="Self.FK_CT_DIADIEM_TOUR_DIADIEM" FromRole="CT_DIADIEM_TOUR" ToRole="DIADIEM" />
+          <NavigationProperty Name="TOUR" Relationship="Self.FK_CT_DIADIEM_TOUR_TOUR" FromRole="CT_DIADIEM_TOUR" ToRole="TOUR" />
+        </EntityType>
+        <EntityType Name="DIADIEM">
+          <Key>
+            <PropertyRef Name="IDDIADIEM" />
+          </Key>
+          <Property Name="IDDIADIEM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TENDIADIEM" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TINHTHANH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MOTA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CT_DIADIEM_TOUR" Relationship="Self.FK_CT_DIADIEM_TOUR_DIADIEM" FromRole="DIADIEM" ToRole="CT_DIADIEM_TOUR" />
+        </EntityType>
+        <EntityType Name="NGUOIDUNG">
+          <Key>
+            <PropertyRef Name="IDND" />
+          </Key>
+          <Property Name="IDND" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDNV" Type="Int32" Nullable="false" />
+          <Property Name="USERNAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PASS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="NHANVIEN" Relationship="Self.fk_NGUOIDUNG_NHANVIEN" FromRole="NGUOIDUNG" ToRole="NHANVIEN" />
+        </EntityType>
+        <EntityType Name="NHANVIEN">
+          <Key>
+            <PropertyRef Name="IDNV" />
+          </Key>
+          <Property Name="IDNV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TENNV" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DIACHI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NGAYSINH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NGUOIDUNG" Relationship="Self.fk_NGUOIDUNG_NHANVIEN" FromRole="NHANVIEN" ToRole="NGUOIDUNG" />
+          <NavigationProperty Name="QUANLY" Relationship="Self.fk_QUANLY_NHANVIEN" FromRole="NHANVIEN" ToRole="QUANLY" />
+        </EntityType>
+        <EntityType Name="QUANLY">
+          <Key>
+            <PropertyRef Name="IDQL" />
+          </Key>
+          <Property Name="IDQL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDNV" Type="Int32" Nullable="false" />
+          <Property Name="ROLES" Type="Int32" />
+          <NavigationProperty Name="NHANVIEN" Relationship="Self.fk_QUANLY_NHANVIEN" FromRole="QUANLY" ToRole="NHANVIEN" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TOUR">
+          <Key>
+            <PropertyRef Name="IDTOUR" />
+          </Key>
+          <Property Name="IDTOUR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TENTOUR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GIATOUR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TINHTRANG" Type="Boolean" />
+          <NavigationProperty Name="CT_DIADIEM_TOUR" Relationship="Self.FK_CT_DIADIEM_TOUR_TOUR" FromRole="TOUR" ToRole="CT_DIADIEM_TOUR" />
+        </EntityType>
+        <Association Name="FK_CT_DIADIEM_TOUR_DIADIEM">
+          <End Role="DIADIEM" Type="Self.DIADIEM" Multiplicity="1" />
+          <End Role="CT_DIADIEM_TOUR" Type="Self.CT_DIADIEM_TOUR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DIADIEM">
+              <PropertyRef Name="IDDIADIEM" />
+            </Principal>
+            <Dependent Role="CT_DIADIEM_TOUR">
+              <PropertyRef Name="IDDIADIEM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CT_DIADIEM_TOUR_TOUR">
+          <End Role="TOUR" Type="Self.TOUR" Multiplicity="1" />
+          <End Role="CT_DIADIEM_TOUR" Type="Self.CT_DIADIEM_TOUR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TOUR">
+              <PropertyRef Name="IDTOUR" />
+            </Principal>
+            <Dependent Role="CT_DIADIEM_TOUR">
+              <PropertyRef Name="IDTOUR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_NGUOIDUNG_NHANVIEN">
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
+          <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="IDNV" />
+            </Principal>
+            <Dependent Role="NGUOIDUNG">
+              <PropertyRef Name="IDNV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_QUANLY_NHANVIEN">
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
+          <End Role="QUANLY" Type="Self.QUANLY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="IDNV" />
+            </Principal>
+            <Dependent Role="QUANLY">
+              <PropertyRef Name="IDNV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TOURMANAGEMENTEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CT_DIADIEM_TOUR" EntityType="Self.CT_DIADIEM_TOUR" />
+          <EntitySet Name="DIADIEM" EntityType="Self.DIADIEM" />
+          <EntitySet Name="NGUOIDUNG" EntityType="Self.NGUOIDUNG" />
+          <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" />
+          <EntitySet Name="QUANLY" EntityType="Self.QUANLY" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TOUR" EntityType="Self.TOUR" />
+          <AssociationSet Name="FK_CT_DIADIEM_TOUR_DIADIEM" Association="Self.FK_CT_DIADIEM_TOUR_DIADIEM">
+            <End Role="DIADIEM" EntitySet="DIADIEM" />
+            <End Role="CT_DIADIEM_TOUR" EntitySet="CT_DIADIEM_TOUR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CT_DIADIEM_TOUR_TOUR" Association="Self.FK_CT_DIADIEM_TOUR_TOUR">
+            <End Role="TOUR" EntitySet="TOUR" />
+            <End Role="CT_DIADIEM_TOUR" EntitySet="CT_DIADIEM_TOUR" />
+          </AssociationSet>
+          <AssociationSet Name="fk_NGUOIDUNG_NHANVIEN" Association="Self.fk_NGUOIDUNG_NHANVIEN">
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+            <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />
+          </AssociationSet>
+          <AssociationSet Name="fk_QUANLY_NHANVIEN" Association="Self.fk_QUANLY_NHANVIEN">
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+            <End Role="QUANLY" EntitySet="QUANLY" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TOURMANAGEMENTModelStoreContainer" CdmEntityContainer="TOURMANAGEMENTEntities">
+          <EntitySetMapping Name="CT_DIADIEM_TOUR">
+            <EntityTypeMapping TypeName="TOURMANAGEMENTModel.CT_DIADIEM_TOUR">
+              <MappingFragment StoreEntitySet="CT_DIADIEM_TOUR">
+                <ScalarProperty Name="ID_CT_DIADIEM_TOUR" ColumnName="ID_CT_DIADIEM_TOUR" />
+                <ScalarProperty Name="IDDIADIEM" ColumnName="IDDIADIEM" />
+                <ScalarProperty Name="IDTOUR" ColumnName="IDTOUR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DIADIEM">
+            <EntityTypeMapping TypeName="TOURMANAGEMENTModel.DIADIEM">
+              <MappingFragment StoreEntitySet="DIADIEM">
+                <ScalarProperty Name="IDDIADIEM" ColumnName="IDDIADIEM" />
+                <ScalarProperty Name="TENDIADIEM" ColumnName="TENDIADIEM" />
+                <ScalarProperty Name="TINHTHANH" ColumnName="TINHTHANH" />
+                <ScalarProperty Name="MOTA" ColumnName="MOTA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NGUOIDUNG">
+            <EntityTypeMapping TypeName="TOURMANAGEMENTModel.NGUOIDUNG">
+              <MappingFragment StoreEntitySet="NGUOIDUNG">
+                <ScalarProperty Name="IDND" ColumnName="IDND" />
+                <ScalarProperty Name="IDNV" ColumnName="IDNV" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PASS" ColumnName="PASS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NHANVIEN">
+            <EntityTypeMapping TypeName="TOURMANAGEMENTModel.NHANVIEN">
+              <MappingFragment StoreEntitySet="NHANVIEN">
+                <ScalarProperty Name="IDNV" ColumnName="IDNV" />
+                <ScalarProperty Name="TENNV" ColumnName="TENNV" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="NGAYSINH" ColumnName="NGAYSINH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QUANLY">
+            <EntityTypeMapping TypeName="TOURMANAGEMENTModel.QUANLY">
+              <MappingFragment StoreEntitySet="QUANLY">
+                <ScalarProperty Name="IDQL" ColumnName="IDQL" />
+                <ScalarProperty Name="IDNV" ColumnName="IDNV" />
+                <ScalarProperty Name="ROLES" ColumnName="ROLES" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="TOURMANAGEMENTModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TOUR">
+            <EntityTypeMapping TypeName="TOURMANAGEMENTModel.TOUR">
+              <MappingFragment StoreEntitySet="TOUR">
+                <ScalarProperty Name="IDTOUR" ColumnName="IDTOUR" />
+                <ScalarProperty Name="TENTOUR" ColumnName="TENTOUR" />
+                <ScalarProperty Name="GIATOUR" ColumnName="GIATOUR" />
+                <ScalarProperty Name="TINHTRANG" ColumnName="TINHTRANG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
