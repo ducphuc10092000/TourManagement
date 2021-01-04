@@ -22,10 +22,14 @@ namespace TourManagement.Model
     
         public int IDDIADIEM { get; set; }
         public string TENDIADIEM { get; set; }
-        public string TINHTHANH { get; set; }
         public string MOTA { get; set; }
+        public Nullable<int> IDTT { get; set; }
+        public string TINHTHANH { get; set; }
+        public Nullable<bool> ACTIVE { get; set; }
+        public string AVATAR { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CT_DIADIEM_TOUR> CT_DIADIEM_TOUR { get; set; }
+        public virtual TINHTHANH TINHTHANH1 { get; set; }
     }
 }

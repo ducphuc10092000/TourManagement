@@ -52,6 +52,10 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Common, Version=4.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.5.0.0\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
@@ -75,7 +79,26 @@
     <Compile Include="Model\CT_DIADIEM_TOUR.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\CT_DOAN_KHACHHANG.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CT_DOAN_KHACHSAN.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CT_DOAN_PHUONGTIEN.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DataProvider.cs" />
     <Compile Include="Model\DIADIEM.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DOAN.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\KHACHHANG.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\KHACHSAN.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Model1.Context.cs">
@@ -99,18 +122,27 @@
     <Compile Include="Model\NHANVIEN.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\QUANLY.cs">
+    <Compile Include="Model\PHUONGTIEN.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\sysdiagrams.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\TINHTHANH.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\TOUR.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Tour\PLACE.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\ImageProvider.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="ViewModel\ManageTour\ManageTourViewModel.cs" />
+    <Compile Include="ViewModel\ManageTour\ManagePlace\WD_AddPlaceViewModel.cs" />
+    <Compile Include="ViewModel\ManageTour\ManagePlace\WD_EditPlaceViewModel.cs" />
+    <Compile Include="ViewModel\ManageTour\ManageProvince\WD_AddProvinceViewModel.cs" />
+    <Compile Include="ViewModel\ManageTour\ManageProvince\WD_EditProvinceViewModel.cs" />
+    <Compile Include="ViewModel\ManageTour\UC_ManageTourViewModel.cs" />
     <Compile Include="View\DashBoard\UC_DashBoard.xaml.cs">
       <DependentUpon>UC_DashBoard.xaml</DependentUpon>
     </Compile>
@@ -125,6 +157,21 @@
     </Compile>
     <Compile Include="View\ManageStaff\UC_ManageStaff.xaml.cs">
       <DependentUpon>UC_ManageStaff.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageTour\ManagePlace\UC_ManagePlace.xaml.cs">
+      <DependentUpon>UC_ManagePlace.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageTour\ManagePlace\WD_AddPlace.xaml.cs">
+      <DependentUpon>WD_AddPlace.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageTour\ManagePlace\WD_EditPlace.xaml.cs">
+      <DependentUpon>WD_EditPlace.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageTour\ManageProvince\WD_AddProvince.xaml.cs">
+      <DependentUpon>WD_AddProvince.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageTour\ManageProvince\WD_EditProvince.xaml.cs">
+      <DependentUpon>WD_EditProvince.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ManageTour\UC_ManageTour.xaml.cs">
       <DependentUpon>UC_ManageTour.xaml</DependentUpon>
@@ -165,6 +212,26 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ManageStaff\UC_ManageStaff.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManageTour\ManagePlace\UC_ManagePlace.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManageTour\ManagePlace\WD_AddPlace.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManageTour\ManagePlace\WD_EditPlace.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManageTour\ManageProvince\WD_AddProvince.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManageTour\ManageProvince\WD_EditProvince.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -211,7 +278,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Resources\TempFiles\" />
+    <Folder Include="View\ManageTour\ManageHotel\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -223,6 +293,8 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Photo\delete_icon.png" />
+    <Resource Include="Photo\edit_icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -14,7 +14,10 @@
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         DataContext="{StaticResource MainVM}"
-        Title="MainWindow" Height="700" Width="1350">
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Title="MainWindow" Height="900" Width="1600">
     <Window.Resources>
         <Style x:Key="tblButtonFeature" TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Consolas"></Setter>
@@ -26,355 +29,402 @@
         <Style x:Key="ButtonFeature" TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
             <Setter Property="BorderThickness" Value="0"></Setter>
             <Setter Property="FontWeight" Value="Normal"></Setter>
-            <Setter Property="Background" >
+            <Setter Property="Background">
                 <Setter.Value>
                     <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                        <GradientStop Color="#FF1556A0" Offset="1"/>
-                        <GradientStop Color="#FF3E8CE4" Offset="0.735"/>
+                        <GradientStop Color="#FF0EAEC7" Offset="1"/>
+                        <GradientStop Color="#FF81D4FA" Offset="0"/>
                     </LinearGradientBrush>
                 </Setter.Value>
             </Setter>
         </Style>
     </Window.Resources>
     <Grid>
-        <!--Chia grid tổng thành 2 cột-->
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="120"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <materialDesign:ColorZone Mode="Dark" Height="30">
+                <DockPanel>
+                    <materialDesign:PopupBox DockPanel.Dock="Right"
+                                             PlacementMode="BottomAndAlignRightEdges">
+                        <ListBox>
+                            <ListBoxItem>
+                                <Button Height="auto" Width="auto">
+                                    Quit
+                                </Button>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <Button Height="auto" Width="auto">
+                                    Help
+                                </Button>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <Button Height="auto" Width="auto">
+                                    About us
+                                </Button>
+                            </ListBoxItem>
+                        </ListBox>
+                    </materialDesign:PopupBox>
+                    <StackPanel  Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center"
+                                   Margin="1400 0 0 0"
+                                   Height="auto"
+                                   Style="{StaticResource tblButtonFeature}"
+                                   FontSize="20"> TOUR MANAGEMENT
+                        </TextBlock>
+                    </StackPanel>
+                </DockPanel>
+            </materialDesign:ColorZone>
+        </Grid>
+        <Grid Grid.Row="1">
 
-        <!--CỘT 1 CHỨA CÁC BUTTON CHUYỂN ĐỔI CHỨC NĂNG-->
-        <Grid Grid.Column="0">
+            <!--Chia grid tổng thành 2 cột-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <!--CỘT 1 CHỨA CÁC BUTTON CHUYỂN ĐỔI CHỨC NĂNG-->
+            <Grid Grid.Column="0">
 
 
-            <!--CHIA HÀNG-->
-            <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-            </Grid.RowDefinitions>
+                <!--CHIA HÀNG-->
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
 
-            <!--BUTTON 1 - DASHBOARD-->
-            <Grid Grid.Row="0">
-                <Button Height="auto" materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                <!--BUTTON 1 - DASHBOARD-->
+                <Grid Grid.Row="0">
+                    <Button Height="auto" Width="auto" materialDesign:ShadowAssist.ShadowDepth="Depth2"
                         Style="{StaticResource ButtonFeature}"
                     Command="{Binding BtnDashboardCommand}"
                     CommandParameter="{Binding ElementName=MainWD}">
-                    <Grid Height="auto" Width="auto">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="50"></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <!--Icon để tại đây-->
-                        <Image Grid.Row="0"
+                        <Grid Height="auto" Width="auto">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <!--Icon để tại đây-->
+                            <Image Grid.Row="0"
                            Height="50" Source=""
                            >
-                        </Image>
-                        <!--Content-->
-                        <TextBlock Grid.Row="1"
+                            </Image>
+                            <!--Content-->
+                            <TextBlock Grid.Row="1"
+                                   Margin="-10,0,-10,0"
                                    Text="DASHBOARD"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
                                    Style="{StaticResource tblButtonFeature}">
-                        </TextBlock>
-                    </Grid>
-                </Button>
-            </Grid>
+                            </TextBlock>
+                        </Grid>
+                    </Button>
+                </Grid>
 
-            <!--BUTTON 2 - QUẢN LÝ TOUR-->
-            <Grid Grid.Row="1">
-                <Button Height="auto" materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                <!--BUTTON 2 - QUẢN LÝ TOUR-->
+                <Grid Grid.Row="1">
+                    <Button Height="auto" materialDesign:ShadowAssist.ShadowDepth="Depth2"
                         Style="{StaticResource ButtonFeature}"
                     Command="{Binding BtnManageTourCommand}"
                     CommandParameter="{Binding ElementName=MainWD}">
-                    <Grid Height="auto" Width="auto">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="50"></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <!--Icon để tại đây-->
-                        <Image Grid.Row="0"
+                        <Grid Height="auto" Width="auto">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <!--Icon để tại đây-->
+                            <Image Grid.Row="0"
                            Height="50" Source=""
                            >
-                        </Image>
-                        <!--Content-->
-                        <TextBlock Grid.Row="1"
+                            </Image>
+                            <!--Content-->
+                            <TextBlock Grid.Row="1"
                                    Text="QL TOUR"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
                                    Style="{StaticResource tblButtonFeature}">
-                        </TextBlock>
-                    </Grid>
-                </Button>
-            </Grid>
+                            </TextBlock>
+                        </Grid>
+                    </Button>
+                </Grid>
 
-            <!--BUTTON 3 - QUẢN LÝ ĐOÀN DU LỊCH-->
-            <Grid Grid.Row="2">
-                <Button Height="auto" materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                <!--BUTTON 3 - QUẢN LÝ ĐOÀN DU LỊCH-->
+                <Grid Grid.Row="2">
+                    <Button Height="auto" materialDesign:ShadowAssist.ShadowDepth="Depth2"
                         Style="{StaticResource ButtonFeature}"
                     Command="{Binding BtnManageTripCommand}"
                     CommandParameter="{Binding ElementName=MainWD}">
-                    <Grid Height="auto" Width="auto">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="50"></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <!--Icon để tại đây-->
-                        <Image Grid.Row="0"
+                        <Grid Height="auto" Width="auto">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <!--Icon để tại đây-->
+                            <Image Grid.Row="0"
                            Height="50" Source=""
                            >
-                        </Image>
-                        <!--Content-->
-                        <TextBlock Grid.Row="1"
+                            </Image>
+                            <!--Content-->
+                            <TextBlock Grid.Row="1"
+                                   Margin="-10,0,-10,0"
                                    Text="QL ĐOÀN DL"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
                                    Style="{StaticResource tblButtonFeature}">
-                        </TextBlock>
-                    </Grid>
-                </Button>
-            </Grid>
+                            </TextBlock>
+                        </Grid>
+                    </Button>
+                </Grid>
 
-            <!--BUTTON 4 - QUẢN LÝ KHÁCH HÀNG-->
-            <Grid Grid.Row="3">
-                <Button Height="auto" materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                <!--BUTTON 4 - QUẢN LÝ KHÁCH HÀNG-->
+                <Grid Grid.Row="3">
+                    <Button Height="auto" materialDesign:ShadowAssist.ShadowDepth="Depth2"
                         Style="{StaticResource ButtonFeature}"
                     Command="{Binding BtnManageCustomerCommand}"
                     CommandParameter="{Binding ElementName=MainWD}">
-                    <Grid Height="auto" Width="auto">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="50"></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <!--Icon để tại đây-->
-                        <Image Grid.Row="0"
+                        <Grid Height="auto" Width="auto">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <!--Icon để tại đây-->
+                            <Image Grid.Row="0"
                            Height="50" Source=""
                            >
-                        </Image>
-                        <!--Content-->
-                        <TextBlock Grid.Row="1"
+                            </Image>
+                            <!--Content-->
+                            <TextBlock Grid.Row="1"
                                    Text="KHÁCH HÀNG"
+                                   Margin="-10,0,-10,0"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
                                    Style="{StaticResource tblButtonFeature}">
-                        </TextBlock>
-                    </Grid>
-                </Button>
-            </Grid>
+                            </TextBlock>
+                        </Grid>
+                    </Button>
+                </Grid>
 
-            <!--BUTTON 5 - QUẢN LÝ NHÂN VIÊN-->
-            <Grid Grid.Row="4">
-                <Button Height="auto" materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                <!--BUTTON 5 - QUẢN LÝ NHÂN VIÊN-->
+                <Grid Grid.Row="4">
+                    <Button Height="auto" materialDesign:ShadowAssist.ShadowDepth="Depth2"
                         Style="{StaticResource ButtonFeature}"
                     Command="{Binding BtnManageStaffCommand}"
                     CommandParameter="{Binding ElementName=MainWD}">
-                    <Grid Height="auto" Width="auto">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="50"></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <!--Icon để tại đây-->
-                        <Image Grid.Row="0"
+                        <Grid Height="auto" Width="auto">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <!--Icon để tại đây-->
+                            <Image Grid.Row="0"
                            Height="50" Source=""
                            >
-                        </Image>
-                        <!--Content-->
-                        <TextBlock Grid.Row="1"
+                            </Image>
+                            <!--Content-->
+                            <TextBlock Grid.Row="1"
                                    Text="NHÂN VIÊN"
+                                   Margin="-10,0,-10,0"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
                                    Style="{StaticResource tblButtonFeature}">
-                        </TextBlock>
-                    </Grid>
-                </Button>
-            </Grid>
+                            </TextBlock>
+                        </Grid>
+                    </Button>
+                </Grid>
 
-            <!--BUTTON 6 - THỐNG KÊ-->
-            <Grid Grid.Row="5">
-                <Button Height="auto" materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                <!--BUTTON 6 - THỐNG KÊ-->
+                <Grid Grid.Row="5">
+                    <Button Height="auto" materialDesign:ShadowAssist.ShadowDepth="Depth2"
                         Style="{StaticResource ButtonFeature}"
                     Command="{Binding BtnManageReportCommand}"
                     CommandParameter="{Binding ElementName=MainWD}">
-                    <Grid Height="auto" Width="auto">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="50"></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <!--Icon để tại đây-->
-                        <Image Grid.Row="0"
+                        <Grid Height="auto" Width="auto">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <!--Icon để tại đây-->
+                            <Image Grid.Row="0"
                            Height="50" Source=""
                            >
-                        </Image>
-                        <!--Content-->
-                        <TextBlock Grid.Row="1"
+                            </Image>
+                            <!--Content-->
+                            <TextBlock Grid.Row="1"
                                    Text="THỐNG KÊ"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
                                    Style="{StaticResource tblButtonFeature}">
-                        </TextBlock>
-                    </Grid>
-                </Button>
-            </Grid>
+                            </TextBlock>
+                        </Grid>
+                    </Button>
+                </Grid>
 
-            <!--BUTTON 7 - QUẢN LÝ TÀI KHOẢN-->
-            <Grid Grid.Row="6">
-                <Button Height="auto" materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                <!--BUTTON 7 - QUẢN LÝ TÀI KHOẢN-->
+                <Grid Grid.Row="6">
+                    <Button Height="auto" materialDesign:ShadowAssist.ShadowDepth="Depth2"
                         Style="{StaticResource ButtonFeature}"
                     Command="{Binding BtnManageAccountCommand}"
                     CommandParameter="{Binding ElementName=MainWD}">
-                    <Grid Height="auto" Width="auto">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="50"></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <!--Icon để tại đây-->
-                        <Image Grid.Row="0"
+                        <Grid Height="auto" Width="auto">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <!--Icon để tại đây-->
+                            <Image Grid.Row="0"
                            Height="50" Source=""
                            >
-                        </Image>
-                        <!--Content-->
-                        <TextBlock Grid.Row="1"
+                            </Image>
+                            <!--Content-->
+                            <TextBlock Grid.Row="1"
                                    Text="TÀI KHOẢN"
+                                   Margin="-10,0,-10,0"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
                                    Style="{StaticResource tblButtonFeature}">
-                        </TextBlock>
-                    </Grid>
-                </Button>
-            </Grid>
+                            </TextBlock>
+                        </Grid>
+                    </Button>
+                </Grid>
 
-            <!--BUTTON 8 - SOMETHING-->
-            <Grid Grid.Row="7">
-                <Button Height="auto" materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                <!--BUTTON 8 - SOMETHING-->
+                <Grid Grid.Row="7">
+                    <Button Height="auto" materialDesign:ShadowAssist.ShadowDepth="Depth2"
                         Style="{StaticResource ButtonFeature}"
                     Command="{Binding BtnReportCommand}"
                     CommandParameter="{Binding ElementName=MainWD}">
-                    <Grid Height="auto" Width="auto">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="50"></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <!--Icon để tại đây-->
-                        <Image Grid.Row="0"
+                        <Grid Height="auto" Width="auto">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <!--Icon để tại đây-->
+                            <Image Grid.Row="0"
                            Height="50" Source=""
                            >
-                        </Image>
-                        <!--Content-->
-                        <TextBlock Grid.Row="1"
+                            </Image>
+                            <!--Content-->
+                            <TextBlock Grid.Row="1"
                                    Text="SOMETHING"
+                                   Margin="-10,0,-10,0"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
                                    Style="{StaticResource tblButtonFeature}">
-                        </TextBlock>
-                    </Grid>
-                </Button>
+                            </TextBlock>
+                        </Grid>
+                    </Button>
+                </Grid>
             </Grid>
-        </Grid>
-        
-        <!--CỘT 2 CHỨA CÁC USERCONTROL THỂ HIỆN CHO TỪNG CHỨC NĂNG Ở CỘT 1-->
-        <Grid Grid.Column="1">
-            <!--View DashBoard-->
-            <Grid>
-                <Grid.Style>
-                    <Style TargetType="Grid">
-                        <Setter Property="Visibility" Value="Visible"></Setter>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding ChucNang}" Value="0">
-                                <Setter Property="Visibility" Value="Visible"></Setter>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Grid.Style>
-                <viewDashBoard:UC_DashBoard></viewDashBoard:UC_DashBoard>
-            </Grid>
-            <!--View MANAGE TOUR-->
-            <Grid>
-                <Grid.Style>
-                    <Style TargetType="Grid">
-                        <Setter Property="Visibility" Value="Collapsed"></Setter>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding ChucNang}" Value="1">
-                                <Setter Property="Visibility" Value="Visible"></Setter>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Grid.Style>
-                <viewManageTour:UC_ManageTour></viewManageTour:UC_ManageTour>
-            </Grid>
-            <!--View MANAGE TRIP-->
-            <Grid>
-                <Grid.Style>
-                    <Style TargetType="Grid">
-                        <Setter Property="Visibility" Value="Collapsed"></Setter>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding ChucNang}" Value="2">
-                                <Setter Property="Visibility" Value="Visible"></Setter>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Grid.Style>
-                <viewManageTrip:UC_ManageTrip></viewManageTrip:UC_ManageTrip>
-            </Grid>
-            <!--View MANAGE CUSTOMER-->
-            <Grid>
-                <Grid.Style>
-                    <Style TargetType="Grid">
-                        <Setter Property="Visibility" Value="Collapsed"></Setter>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding ChucNang}" Value="3">
-                                <Setter Property="Visibility" Value="Visible"></Setter>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Grid.Style>
-                <viewManageCustomer:UC_ManageCustomer></viewManageCustomer:UC_ManageCustomer>
-            </Grid>
-            <!--View MANAGE STAFF-->
-            <Grid>
-                <Grid.Style>
-                    <Style TargetType="Grid">
-                        <Setter Property="Visibility" Value="Collapsed"></Setter>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding ChucNang}" Value="4">
-                                <Setter Property="Visibility" Value="Visible"></Setter>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Grid.Style>
-                <viewManageStaff:UC_ManageStaff></viewManageStaff:UC_ManageStaff>
-            </Grid>
-            <!--View MANAGE REPORT-->
-            <Grid>
-                <Grid.Style>
-                    <Style TargetType="Grid">
-                        <Setter Property="Visibility" Value="Collapsed"></Setter>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding ChucNang}" Value="5">
-                                <Setter Property="Visibility" Value="Visible"></Setter>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Grid.Style>
-                <viewManageReport:UC_ManageReport></viewManageReport:UC_ManageReport>
-            </Grid>
-            <!--View MANAGE ACCOUNT-->
-            <Grid>
-                <Grid.Style>
-                    <Style TargetType="Grid">
-                        <Setter Property="Visibility" Value="Collapsed"></Setter>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding ChucNang}" Value="6">
-                                <Setter Property="Visibility" Value="Visible"></Setter>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Grid.Style>
-                <viewManageAccount:UC_ManageAccount></viewManageAccount:UC_ManageAccount>
+
+            <!--CỘT 2 CHỨA CÁC USERCONTROL THỂ HIỆN CHO TỪNG CHỨC NĂNG Ở CỘT 1-->
+            <Grid Grid.Column="1">
+                <!--View DashBoard-->
+                <Grid>
+                    <Grid.Style>
+                        <Style TargetType="Grid">
+                            <Setter Property="Visibility" Value="Visible"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ChucNang}" Value="0">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+                    <viewDashBoard:UC_DashBoard></viewDashBoard:UC_DashBoard>
+                </Grid>
+                <!--View MANAGE TOUR-->
+                <Grid>
+                    <Grid.Style>
+                        <Style TargetType="Grid">
+                            <Setter Property="Visibility" Value="Collapsed"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ChucNang}" Value="1">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+                    <viewManageTour:UC_ManageTour></viewManageTour:UC_ManageTour>
+                </Grid>
+                <!--View MANAGE TRIP-->
+                <Grid>
+                    <Grid.Style>
+                        <Style TargetType="Grid">
+                            <Setter Property="Visibility" Value="Collapsed"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ChucNang}" Value="2">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+                    <viewManageTrip:UC_ManageTrip></viewManageTrip:UC_ManageTrip>
+                </Grid>
+                <!--View MANAGE CUSTOMER-->
+                <Grid>
+                    <Grid.Style>
+                        <Style TargetType="Grid">
+                            <Setter Property="Visibility" Value="Collapsed"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ChucNang}" Value="3">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+                    <viewManageCustomer:UC_ManageCustomer></viewManageCustomer:UC_ManageCustomer>
+                </Grid>
+                <!--View MANAGE STAFF-->
+                <Grid>
+                    <Grid.Style>
+                        <Style TargetType="Grid">
+                            <Setter Property="Visibility" Value="Collapsed"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ChucNang}" Value="4">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+                    <viewManageStaff:UC_ManageStaff></viewManageStaff:UC_ManageStaff>
+                </Grid>
+                <!--View MANAGE REPORT-->
+                <Grid>
+                    <Grid.Style>
+                        <Style TargetType="Grid">
+                            <Setter Property="Visibility" Value="Collapsed"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ChucNang}" Value="5">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+                    <viewManageReport:UC_ManageReport></viewManageReport:UC_ManageReport>
+                </Grid>
+                <!--View MANAGE ACCOUNT-->
+                <Grid>
+                    <Grid.Style>
+                        <Style TargetType="Grid">
+                            <Setter Property="Visibility" Value="Collapsed"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ChucNang}" Value="6">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+                    <viewManageAccount:UC_ManageAccount></viewManageAccount:UC_ManageAccount>
+                </Grid>
             </Grid>
         </Grid>
     </Grid>

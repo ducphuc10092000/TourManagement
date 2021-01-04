@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TOURMANAGEMENTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TOURMANAGEMENTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CT_DIADIEM_TOUR">
           <Key>
             <PropertyRef Name="ID_CT_DIADIEM_TOUR" />
@@ -13,14 +13,76 @@
           <Property Name="IDDIADIEM" Type="int" Nullable="false" />
           <Property Name="IDTOUR" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="CT_DOAN_KHACHHANG">
+          <Key>
+            <PropertyRef Name="IDCT" />
+          </Key>
+          <Property Name="IDCT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDDOAN" Type="int" />
+          <Property Name="IDKH" Type="int" />
+        </EntityType>
+        <EntityType Name="CT_DOAN_KHACHSAN">
+          <Key>
+            <PropertyRef Name="IDCT" />
+          </Key>
+          <Property Name="IDCT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDDOAN" Type="int" />
+          <Property Name="IDKS" Type="int" />
+        </EntityType>
+        <EntityType Name="CT_DOAN_PHUONGTIEN">
+          <Key>
+            <PropertyRef Name="IDCT" />
+          </Key>
+          <Property Name="IDCT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDDOAN" Type="int" />
+          <Property Name="IDPT" Type="int" />
+        </EntityType>
         <EntityType Name="DIADIEM">
           <Key>
             <PropertyRef Name="IDDIADIEM" />
           </Key>
           <Property Name="IDDIADIEM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TENDIADIEM" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="TINHTHANH" Type="nvarchar(max)" Nullable="false" />
           <Property Name="MOTA" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IDTT" Type="int" />
+          <Property Name="TINHTHANH" Type="nvarchar(max)" />
+          <Property Name="ACTIVE" Type="bit" />
+          <Property Name="AVATAR" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DOAN">
+          <Key>
+            <PropertyRef Name="IDDOAN" />
+          </Key>
+          <Property Name="IDDOAN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TENDOAN" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IDTOUR" Type="int" Nullable="false" />
+          <Property Name="SOLUONGKH" Type="int" Nullable="false" />
+          <Property Name="NGAYBATDAU" Type="nvarchar(max)" />
+          <Property Name="NGAYKETTHUC" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="KHACHHANG">
+          <Key>
+            <PropertyRef Name="IDKH" />
+          </Key>
+          <Property Name="IDKH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TENKH" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CMND" Type="nvarchar(max)" />
+          <Property Name="DIACHI" Type="nvarchar(max)" />
+          <Property Name="SDT" Type="nvarchar(max)" />
+          <Property Name="EMAIL" Type="nvarchar(max)" />
+          <Property Name="NGAYSINH" Type="nvarchar(max)" />
+          <Property Name="ACTIVE" Type="bit" />
+        </EntityType>
+        <EntityType Name="KHACHSAN">
+          <Key>
+            <PropertyRef Name="IDKS" />
+          </Key>
+          <Property Name="IDKS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DIACHI" Type="nvarchar(max)" />
+          <Property Name="SDT" Type="nvarchar(max)" />
+          <Property Name="IDTT" Type="int" />
+          <Property Name="ACTIVE" Type="bit" />
+          <Property Name="TINHTHANH" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="NGUOIDUNG">
           <Key>
@@ -30,6 +92,7 @@
           <Property Name="IDNV" Type="int" Nullable="false" />
           <Property Name="USERNAME" Type="nvarchar(max)" Nullable="false" />
           <Property Name="PASS" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ACTIVE" Type="bit" />
         </EntityType>
         <EntityType Name="NHANVIEN">
           <Key>
@@ -41,14 +104,16 @@
           <Property Name="SDT" Type="nvarchar(max)" />
           <Property Name="EMAIL" Type="nvarchar(max)" />
           <Property Name="NGAYSINH" Type="nvarchar(max)" />
+          <Property Name="CHUCVU" Type="nvarchar(max)" />
         </EntityType>
-        <EntityType Name="QUANLY">
+        <EntityType Name="PHUONGTIEN">
           <Key>
-            <PropertyRef Name="IDQL" />
+            <PropertyRef Name="IDPT" />
           </Key>
-          <Property Name="IDQL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IDNV" Type="int" Nullable="false" />
-          <Property Name="ROLES" Type="int" />
+          <Property Name="IDPT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LOAIPT" Type="nvarchar(max)" />
+          <Property Name="SOGHE" Type="int" />
+          <Property Name="ACTIVE" Type="bit" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -60,6 +125,13 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="TINHTHANH">
+          <Key>
+            <PropertyRef Name="IDTT" />
+          </Key>
+          <Property Name="IDTT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TENTT" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="TOUR">
           <Key>
             <PropertyRef Name="IDTOUR" />
@@ -67,7 +139,8 @@
           <Property Name="IDTOUR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TENTOUR" Type="nvarchar(max)" Nullable="false" />
           <Property Name="GIATOUR" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="TINHTRANG" Type="bit" />
+          <Property Name="ACTIVE" Type="bit" />
+          <Property Name="MOTA" Type="nvarchar(max)" />
         </EntityType>
         <Association Name="FK_CT_DIADIEM_TOUR_DIADIEM">
           <End Role="DIADIEM" Type="Self.DIADIEM" Multiplicity="1" />
@@ -93,6 +166,114 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_CT_DOAN_KHACHHANG">
+          <End Role="DOAN" Type="Self.DOAN" Multiplicity="0..1" />
+          <End Role="CT_DOAN_KHACHHANG" Type="Self.CT_DOAN_KHACHHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOAN">
+              <PropertyRef Name="IDDOAN" />
+            </Principal>
+            <Dependent Role="CT_DOAN_KHACHHANG">
+              <PropertyRef Name="IDDOAN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CT_DOAN_KHACHHANG_KH">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="CT_DOAN_KHACHHANG" Type="Self.CT_DOAN_KHACHHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="IDKH" />
+            </Principal>
+            <Dependent Role="CT_DOAN_KHACHHANG">
+              <PropertyRef Name="IDKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CT_DOAN_KHACHSAN">
+          <End Role="DOAN" Type="Self.DOAN" Multiplicity="0..1" />
+          <End Role="CT_DOAN_KHACHSAN" Type="Self.CT_DOAN_KHACHSAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOAN">
+              <PropertyRef Name="IDDOAN" />
+            </Principal>
+            <Dependent Role="CT_DOAN_KHACHSAN">
+              <PropertyRef Name="IDDOAN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CT_DOAN_KHACHSAN_KS">
+          <End Role="KHACHSAN" Type="Self.KHACHSAN" Multiplicity="0..1" />
+          <End Role="CT_DOAN_KHACHSAN" Type="Self.CT_DOAN_KHACHSAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHSAN">
+              <PropertyRef Name="IDKS" />
+            </Principal>
+            <Dependent Role="CT_DOAN_KHACHSAN">
+              <PropertyRef Name="IDKS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CT_DOAN_PHUONGTIEN">
+          <End Role="DOAN" Type="Self.DOAN" Multiplicity="0..1" />
+          <End Role="CT_DOAN_PHUONGTIEN" Type="Self.CT_DOAN_PHUONGTIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOAN">
+              <PropertyRef Name="IDDOAN" />
+            </Principal>
+            <Dependent Role="CT_DOAN_PHUONGTIEN">
+              <PropertyRef Name="IDDOAN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CT_DOAN_PHUONGTIEN_PT">
+          <End Role="PHUONGTIEN" Type="Self.PHUONGTIEN" Multiplicity="0..1" />
+          <End Role="CT_DOAN_PHUONGTIEN" Type="Self.CT_DOAN_PHUONGTIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHUONGTIEN">
+              <PropertyRef Name="IDPT" />
+            </Principal>
+            <Dependent Role="CT_DOAN_PHUONGTIEN">
+              <PropertyRef Name="IDPT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_DIADIEM_TINHTHANH">
+          <End Role="TINHTHANH" Type="Self.TINHTHANH" Multiplicity="0..1" />
+          <End Role="DIADIEM" Type="Self.DIADIEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TINHTHANH">
+              <PropertyRef Name="IDTT" />
+            </Principal>
+            <Dependent Role="DIADIEM">
+              <PropertyRef Name="IDTT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_DOAN_TOUR">
+          <End Role="TOUR" Type="Self.TOUR" Multiplicity="1" />
+          <End Role="DOAN" Type="Self.DOAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TOUR">
+              <PropertyRef Name="IDTOUR" />
+            </Principal>
+            <Dependent Role="DOAN">
+              <PropertyRef Name="IDTOUR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_KHACHSAN_TINHTHANH">
+          <End Role="TINHTHANH" Type="Self.TINHTHANH" Multiplicity="0..1" />
+          <End Role="KHACHSAN" Type="Self.KHACHSAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TINHTHANH">
+              <PropertyRef Name="IDTT" />
+            </Principal>
+            <Dependent Role="KHACHSAN">
+              <PropertyRef Name="IDTT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_NGUOIDUNG_NHANVIEN">
           <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
           <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="*" />
@@ -105,25 +286,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_QUANLY_NHANVIEN">
-          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
-          <End Role="QUANLY" Type="Self.QUANLY" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NHANVIEN">
-              <PropertyRef Name="IDNV" />
-            </Principal>
-            <Dependent Role="QUANLY">
-              <PropertyRef Name="IDNV" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="TOURMANAGEMENTModelStoreContainer">
           <EntitySet Name="CT_DIADIEM_TOUR" EntityType="Self.CT_DIADIEM_TOUR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CT_DOAN_KHACHHANG" EntityType="Self.CT_DOAN_KHACHHANG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CT_DOAN_KHACHSAN" EntityType="Self.CT_DOAN_KHACHSAN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CT_DOAN_PHUONGTIEN" EntityType="Self.CT_DOAN_PHUONGTIEN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DIADIEM" EntityType="Self.DIADIEM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DOAN" EntityType="Self.DOAN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KHACHHANG" EntityType="Self.KHACHHANG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KHACHSAN" EntityType="Self.KHACHSAN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NGUOIDUNG" EntityType="Self.NGUOIDUNG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="QUANLY" EntityType="Self.QUANLY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PHUONGTIEN" EntityType="Self.PHUONGTIEN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TINHTHANH" EntityType="Self.TINHTHANH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TOUR" EntityType="Self.TOUR" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_CT_DIADIEM_TOUR_DIADIEM" Association="Self.FK_CT_DIADIEM_TOUR_DIADIEM">
             <End Role="DIADIEM" EntitySet="DIADIEM" />
@@ -133,20 +309,115 @@
             <End Role="TOUR" EntitySet="TOUR" />
             <End Role="CT_DIADIEM_TOUR" EntitySet="CT_DIADIEM_TOUR" />
           </AssociationSet>
+          <AssociationSet Name="fk_CT_DOAN_KHACHHANG" Association="Self.fk_CT_DOAN_KHACHHANG">
+            <End Role="DOAN" EntitySet="DOAN" />
+            <End Role="CT_DOAN_KHACHHANG" EntitySet="CT_DOAN_KHACHHANG" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CT_DOAN_KHACHHANG_KH" Association="Self.fk_CT_DOAN_KHACHHANG_KH">
+            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+            <End Role="CT_DOAN_KHACHHANG" EntitySet="CT_DOAN_KHACHHANG" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CT_DOAN_KHACHSAN" Association="Self.fk_CT_DOAN_KHACHSAN">
+            <End Role="DOAN" EntitySet="DOAN" />
+            <End Role="CT_DOAN_KHACHSAN" EntitySet="CT_DOAN_KHACHSAN" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CT_DOAN_KHACHSAN_KS" Association="Self.fk_CT_DOAN_KHACHSAN_KS">
+            <End Role="KHACHSAN" EntitySet="KHACHSAN" />
+            <End Role="CT_DOAN_KHACHSAN" EntitySet="CT_DOAN_KHACHSAN" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CT_DOAN_PHUONGTIEN" Association="Self.fk_CT_DOAN_PHUONGTIEN">
+            <End Role="DOAN" EntitySet="DOAN" />
+            <End Role="CT_DOAN_PHUONGTIEN" EntitySet="CT_DOAN_PHUONGTIEN" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CT_DOAN_PHUONGTIEN_PT" Association="Self.fk_CT_DOAN_PHUONGTIEN_PT">
+            <End Role="PHUONGTIEN" EntitySet="PHUONGTIEN" />
+            <End Role="CT_DOAN_PHUONGTIEN" EntitySet="CT_DOAN_PHUONGTIEN" />
+          </AssociationSet>
+          <AssociationSet Name="fk_DIADIEM_TINHTHANH" Association="Self.fk_DIADIEM_TINHTHANH">
+            <End Role="TINHTHANH" EntitySet="TINHTHANH" />
+            <End Role="DIADIEM" EntitySet="DIADIEM" />
+          </AssociationSet>
+          <AssociationSet Name="fk_DOAN_TOUR" Association="Self.fk_DOAN_TOUR">
+            <End Role="TOUR" EntitySet="TOUR" />
+            <End Role="DOAN" EntitySet="DOAN" />
+          </AssociationSet>
+          <AssociationSet Name="fk_KHACHSAN_TINHTHANH" Association="Self.fk_KHACHSAN_TINHTHANH">
+            <End Role="TINHTHANH" EntitySet="TINHTHANH" />
+            <End Role="KHACHSAN" EntitySet="KHACHSAN" />
+          </AssociationSet>
           <AssociationSet Name="fk_NGUOIDUNG_NHANVIEN" Association="Self.fk_NGUOIDUNG_NHANVIEN">
             <End Role="NHANVIEN" EntitySet="NHANVIEN" />
             <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />
           </AssociationSet>
-          <AssociationSet Name="fk_QUANLY_NHANVIEN" Association="Self.fk_QUANLY_NHANVIEN">
-            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
-            <End Role="QUANLY" EntitySet="QUANLY" />
-          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TOURMANAGEMENTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TOURMANAGEMENTEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CT_DIADIEM_TOUR" EntityType="TOURMANAGEMENTModel.CT_DIADIEM_TOUR" />
+          <EntitySet Name="CT_DOAN_KHACHHANG" EntityType="TOURMANAGEMENTModel.CT_DOAN_KHACHHANG" />
+          <EntitySet Name="CT_DOAN_KHACHSAN" EntityType="TOURMANAGEMENTModel.CT_DOAN_KHACHSAN" />
+          <EntitySet Name="CT_DOAN_PHUONGTIEN" EntityType="TOURMANAGEMENTModel.CT_DOAN_PHUONGTIEN" />
+          <EntitySet Name="DIADIEM" EntityType="TOURMANAGEMENTModel.DIADIEM" />
+          <EntitySet Name="DOAN" EntityType="TOURMANAGEMENTModel.DOAN" />
+          <EntitySet Name="KHACHHANG" EntityType="TOURMANAGEMENTModel.KHACHHANG" />
+          <EntitySet Name="KHACHSAN" EntityType="TOURMANAGEMENTModel.KHACHSAN" />
+          <EntitySet Name="NGUOIDUNG" EntityType="TOURMANAGEMENTModel.NGUOIDUNG" />
+          <EntitySet Name="NHANVIEN" EntityType="TOURMANAGEMENTModel.NHANVIEN" />
+          <EntitySet Name="PHUONGTIEN" EntityType="TOURMANAGEMENTModel.PHUONGTIEN" />
+          <EntitySet Name="sysdiagrams" EntityType="TOURMANAGEMENTModel.sysdiagrams" />
+          <EntitySet Name="TINHTHANH" EntityType="TOURMANAGEMENTModel.TINHTHANH" />
+          <EntitySet Name="TOUR" EntityType="TOURMANAGEMENTModel.TOUR" />
+          <AssociationSet Name="FK_CT_DIADIEM_TOUR_DIADIEM" Association="TOURMANAGEMENTModel.FK_CT_DIADIEM_TOUR_DIADIEM">
+            <End Role="DIADIEM" EntitySet="DIADIEM" />
+            <End Role="CT_DIADIEM_TOUR" EntitySet="CT_DIADIEM_TOUR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CT_DIADIEM_TOUR_TOUR" Association="TOURMANAGEMENTModel.FK_CT_DIADIEM_TOUR_TOUR">
+            <End Role="TOUR" EntitySet="TOUR" />
+            <End Role="CT_DIADIEM_TOUR" EntitySet="CT_DIADIEM_TOUR" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CT_DOAN_KHACHHANG" Association="TOURMANAGEMENTModel.fk_CT_DOAN_KHACHHANG">
+            <End Role="DOAN" EntitySet="DOAN" />
+            <End Role="CT_DOAN_KHACHHANG" EntitySet="CT_DOAN_KHACHHANG" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CT_DOAN_KHACHHANG_KH" Association="TOURMANAGEMENTModel.fk_CT_DOAN_KHACHHANG_KH">
+            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+            <End Role="CT_DOAN_KHACHHANG" EntitySet="CT_DOAN_KHACHHANG" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CT_DOAN_KHACHSAN" Association="TOURMANAGEMENTModel.fk_CT_DOAN_KHACHSAN">
+            <End Role="DOAN" EntitySet="DOAN" />
+            <End Role="CT_DOAN_KHACHSAN" EntitySet="CT_DOAN_KHACHSAN" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CT_DOAN_KHACHSAN_KS" Association="TOURMANAGEMENTModel.fk_CT_DOAN_KHACHSAN_KS">
+            <End Role="KHACHSAN" EntitySet="KHACHSAN" />
+            <End Role="CT_DOAN_KHACHSAN" EntitySet="CT_DOAN_KHACHSAN" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CT_DOAN_PHUONGTIEN" Association="TOURMANAGEMENTModel.fk_CT_DOAN_PHUONGTIEN">
+            <End Role="DOAN" EntitySet="DOAN" />
+            <End Role="CT_DOAN_PHUONGTIEN" EntitySet="CT_DOAN_PHUONGTIEN" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CT_DOAN_PHUONGTIEN_PT" Association="TOURMANAGEMENTModel.fk_CT_DOAN_PHUONGTIEN_PT">
+            <End Role="PHUONGTIEN" EntitySet="PHUONGTIEN" />
+            <End Role="CT_DOAN_PHUONGTIEN" EntitySet="CT_DOAN_PHUONGTIEN" />
+          </AssociationSet>
+          <AssociationSet Name="fk_DIADIEM_TINHTHANH" Association="TOURMANAGEMENTModel.fk_DIADIEM_TINHTHANH">
+            <End Role="TINHTHANH" EntitySet="TINHTHANH" />
+            <End Role="DIADIEM" EntitySet="DIADIEM" />
+          </AssociationSet>
+          <AssociationSet Name="fk_DOAN_TOUR" Association="TOURMANAGEMENTModel.fk_DOAN_TOUR">
+            <End Role="TOUR" EntitySet="TOUR" />
+            <End Role="DOAN" EntitySet="DOAN" />
+          </AssociationSet>
+          <AssociationSet Name="fk_KHACHSAN_TINHTHANH" Association="TOURMANAGEMENTModel.fk_KHACHSAN_TINHTHANH">
+            <End Role="TINHTHANH" EntitySet="TINHTHANH" />
+            <End Role="KHACHSAN" EntitySet="KHACHSAN" />
+          </AssociationSet>
+          <AssociationSet Name="fk_NGUOIDUNG_NHANVIEN" Association="TOURMANAGEMENTModel.fk_NGUOIDUNG_NHANVIEN">
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+            <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="CT_DIADIEM_TOUR">
           <Key>
             <PropertyRef Name="ID_CT_DIADIEM_TOUR" />
@@ -154,18 +425,94 @@
           <Property Name="ID_CT_DIADIEM_TOUR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDDIADIEM" Type="Int32" Nullable="false" />
           <Property Name="IDTOUR" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="DIADIEM" Relationship="Self.FK_CT_DIADIEM_TOUR_DIADIEM" FromRole="CT_DIADIEM_TOUR" ToRole="DIADIEM" />
-          <NavigationProperty Name="TOUR" Relationship="Self.FK_CT_DIADIEM_TOUR_TOUR" FromRole="CT_DIADIEM_TOUR" ToRole="TOUR" />
+          <NavigationProperty Name="DIADIEM" Relationship="TOURMANAGEMENTModel.FK_CT_DIADIEM_TOUR_DIADIEM" FromRole="CT_DIADIEM_TOUR" ToRole="DIADIEM" />
+          <NavigationProperty Name="TOUR" Relationship="TOURMANAGEMENTModel.FK_CT_DIADIEM_TOUR_TOUR" FromRole="CT_DIADIEM_TOUR" ToRole="TOUR" />
+        </EntityType>
+        <EntityType Name="CT_DOAN_KHACHHANG">
+          <Key>
+            <PropertyRef Name="IDCT" />
+          </Key>
+          <Property Name="IDCT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDDOAN" Type="Int32" />
+          <Property Name="IDKH" Type="Int32" />
+          <NavigationProperty Name="DOAN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_KHACHHANG" FromRole="CT_DOAN_KHACHHANG" ToRole="DOAN" />
+          <NavigationProperty Name="KHACHHANG" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_KHACHHANG_KH" FromRole="CT_DOAN_KHACHHANG" ToRole="KHACHHANG" />
+        </EntityType>
+        <EntityType Name="CT_DOAN_KHACHSAN">
+          <Key>
+            <PropertyRef Name="IDCT" />
+          </Key>
+          <Property Name="IDCT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDDOAN" Type="Int32" />
+          <Property Name="IDKS" Type="Int32" />
+          <NavigationProperty Name="DOAN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_KHACHSAN" FromRole="CT_DOAN_KHACHSAN" ToRole="DOAN" />
+          <NavigationProperty Name="KHACHSAN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_KHACHSAN_KS" FromRole="CT_DOAN_KHACHSAN" ToRole="KHACHSAN" />
+        </EntityType>
+        <EntityType Name="CT_DOAN_PHUONGTIEN">
+          <Key>
+            <PropertyRef Name="IDCT" />
+          </Key>
+          <Property Name="IDCT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDDOAN" Type="Int32" />
+          <Property Name="IDPT" Type="Int32" />
+          <NavigationProperty Name="DOAN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_PHUONGTIEN" FromRole="CT_DOAN_PHUONGTIEN" ToRole="DOAN" />
+          <NavigationProperty Name="PHUONGTIEN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_PHUONGTIEN_PT" FromRole="CT_DOAN_PHUONGTIEN" ToRole="PHUONGTIEN" />
         </EntityType>
         <EntityType Name="DIADIEM">
           <Key>
             <PropertyRef Name="IDDIADIEM" />
           </Key>
           <Property Name="IDDIADIEM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TENDIADIEM" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="TINHTHANH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MOTA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="CT_DIADIEM_TOUR" Relationship="Self.FK_CT_DIADIEM_TOUR_DIADIEM" FromRole="DIADIEM" ToRole="CT_DIADIEM_TOUR" />
+          <Property Name="TENDIADIEM" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MOTA" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IDTT" Type="Int32" />
+          <Property Name="TINHTHANH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ACTIVE" Type="Boolean" />
+          <Property Name="AVATAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CT_DIADIEM_TOUR" Relationship="TOURMANAGEMENTModel.FK_CT_DIADIEM_TOUR_DIADIEM" FromRole="DIADIEM" ToRole="CT_DIADIEM_TOUR" />
+          <NavigationProperty Name="TINHTHANH1" Relationship="TOURMANAGEMENTModel.fk_DIADIEM_TINHTHANH" FromRole="DIADIEM" ToRole="TINHTHANH" />
+        </EntityType>
+        <EntityType Name="DOAN">
+          <Key>
+            <PropertyRef Name="IDDOAN" />
+          </Key>
+          <Property Name="IDDOAN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TENDOAN" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IDTOUR" Type="Int32" Nullable="false" />
+          <Property Name="SOLUONGKH" Type="Int32" Nullable="false" />
+          <Property Name="NGAYBATDAU" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NGAYKETTHUC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CT_DOAN_KHACHHANG" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_KHACHHANG" FromRole="DOAN" ToRole="CT_DOAN_KHACHHANG" />
+          <NavigationProperty Name="CT_DOAN_KHACHSAN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_KHACHSAN" FromRole="DOAN" ToRole="CT_DOAN_KHACHSAN" />
+          <NavigationProperty Name="CT_DOAN_PHUONGTIEN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_PHUONGTIEN" FromRole="DOAN" ToRole="CT_DOAN_PHUONGTIEN" />
+          <NavigationProperty Name="TOUR" Relationship="TOURMANAGEMENTModel.fk_DOAN_TOUR" FromRole="DOAN" ToRole="TOUR" />
+        </EntityType>
+        <EntityType Name="KHACHHANG">
+          <Key>
+            <PropertyRef Name="IDKH" />
+          </Key>
+          <Property Name="IDKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TENKH" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CMND" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DIACHI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NGAYSINH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ACTIVE" Type="Boolean" />
+          <NavigationProperty Name="CT_DOAN_KHACHHANG" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_KHACHHANG_KH" FromRole="KHACHHANG" ToRole="CT_DOAN_KHACHHANG" />
+        </EntityType>
+        <EntityType Name="KHACHSAN">
+          <Key>
+            <PropertyRef Name="IDKS" />
+          </Key>
+          <Property Name="IDKS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DIACHI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IDTT" Type="Int32" />
+          <Property Name="ACTIVE" Type="Boolean" />
+          <Property Name="TINHTHANH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CT_DOAN_KHACHSAN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_KHACHSAN_KS" FromRole="KHACHSAN" ToRole="CT_DOAN_KHACHSAN" />
+          <NavigationProperty Name="TINHTHANH1" Relationship="TOURMANAGEMENTModel.fk_KHACHSAN_TINHTHANH" FromRole="KHACHSAN" ToRole="TINHTHANH" />
         </EntityType>
         <EntityType Name="NGUOIDUNG">
           <Key>
@@ -173,9 +520,10 @@
           </Key>
           <Property Name="IDND" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDNV" Type="Int32" Nullable="false" />
-          <Property Name="USERNAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PASS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="NHANVIEN" Relationship="Self.fk_NGUOIDUNG_NHANVIEN" FromRole="NGUOIDUNG" ToRole="NHANVIEN" />
+          <Property Name="USERNAME" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PASS" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ACTIVE" Type="Boolean" />
+          <NavigationProperty Name="NHANVIEN" Relationship="TOURMANAGEMENTModel.fk_NGUOIDUNG_NHANVIEN" FromRole="NGUOIDUNG" ToRole="NHANVIEN" />
         </EntityType>
         <EntityType Name="NHANVIEN">
           <Key>
@@ -187,41 +535,53 @@
           <Property Name="SDT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="EMAIL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NGAYSINH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="NGUOIDUNG" Relationship="Self.fk_NGUOIDUNG_NHANVIEN" FromRole="NHANVIEN" ToRole="NGUOIDUNG" />
-          <NavigationProperty Name="QUANLY" Relationship="Self.fk_QUANLY_NHANVIEN" FromRole="NHANVIEN" ToRole="QUANLY" />
+          <Property Name="CHUCVU" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NGUOIDUNG" Relationship="TOURMANAGEMENTModel.fk_NGUOIDUNG_NHANVIEN" FromRole="NHANVIEN" ToRole="NGUOIDUNG" />
         </EntityType>
-        <EntityType Name="QUANLY">
+        <EntityType Name="PHUONGTIEN">
           <Key>
-            <PropertyRef Name="IDQL" />
+            <PropertyRef Name="IDPT" />
           </Key>
-          <Property Name="IDQL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IDNV" Type="Int32" Nullable="false" />
-          <Property Name="ROLES" Type="Int32" />
-          <NavigationProperty Name="NHANVIEN" Relationship="Self.fk_QUANLY_NHANVIEN" FromRole="QUANLY" ToRole="NHANVIEN" />
+          <Property Name="IDPT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LOAIPT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SOGHE" Type="Int32" />
+          <Property Name="ACTIVE" Type="Boolean" />
+          <NavigationProperty Name="CT_DOAN_PHUONGTIEN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_PHUONGTIEN_PT" FromRole="PHUONGTIEN" ToRole="CT_DOAN_PHUONGTIEN" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="principal_id" Type="Int32" Nullable="false" />
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TINHTHANH">
+          <Key>
+            <PropertyRef Name="IDTT" />
+          </Key>
+          <Property Name="IDTT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TENTT" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DIADIEM" Relationship="TOURMANAGEMENTModel.fk_DIADIEM_TINHTHANH" FromRole="TINHTHANH" ToRole="DIADIEM" />
+          <NavigationProperty Name="KHACHSAN" Relationship="TOURMANAGEMENTModel.fk_KHACHSAN_TINHTHANH" FromRole="TINHTHANH" ToRole="KHACHSAN" />
         </EntityType>
         <EntityType Name="TOUR">
           <Key>
             <PropertyRef Name="IDTOUR" />
           </Key>
           <Property Name="IDTOUR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TENTOUR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="GIATOUR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="TINHTRANG" Type="Boolean" />
-          <NavigationProperty Name="CT_DIADIEM_TOUR" Relationship="Self.FK_CT_DIADIEM_TOUR_TOUR" FromRole="TOUR" ToRole="CT_DIADIEM_TOUR" />
+          <Property Name="TENTOUR" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GIATOUR" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ACTIVE" Type="Boolean" />
+          <Property Name="MOTA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CT_DIADIEM_TOUR" Relationship="TOURMANAGEMENTModel.FK_CT_DIADIEM_TOUR_TOUR" FromRole="TOUR" ToRole="CT_DIADIEM_TOUR" />
+          <NavigationProperty Name="DOAN" Relationship="TOURMANAGEMENTModel.fk_DOAN_TOUR" FromRole="TOUR" ToRole="DOAN" />
         </EntityType>
         <Association Name="FK_CT_DIADIEM_TOUR_DIADIEM">
-          <End Role="DIADIEM" Type="Self.DIADIEM" Multiplicity="1" />
-          <End Role="CT_DIADIEM_TOUR" Type="Self.CT_DIADIEM_TOUR" Multiplicity="*" />
+          <End Type="TOURMANAGEMENTModel.DIADIEM" Role="DIADIEM" Multiplicity="1" />
+          <End Type="TOURMANAGEMENTModel.CT_DIADIEM_TOUR" Role="CT_DIADIEM_TOUR" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DIADIEM">
               <PropertyRef Name="IDDIADIEM" />
@@ -232,8 +592,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CT_DIADIEM_TOUR_TOUR">
-          <End Role="TOUR" Type="Self.TOUR" Multiplicity="1" />
-          <End Role="CT_DIADIEM_TOUR" Type="Self.CT_DIADIEM_TOUR" Multiplicity="*" />
+          <End Type="TOURMANAGEMENTModel.TOUR" Role="TOUR" Multiplicity="1" />
+          <End Type="TOURMANAGEMENTModel.CT_DIADIEM_TOUR" Role="CT_DIADIEM_TOUR" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TOUR">
               <PropertyRef Name="IDTOUR" />
@@ -243,9 +603,117 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_CT_DOAN_KHACHHANG">
+          <End Type="TOURMANAGEMENTModel.DOAN" Role="DOAN" Multiplicity="0..1" />
+          <End Type="TOURMANAGEMENTModel.CT_DOAN_KHACHHANG" Role="CT_DOAN_KHACHHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOAN">
+              <PropertyRef Name="IDDOAN" />
+            </Principal>
+            <Dependent Role="CT_DOAN_KHACHHANG">
+              <PropertyRef Name="IDDOAN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CT_DOAN_KHACHHANG_KH">
+          <End Type="TOURMANAGEMENTModel.KHACHHANG" Role="KHACHHANG" Multiplicity="0..1" />
+          <End Type="TOURMANAGEMENTModel.CT_DOAN_KHACHHANG" Role="CT_DOAN_KHACHHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="IDKH" />
+            </Principal>
+            <Dependent Role="CT_DOAN_KHACHHANG">
+              <PropertyRef Name="IDKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CT_DOAN_KHACHSAN">
+          <End Type="TOURMANAGEMENTModel.DOAN" Role="DOAN" Multiplicity="0..1" />
+          <End Type="TOURMANAGEMENTModel.CT_DOAN_KHACHSAN" Role="CT_DOAN_KHACHSAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOAN">
+              <PropertyRef Name="IDDOAN" />
+            </Principal>
+            <Dependent Role="CT_DOAN_KHACHSAN">
+              <PropertyRef Name="IDDOAN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CT_DOAN_KHACHSAN_KS">
+          <End Type="TOURMANAGEMENTModel.KHACHSAN" Role="KHACHSAN" Multiplicity="0..1" />
+          <End Type="TOURMANAGEMENTModel.CT_DOAN_KHACHSAN" Role="CT_DOAN_KHACHSAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHSAN">
+              <PropertyRef Name="IDKS" />
+            </Principal>
+            <Dependent Role="CT_DOAN_KHACHSAN">
+              <PropertyRef Name="IDKS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CT_DOAN_PHUONGTIEN">
+          <End Type="TOURMANAGEMENTModel.DOAN" Role="DOAN" Multiplicity="0..1" />
+          <End Type="TOURMANAGEMENTModel.CT_DOAN_PHUONGTIEN" Role="CT_DOAN_PHUONGTIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOAN">
+              <PropertyRef Name="IDDOAN" />
+            </Principal>
+            <Dependent Role="CT_DOAN_PHUONGTIEN">
+              <PropertyRef Name="IDDOAN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CT_DOAN_PHUONGTIEN_PT">
+          <End Type="TOURMANAGEMENTModel.PHUONGTIEN" Role="PHUONGTIEN" Multiplicity="0..1" />
+          <End Type="TOURMANAGEMENTModel.CT_DOAN_PHUONGTIEN" Role="CT_DOAN_PHUONGTIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHUONGTIEN">
+              <PropertyRef Name="IDPT" />
+            </Principal>
+            <Dependent Role="CT_DOAN_PHUONGTIEN">
+              <PropertyRef Name="IDPT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_DIADIEM_TINHTHANH">
+          <End Type="TOURMANAGEMENTModel.TINHTHANH" Role="TINHTHANH" Multiplicity="0..1" />
+          <End Type="TOURMANAGEMENTModel.DIADIEM" Role="DIADIEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TINHTHANH">
+              <PropertyRef Name="IDTT" />
+            </Principal>
+            <Dependent Role="DIADIEM">
+              <PropertyRef Name="IDTT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_DOAN_TOUR">
+          <End Type="TOURMANAGEMENTModel.TOUR" Role="TOUR" Multiplicity="1" />
+          <End Type="TOURMANAGEMENTModel.DOAN" Role="DOAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TOUR">
+              <PropertyRef Name="IDTOUR" />
+            </Principal>
+            <Dependent Role="DOAN">
+              <PropertyRef Name="IDTOUR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_KHACHSAN_TINHTHANH">
+          <End Type="TOURMANAGEMENTModel.TINHTHANH" Role="TINHTHANH" Multiplicity="0..1" />
+          <End Type="TOURMANAGEMENTModel.KHACHSAN" Role="KHACHSAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TINHTHANH">
+              <PropertyRef Name="IDTT" />
+            </Principal>
+            <Dependent Role="KHACHSAN">
+              <PropertyRef Name="IDTT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_NGUOIDUNG_NHANVIEN">
-          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
-          <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="*" />
+          <End Type="TOURMANAGEMENTModel.NHANVIEN" Role="NHANVIEN" Multiplicity="1" />
+          <End Type="TOURMANAGEMENTModel.NGUOIDUNG" Role="NGUOIDUNG" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="NHANVIEN">
               <PropertyRef Name="IDNV" />
@@ -255,44 +723,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_QUANLY_NHANVIEN">
-          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
-          <End Role="QUANLY" Type="Self.QUANLY" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NHANVIEN">
-              <PropertyRef Name="IDNV" />
-            </Principal>
-            <Dependent Role="QUANLY">
-              <PropertyRef Name="IDNV" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="TOURMANAGEMENTEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="CT_DIADIEM_TOUR" EntityType="Self.CT_DIADIEM_TOUR" />
-          <EntitySet Name="DIADIEM" EntityType="Self.DIADIEM" />
-          <EntitySet Name="NGUOIDUNG" EntityType="Self.NGUOIDUNG" />
-          <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" />
-          <EntitySet Name="QUANLY" EntityType="Self.QUANLY" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="TOUR" EntityType="Self.TOUR" />
-          <AssociationSet Name="FK_CT_DIADIEM_TOUR_DIADIEM" Association="Self.FK_CT_DIADIEM_TOUR_DIADIEM">
-            <End Role="DIADIEM" EntitySet="DIADIEM" />
-            <End Role="CT_DIADIEM_TOUR" EntitySet="CT_DIADIEM_TOUR" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CT_DIADIEM_TOUR_TOUR" Association="Self.FK_CT_DIADIEM_TOUR_TOUR">
-            <End Role="TOUR" EntitySet="TOUR" />
-            <End Role="CT_DIADIEM_TOUR" EntitySet="CT_DIADIEM_TOUR" />
-          </AssociationSet>
-          <AssociationSet Name="fk_NGUOIDUNG_NHANVIEN" Association="Self.fk_NGUOIDUNG_NHANVIEN">
-            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
-            <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />
-          </AssociationSet>
-          <AssociationSet Name="fk_QUANLY_NHANVIEN" Association="Self.fk_QUANLY_NHANVIEN">
-            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
-            <End Role="QUANLY" EntitySet="QUANLY" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -301,71 +732,151 @@
           <EntitySetMapping Name="CT_DIADIEM_TOUR">
             <EntityTypeMapping TypeName="TOURMANAGEMENTModel.CT_DIADIEM_TOUR">
               <MappingFragment StoreEntitySet="CT_DIADIEM_TOUR">
-                <ScalarProperty Name="ID_CT_DIADIEM_TOUR" ColumnName="ID_CT_DIADIEM_TOUR" />
-                <ScalarProperty Name="IDDIADIEM" ColumnName="IDDIADIEM" />
                 <ScalarProperty Name="IDTOUR" ColumnName="IDTOUR" />
+                <ScalarProperty Name="IDDIADIEM" ColumnName="IDDIADIEM" />
+                <ScalarProperty Name="ID_CT_DIADIEM_TOUR" ColumnName="ID_CT_DIADIEM_TOUR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CT_DOAN_KHACHHANG">
+            <EntityTypeMapping TypeName="TOURMANAGEMENTModel.CT_DOAN_KHACHHANG">
+              <MappingFragment StoreEntitySet="CT_DOAN_KHACHHANG">
+                <ScalarProperty Name="IDKH" ColumnName="IDKH" />
+                <ScalarProperty Name="IDDOAN" ColumnName="IDDOAN" />
+                <ScalarProperty Name="IDCT" ColumnName="IDCT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CT_DOAN_KHACHSAN">
+            <EntityTypeMapping TypeName="TOURMANAGEMENTModel.CT_DOAN_KHACHSAN">
+              <MappingFragment StoreEntitySet="CT_DOAN_KHACHSAN">
+                <ScalarProperty Name="IDKS" ColumnName="IDKS" />
+                <ScalarProperty Name="IDDOAN" ColumnName="IDDOAN" />
+                <ScalarProperty Name="IDCT" ColumnName="IDCT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CT_DOAN_PHUONGTIEN">
+            <EntityTypeMapping TypeName="TOURMANAGEMENTModel.CT_DOAN_PHUONGTIEN">
+              <MappingFragment StoreEntitySet="CT_DOAN_PHUONGTIEN">
+                <ScalarProperty Name="IDPT" ColumnName="IDPT" />
+                <ScalarProperty Name="IDDOAN" ColumnName="IDDOAN" />
+                <ScalarProperty Name="IDCT" ColumnName="IDCT" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DIADIEM">
             <EntityTypeMapping TypeName="TOURMANAGEMENTModel.DIADIEM">
               <MappingFragment StoreEntitySet="DIADIEM">
-                <ScalarProperty Name="IDDIADIEM" ColumnName="IDDIADIEM" />
-                <ScalarProperty Name="TENDIADIEM" ColumnName="TENDIADIEM" />
+                <ScalarProperty Name="AVATAR" ColumnName="AVATAR" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
                 <ScalarProperty Name="TINHTHANH" ColumnName="TINHTHANH" />
+                <ScalarProperty Name="IDTT" ColumnName="IDTT" />
                 <ScalarProperty Name="MOTA" ColumnName="MOTA" />
+                <ScalarProperty Name="TENDIADIEM" ColumnName="TENDIADIEM" />
+                <ScalarProperty Name="IDDIADIEM" ColumnName="IDDIADIEM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DOAN">
+            <EntityTypeMapping TypeName="TOURMANAGEMENTModel.DOAN">
+              <MappingFragment StoreEntitySet="DOAN">
+                <ScalarProperty Name="NGAYKETTHUC" ColumnName="NGAYKETTHUC" />
+                <ScalarProperty Name="NGAYBATDAU" ColumnName="NGAYBATDAU" />
+                <ScalarProperty Name="SOLUONGKH" ColumnName="SOLUONGKH" />
+                <ScalarProperty Name="IDTOUR" ColumnName="IDTOUR" />
+                <ScalarProperty Name="TENDOAN" ColumnName="TENDOAN" />
+                <ScalarProperty Name="IDDOAN" ColumnName="IDDOAN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KHACHHANG">
+            <EntityTypeMapping TypeName="TOURMANAGEMENTModel.KHACHHANG">
+              <MappingFragment StoreEntitySet="KHACHHANG">
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+                <ScalarProperty Name="NGAYSINH" ColumnName="NGAYSINH" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="CMND" ColumnName="CMND" />
+                <ScalarProperty Name="TENKH" ColumnName="TENKH" />
+                <ScalarProperty Name="IDKH" ColumnName="IDKH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KHACHSAN">
+            <EntityTypeMapping TypeName="TOURMANAGEMENTModel.KHACHSAN">
+              <MappingFragment StoreEntitySet="KHACHSAN">
+                <ScalarProperty Name="TINHTHANH" ColumnName="TINHTHANH" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+                <ScalarProperty Name="IDTT" ColumnName="IDTT" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="IDKS" ColumnName="IDKS" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NGUOIDUNG">
             <EntityTypeMapping TypeName="TOURMANAGEMENTModel.NGUOIDUNG">
               <MappingFragment StoreEntitySet="NGUOIDUNG">
-                <ScalarProperty Name="IDND" ColumnName="IDND" />
-                <ScalarProperty Name="IDNV" ColumnName="IDNV" />
-                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
                 <ScalarProperty Name="PASS" ColumnName="PASS" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="IDNV" ColumnName="IDNV" />
+                <ScalarProperty Name="IDND" ColumnName="IDND" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NHANVIEN">
             <EntityTypeMapping TypeName="TOURMANAGEMENTModel.NHANVIEN">
               <MappingFragment StoreEntitySet="NHANVIEN">
-                <ScalarProperty Name="IDNV" ColumnName="IDNV" />
-                <ScalarProperty Name="TENNV" ColumnName="TENNV" />
-                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
-                <ScalarProperty Name="SDT" ColumnName="SDT" />
-                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="CHUCVU" ColumnName="CHUCVU" />
                 <ScalarProperty Name="NGAYSINH" ColumnName="NGAYSINH" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="TENNV" ColumnName="TENNV" />
+                <ScalarProperty Name="IDNV" ColumnName="IDNV" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="QUANLY">
-            <EntityTypeMapping TypeName="TOURMANAGEMENTModel.QUANLY">
-              <MappingFragment StoreEntitySet="QUANLY">
-                <ScalarProperty Name="IDQL" ColumnName="IDQL" />
-                <ScalarProperty Name="IDNV" ColumnName="IDNV" />
-                <ScalarProperty Name="ROLES" ColumnName="ROLES" />
+          <EntitySetMapping Name="PHUONGTIEN">
+            <EntityTypeMapping TypeName="TOURMANAGEMENTModel.PHUONGTIEN">
+              <MappingFragment StoreEntitySet="PHUONGTIEN">
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+                <ScalarProperty Name="SOGHE" ColumnName="SOGHE" />
+                <ScalarProperty Name="LOAIPT" ColumnName="LOAIPT" />
+                <ScalarProperty Name="IDPT" ColumnName="IDPT" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="TOURMANAGEMENTModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TINHTHANH">
+            <EntityTypeMapping TypeName="TOURMANAGEMENTModel.TINHTHANH">
+              <MappingFragment StoreEntitySet="TINHTHANH">
+                <ScalarProperty Name="TENTT" ColumnName="TENTT" />
+                <ScalarProperty Name="IDTT" ColumnName="IDTT" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TOUR">
             <EntityTypeMapping TypeName="TOURMANAGEMENTModel.TOUR">
               <MappingFragment StoreEntitySet="TOUR">
-                <ScalarProperty Name="IDTOUR" ColumnName="IDTOUR" />
-                <ScalarProperty Name="TENTOUR" ColumnName="TENTOUR" />
+                <ScalarProperty Name="MOTA" ColumnName="MOTA" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
                 <ScalarProperty Name="GIATOUR" ColumnName="GIATOUR" />
-                <ScalarProperty Name="TINHTRANG" ColumnName="TINHTRANG" />
+                <ScalarProperty Name="TENTOUR" ColumnName="TENTOUR" />
+                <ScalarProperty Name="IDTOUR" ColumnName="IDTOUR" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

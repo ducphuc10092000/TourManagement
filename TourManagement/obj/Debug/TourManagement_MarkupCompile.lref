@@ -1,4 +1,4 @@
-﻿D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\GeneratedInternalTypeHelper.g.cs
+﻿
 FD:\QUANLYTOURDULICH\TourManagement\TourManagement\App.xaml;;
 FD:\QUANLYTOURDULICH\TourManagement\TourManagement\MainWindow.xaml;;
 FD:\QUANLYTOURDULICH\TourManagement\TourManagement\ResourceXAML\MainResource.xaml;;
@@ -7,6 +7,11 @@ FD:\QUANLYTOURDULICH\TourManagement\TourManagement\View\ManageAccount\UC_ManageA
 FD:\QUANLYTOURDULICH\TourManagement\TourManagement\View\ManageCustomer\UC_ManageCustomer.xaml;;
 FD:\QUANLYTOURDULICH\TourManagement\TourManagement\View\ManageReport\UC_ManageReport.xaml;;
 FD:\QUANLYTOURDULICH\TourManagement\TourManagement\View\ManageStaff\UC_ManageStaff.xaml;;
+FD:\QUANLYTOURDULICH\TourManagement\TourManagement\View\ManageTour\ManagePlace\UC_ManagePlace.xaml;;
+FD:\QUANLYTOURDULICH\TourManagement\TourManagement\View\ManageTour\ManagePlace\WD_AddPlace.xaml;;
+FD:\QUANLYTOURDULICH\TourManagement\TourManagement\View\ManageTour\ManagePlace\WD_EditPlace.xaml;;
+FD:\QUANLYTOURDULICH\TourManagement\TourManagement\View\ManageTour\ManageProvince\WD_AddProvince.xaml;;
 FD:\QUANLYTOURDULICH\TourManagement\TourManagement\View\ManageTour\UC_ManageTour.xaml;;
 FD:\QUANLYTOURDULICH\TourManagement\TourManagement\View\ManageTrip\UC_ManageTrip.xaml;;
+FD:\QUANLYTOURDULICH\TourManagement\TourManagement\View\ManageTour\ManageProvince\WD_EditProvince.xaml;;
 

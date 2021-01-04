@@ -41,3 +41,14 @@ D:\QUANLYTOURDULICH\TourManagement\TourManagement\bin\Debug\EntityFramework.SqlS
 D:\QUANLYTOURDULICH\TourManagement\TourManagement\bin\Debug\EntityFramework.xml
 D:\QUANLYTOURDULICH\TourManagement\TourManagement\bin\Debug\EntityFramework.SqlServer.xml
 D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\TourManagement_Content.g.cs
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTour\ManagePlace\UC_ManagePlace.g.cs
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTour\ManagePlace\UC_ManagePlace.baml
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTour\ManagePlace\WD_AddPlace.g.cs
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTour\ManagePlace\WD_AddPlace.baml
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTour\ManagePlace\WD_EditPlace.g.cs
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTour\ManagePlace\WD_EditPlace.baml
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTour\ManageProvince\WD_AddProvince.g.cs
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTour\ManageProvince\WD_AddProvince.baml
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\bin\Debug\System.Drawing.Common.dll
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTour\ManageProvince\WD_EditProvince.g.cs
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTour\ManageProvince\WD_EditProvince.baml

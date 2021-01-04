@@ -1,8 +1,13 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:TourManagement.ResourceXAML"
                     xmlns:viewmodel="clr-namespace:TourManagement.ViewModel"
-                    xmlns:viewmodel_ManageTour="clr-namespace:TourManagement.ViewModel.ManageTour">
+                    xmlns:viewmodel_ManageTour="clr-namespace:TourManagement.ViewModel.ManageTour"
+                    xmlns:viewmodel_ManagePlace="clr-namespace:TourManagement.ViewModel.ManageTour.ManagePlace"
+                    xmlns:viewmodel_ManageProvince="clr-namespace:TourManagement.ViewModel.ManageTour.ManageProvince">
     <viewmodel:MainViewModel x:Key="MainVM"></viewmodel:MainViewModel>
-    <viewmodel_ManageTour:ManageTourViewModel x:Key="ManageTourVM"></viewmodel_ManageTour:ManageTourViewModel>
+    <viewmodel_ManageTour:UC_ManageTourViewModel x:Key="UC_ManageTourVM"></viewmodel_ManageTour:UC_ManageTourViewModel>
+    <viewmodel_ManagePlace:WD_AddPlaceViewModel x:Key="WD_AddPlaceVM"></viewmodel_ManagePlace:WD_AddPlaceViewModel>
+    <viewmodel_ManagePlace:WD_EditPlaceViewModel x:Key="WD_EditPlaceVM"></viewmodel_ManagePlace:WD_EditPlaceViewModel>
+    <viewmodel_ManageProvince:WD_AddProvinceViewModel x:Key="WD_AddProvinceVM"></viewmodel_ManageProvince:WD_AddProvinceViewModel>
+    <viewmodel_ManageProvince:WD_EditProvinceViewModel x:Key="WD_EditProvinceVM"></viewmodel_ManageProvince:WD_EditProvinceViewModel>
 </ResourceDictionary>

@@ -18,14 +18,18 @@ namespace TourManagement.Model
         public TOUR()
         {
             this.CT_DIADIEM_TOUR = new HashSet<CT_DIADIEM_TOUR>();
+            this.DOAN = new HashSet<DOAN>();
         }
     
         public int IDTOUR { get; set; }
         public string TENTOUR { get; set; }
         public string GIATOUR { get; set; }
-        public Nullable<bool> TINHTRANG { get; set; }
+        public Nullable<bool> ACTIVE { get; set; }
+        public string MOTA { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CT_DIADIEM_TOUR> CT_DIADIEM_TOUR { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DOAN> DOAN { get; set; }
     }
 }

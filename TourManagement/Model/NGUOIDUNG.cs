@@ -18,6 +18,7 @@ namespace TourManagement.Model
         public int IDNV { get; set; }
         public string USERNAME { get; set; }
         public string PASS { get; set; }
+        public Nullable<bool> ACTIVE { get; set; }
     
         public virtual NHANVIEN NHANVIEN { get; set; }
     }

@@ -12,12 +12,13 @@ namespace TourManagement.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class QUANLY
+    public partial class CT_DOAN_KHACHHANG
     {
-        public int IDQL { get; set; }
-        public int IDNV { get; set; }
-        public Nullable<int> ROLES { get; set; }
+        public int IDCT { get; set; }
+        public Nullable<int> IDDOAN { get; set; }
+        public Nullable<int> IDKH { get; set; }
     
-        public virtual NHANVIEN NHANVIEN { get; set; }
+        public virtual DOAN DOAN { get; set; }
+        public virtual KHACHHANG KHACHHANG { get; set; }
     }
 }

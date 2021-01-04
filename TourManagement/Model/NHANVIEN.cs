@@ -18,7 +18,6 @@ namespace TourManagement.Model
         public NHANVIEN()
         {
             this.NGUOIDUNG = new HashSet<NGUOIDUNG>();
-            this.QUANLY = new HashSet<QUANLY>();
         }
     
         public int IDNV { get; set; }
@@ -27,10 +26,9 @@ namespace TourManagement.Model
         public string SDT { get; set; }
         public string EMAIL { get; set; }
         public string NGAYSINH { get; set; }
+        public string CHUCVU { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NGUOIDUNG> NGUOIDUNG { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<QUANLY> QUANLY { get; set; }
     }
 }

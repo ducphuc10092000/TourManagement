@@ -4,13 +4,231 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TourManagement.View.ManageTour"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             xmlns:viewManagePlace="clr-namespace:TourManagement.View.ManageTour.ManagePlace"
              mc:Ignorable="d" 
+             DataContext="{StaticResource UC_ManageTourVM}"
              Background="White"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="900" d:DesignWidth="1500">
     <Grid>
-        <TextBlock FontSize="30"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   FontWeight="Bold">MANAGE TOUR</TextBlock>
+        <Grid>
+            <Border BorderBrush="Black"
+            BorderThickness="2"
+            Margin="5,5,5,5">
+                <!--ManageTour-->
+                <Grid>
+                    <Grid.Style>
+                        <Style TargetType="Grid">
+                            <Setter Property="Visibility" Value="Collapsed"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ChucNang}" Value="0">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <!--Bộ lọc-->
+                    <Grid Grid.Row="0">
+                        <StackPanel Orientation="Horizontal">
+                            <!--Textblock để nhập tên TOUR tìm kiếm-->
+                            <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                                         Margin="20,10,0,10">
+
+                                <TextBox HorizontalAlignment="Left"
+                                 Width="200"
+                                 FontSize="14"
+                                 materialDesign:HintAssist.Hint="Nhập tên Tour"
+                                 TextAlignment="Left"
+                                 Padding="5,0,0,0"
+                                 Text="{Binding TenTourFind, UpdateSourceTrigger=PropertyChanged , NotifyOnSourceUpdated=True}"
+                                 Background="#E4E4E4"/>
+                            </materialDesign:Card>
+                            <!--Btn Tìm Kiếm-->
+                            <Button Content="Tìm kiếm"
+                    IsDefault="True"
+                    Command="{Binding Path=TimKiemCommand}"
+                    Style="{DynamicResource MaterialDesignRaisedButton}"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth4" 
+                    Foreground="Black"
+                    Height="Auto"
+                    BorderThickness="0"
+                    HorizontalContentAlignment="Left"
+                    Background="#FFF0EFEF" Margin="10,10,0,10"/>
+                            <!--Btn Mặc Định-->
+                            <Button Content="Mặc định"
+                    Command="{Binding Path=MacDinhCommand}"
+                    Style="{DynamicResource MaterialDesignRaisedButton}"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth4" 
+                    Foreground="Black"
+                    Height="Auto"
+                    BorderThickness="0"
+                    HorizontalContentAlignment="Left"
+                    Background="#FFF0EFEF" Margin="10,10,0,10"/>
+                            <!--Button thêm-->
+                            <Button Style="{DynamicResource MaterialDesignRaisedButton}"
+                    Command="{Binding Path=ThemMoiCommand}"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth2" 
+                    Content="Thêm mới" 
+                    Width="100"
+                    Background="LightBlue"
+                    HorizontalAlignment="Left" 
+                    BorderThickness="0"
+                            Margin="20,0,0,0"
+                    Height="30"></Button>
+
+                            <!--Btn chuyển grid QUẢN LÝ ĐỊA ĐIỂM THAM QUAN-->
+                            <Button Content="QL ĐIỂM THAM QUAN"
+                    IsDefault="True"
+                    Command="{Binding Path=BtnManagePlaceCommand}"
+                    Style="{DynamicResource MaterialDesignRaisedButton}"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth4" 
+                    Foreground="Black"
+                    Height="Auto"
+                    BorderThickness="0"
+                    HorizontalContentAlignment="Left"
+                    Background="#FFFFBC5B" Margin="600,10,0,10"/>
+                            <Button Content="QL KHÁCH SẠN"
+                    IsDefault="True"
+                    Command="{Binding Path=BtnManageHotelPlace}"
+                    Style="{DynamicResource MaterialDesignRaisedButton}"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth4" 
+                    Foreground="Black"
+                    Height="Auto"
+                    BorderThickness="0"
+                    HorizontalContentAlignment="Left"
+                    Background="#FFFFBC5B" Margin="10,10,0,10"/>
+                        </StackPanel>
+                    </Grid>
+                    <!--Danh sách tour-->
+                    <Grid Grid.Row="1" Margin="5,5,5,5">
+                        <ScrollViewer>
+                            <DataGrid ItemsSource="{Binding TourList}"
+                          AlternatingRowBackground="#e2e2e2"
+                          IsReadOnly="True"
+                           ScrollViewer.VerticalScrollBarVisibility="Auto"
+                          AutoGenerateColumns="False"
+                          CanUserResizeColumns="False"
+                          CanUserReorderColumns="False">
+                                <DataGrid.Resources>
+                                    <Style TargetType="DataGridRow">
+                                        <Setter Property="Height" Value="35"></Setter>
+                                        <Setter Property="FontSize" Value="13"></Setter>
+                                        <Setter Property="FontFamily" Value="Arial"></Setter>
+                                    </Style>
+                                    <Style TargetType="DataGridColumnHeader"  >
+                                        <Setter Property="Height" Value="30"></Setter>
+                                        <Setter Property="FontFamily" Value="Times New Roman"></Setter>
+                                        <Setter Property="FontSize" Value="15"></Setter>
+                                        <Setter Property="FontWeight" Value="Bold"></Setter>
+                                        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+                                        <Setter Property="Background" Value="#e2e2e2"></Setter>
+                                        <Setter Property="BorderBrush" Value="Black"></Setter>
+                                        <Setter Property="BorderThickness" Value="1,1,0,1"></Setter>
+                                    </Style>
+                                </DataGrid.Resources>
+                                <DataGrid.Columns>
+                                    <!--Cột Mã Tour-->
+                                    <DataGridTextColumn Header="Mã Tour"
+                                            Width="70"
+                                            Binding="{Binding IDTOUR}">
+                                    </DataGridTextColumn>
+                                    <!--Cột THAO TÁC-->
+                                    <DataGridTemplateColumn Header="Thao tác"
+                                        Width="100">
+                                        <!--Mỗi dòng của cột chứa 2 button-->
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Grid Margin="0,0,12,0">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="30"></ColumnDefinition>
+                                                        <ColumnDefinition Width="30"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <Button Grid.Column="0"
+                                                Background="{x:Null}"
+                                                BorderThickness="0"
+                                                Command="{Binding Path=DataContext.EditBookCommand,
+                                                RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}"
+                                                CommandParameter="{Binding Path= IDSACH}"
+                                                Height="Auto"
+                                                Width="20" Margin="6,0,5,0">
+                                                        <!--Button EDIT-->
+                                                        <!--Ảnh hình EDIT-->
+                                                        <Grid>
+                                                            <Image Source="..\Photo\edit_icon.png" Margin="-17,-4,1,-4" RenderTransformOrigin="0.5,0.5">
+                                                                <Image.RenderTransform>
+                                                                    <TransformGroup>
+                                                                        <ScaleTransform ScaleX="-1"/>
+                                                                        <SkewTransform/>
+                                                                        <RotateTransform/>
+                                                                        <TranslateTransform/>
+                                                                    </TransformGroup>
+                                                                </Image.RenderTransform>
+                                                            </Image>
+                                                        </Grid>
+                                                    </Button>
+                                                    <Button Grid.Column="1"
+                                                Background="{x:Null}"
+                                                BorderThickness="0"
+                                                Command="{Binding Path=DataContext.DeleteBookCommand,
+                                                RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}"
+                                                CommandParameter="{Binding Path= IDSACH}"
+                                                Height="Auto"
+                                                Width="20"
+                                                Margin="11,0,0,0">
+                                                        <!--Button DELETE-->
+                                                        <!--Ảnh hình dấu X-->
+                                                        <Grid>
+                                                            <Image Source="..\Photo\delete_icon.png" Margin="-17,-15,-4,-15" RenderTransformOrigin="0.5,0.5">
+                                                                <Image.RenderTransform>
+                                                                    <TransformGroup>
+                                                                        <ScaleTransform ScaleX="-1"/>
+                                                                        <SkewTransform/>
+                                                                        <RotateTransform/>
+                                                                        <TranslateTransform/>
+                                                                    </TransformGroup>
+                                                                </Image.RenderTransform>
+                                                            </Image>
+                                                        </Grid>
+                                                    </Button>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <!--Cột TÊN SÁCH-->
+                                    <DataGridTextColumn Header="Tên Tour"
+                                    Binding="{Binding TENSACH}"
+                                    Width="250"></DataGridTextColumn>
+                                    <!--Cột GIÁ BÁN-->
+                                    <DataGridTextColumn Header="Giá Tour"
+                                    Binding="{Binding DONGIABAN}"
+                                    Width="150"></DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </ScrollViewer>
+                    </Grid>
+                </Grid>
+
+                <!--ManagePlace-->
+            </Border>
+        </Grid>
+
+        <Grid>
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Setter Property="Visibility" Value="Collapsed"></Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ChucNang}" Value="1">
+                            <Setter Property="Visibility" Value="Visible"></Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <viewManagePlace:UC_ManagePlace></viewManagePlace:UC_ManagePlace>
+        </Grid>
     </Grid>
 </UserControl>

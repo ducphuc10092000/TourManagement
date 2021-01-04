@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\QUANLYTOURDULICH\TourManagement\TourManagement\App.xaml
-917156278
+14702013571
 2-1556844510
-25-42204847
-20-286863256
-MainWindow.xaml;ResourceXAML\MainResource.xaml;View\DashBoard\UC_DashBoard.xaml;View\ManageAccount\UC_ManageAccount.xaml;View\ManageCustomer\UC_ManageCustomer.xaml;View\ManageReport\UC_ManageReport.xaml;View\ManageStaff\UC_ManageStaff.xaml;View\ManageTour\UC_ManageTour.xaml;View\ManageTrip\UC_ManageTrip.xaml;
+44150309301
+22-756496204
+MainWindow.xaml;ResourceXAML\MainResource.xaml;View\DashBoard\UC_DashBoard.xaml;View\ManageAccount\UC_ManageAccount.xaml;View\ManageCustomer\UC_ManageCustomer.xaml;View\ManageReport\UC_ManageReport.xaml;View\ManageStaff\UC_ManageStaff.xaml;View\ManageTour\ManagePlace\UC_ManagePlace.xaml;View\ManageTour\ManagePlace\WD_AddPlace.xaml;View\ManageTour\ManagePlace\WD_EditPlace.xaml;View\ManageTour\ManageProvince\WD_AddProvince.xaml;View\ManageTour\ManageProvince\WD_EditProvince.xaml;View\ManageTour\UC_ManageTour.xaml;View\ManageTrip\UC_ManageTrip.xaml;
 
 False
 
