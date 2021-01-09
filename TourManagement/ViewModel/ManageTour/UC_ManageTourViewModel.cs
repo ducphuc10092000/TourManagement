@@ -40,6 +40,9 @@ namespace TourManagement.ViewModel.ManageTour
         #endregion
 
         #region Declare Binding Text ManageTour
+        private string _TourNameFind;
+        public string TourNameFind { get => _TourNameFind; set { _TourNameFind = value; OnPropertyChanged(); } }
+
         private ObservableCollection<TOUR> _TOURLIST;
         public ObservableCollection<TOUR> TOURLIST { get => _TOURLIST; set { _TOURLIST = value; OnPropertyChanged(); } }
 
@@ -121,6 +124,7 @@ namespace TourManagement.ViewModel.ManageTour
                 LoadPlaceList();
             });
             #endregion
+
             #region XỬ LÝ COMMAND QUẢN LÝ TOUR - MANAGE TOUR
             TourFindCommand = new RelayCommand<object>((p) =>
             {
@@ -134,7 +138,7 @@ namespace TourManagement.ViewModel.ManageTour
                 return true;
             }, (p) =>
             {
-
+                FilterTour();
             });
 
             DefaultTourFindCommand = new RelayCommand<object>((p) =>
@@ -149,7 +153,7 @@ namespace TourManagement.ViewModel.ManageTour
                 return true;
             }, (p) =>
             {
-
+                ResetFilterTour();
             });
             AddTourCommand = new RelayCommand<object>((p) =>
             {
@@ -407,6 +411,26 @@ namespace TourManagement.ViewModel.ManageTour
                 TOURLISTDTG.Add(temp);
             }
         }
+        public void FilterTour()
+        {
+            if (string.IsNullOrEmpty(TourNameFind))
+            {
+                CollectionViewSource.GetDefaultView(TOURLISTDTG).Filter = (all) => { return true; };
+            }
+            else
+            {
+                CollectionViewSource.GetDefaultView(TOURLISTDTG).Filter = (tourfind) =>
+                {
+                    return (tourfind as TOURs).tour.TENTOUR.IndexOf(TourNameFind, StringComparison.OrdinalIgnoreCase) >= 0;
+                };
+            }
+        }
+        public void ResetFilterTour()
+        {
+            TourNameFind = null;
+            CollectionViewSource.GetDefaultView(TOURLISTDTG).Filter = (all) => { return true; };
+        }
+
         #endregion
     }
 }

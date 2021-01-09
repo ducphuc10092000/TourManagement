@@ -1,30 +1,33 @@
 ﻿<UserControl x:Class="TourManagement.View.ManageTour.UC_ManageTour"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:TourManagement.View.ManageTour"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:viewManagePlace="clr-namespace:TourManagement.View.ManageTour.ManagePlace"
-             
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              x:Name="uc_ManageTour"
              DataContext="{StaticResource UC_ManageTourVM}"
              Background="White"
-             d:DesignHeight="900" d:DesignWidth="1500">
+             d:DesignHeight="900"
+             d:DesignWidth="1500">
     <Grid>
         <Grid>
             <Border BorderBrush="Black"
-            BorderThickness="2"
-            Margin="5,5,5,5">
+                    BorderThickness="2"
+                    Margin="5,5,5,5">
                 <!--ManageTour-->
                 <Grid>
                     <Grid.Style>
                         <Style TargetType="Grid">
-                            <Setter Property="Visibility" Value="Collapsed"></Setter>
+                            <Setter Property="Visibility"
+                                    Value="Collapsed"></Setter>
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding ChucNang}" Value="0">
-                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                <DataTrigger Binding="{Binding ChucNang}"
+                                             Value="0">
+                                    <Setter Property="Visibility"
+                                            Value="Visible"></Setter>
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>
@@ -37,17 +40,18 @@
                     <Grid Grid.Row="0">
                         <StackPanel Orientation="Horizontal">
                             <!--Textblock để nhập tên TOUR tìm kiếm-->
+                            <!--Textblock để nhập tên TOUR tìm kiếm-->
                             <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth2"
-                                         Margin="20,10,0,10">
+                                                 Margin="20,10,0,10">
 
                                 <TextBox HorizontalAlignment="Left"
-                                 Width="200"
-                                 FontSize="14"
-                                 materialDesign:HintAssist.Hint="Nhập tên Tour"
-                                 TextAlignment="Left"
-                                 Padding="5,0,0,0"
-                                 Text="{Binding TourNameFind, UpdateSourceTrigger=PropertyChanged , NotifyOnSourceUpdated=True}"
-                                 Background="#E4E4E4"/>
+                                         Width="200"
+                                         FontSize="16"
+                                         materialDesign:HintAssist.Hint="Nhập tên tour"
+                                         TextAlignment="Left"
+                                         Padding="5,0,0,0"
+                                         Text="{Binding TourNameFind, UpdateSourceTrigger=PropertyChanged , NotifyOnSourceUpdated=True,Mode=TwoWay}"
+                                         Background="#E4E4E4" />
                             </materialDesign:Card>
                             <!--Btn Tìm Kiếm-->
                             <Button Content="Tìm kiếm"
@@ -55,49 +59,53 @@
                                     IsDefault="True"
                                     Command="{Binding Path=TourFindCommand}"
                                     Style="{DynamicResource MaterialDesignRaisedButton}"
-                                    materialDesign:ShadowAssist.ShadowDepth="Depth4" 
+                                    materialDesign:ShadowAssist.ShadowDepth="Depth4"
                                     Foreground="Black"
                                     Height="Auto"
                                     HorizontalContentAlignment="Left"
-                                    Background="#FFF0EFEF" Margin="10,10,0,10"/>
+                                    Background="#FFF0EFEF"
+                                    Margin="10,10,0,10" />
                             <!--Btn Mặc Định-->
                             <Button Content="Mặc định"
-                    Command="{Binding Path=DefaultTourFindCommand}"
-                    Style="{DynamicResource MaterialDesignRaisedButton}"
-                    materialDesign:ShadowAssist.ShadowDepth="Depth4" 
-                    Foreground="Black"
-                    Height="Auto"
-                    BorderThickness="0"
-                    HorizontalContentAlignment="Left"
-                    Background="#FFF0EFEF" Margin="10,10,0,10"/>
+                                    Command="{Binding Path=DefaultTourFindCommand}"
+                                    Style="{DynamicResource MaterialDesignRaisedButton}"
+                                    materialDesign:ShadowAssist.ShadowDepth="Depth4"
+                                    Foreground="Black"
+                                    Height="Auto"
+                                    BorderThickness="0"
+                                    HorizontalContentAlignment="Left"
+                                    Background="#FFF0EFEF"
+                                    Margin="10,10,0,10" />
                             <!--Button thêm-->
                             <Button Style="{DynamicResource MaterialDesignRaisedButton}"
                                     Command="{Binding Path=AddTourCommand}"
-                                    materialDesign:ShadowAssist.ShadowDepth="Depth2" 
-                                    Content="Thêm mới" 
+                                    materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                                    Content="Thêm mới"
                                     Width="100"
                                     Background="LightBlue"
-                                    HorizontalAlignment="Left" 
+                                    HorizontalAlignment="Left"
                                     BorderThickness="0"
                                     Margin="20,0,0,0"
                                     Height="30"></Button>
 
                             <!--Btn chuyển grid QUẢN LÝ ĐỊA ĐIỂM THAM QUAN-->
                             <Button Content="QL ĐIỂM THAM QUAN"
-                    IsDefault="True"
-                    Command="{Binding Path=BtnManagePlaceCommand}"
-                    Style="{DynamicResource MaterialDesignRaisedButton}"
-                    materialDesign:ShadowAssist.ShadowDepth="Depth4" 
-                    Foreground="Black"
-                    Height="Auto"
-                    BorderThickness="0"
-                    HorizontalContentAlignment="Left"
-                    Background="#FFFFBC5B" Margin="740,10,0,10"/>
-                            
+                                    IsDefault="True"
+                                    Command="{Binding Path=BtnManagePlaceCommand}"
+                                    Style="{DynamicResource MaterialDesignRaisedButton}"
+                                    materialDesign:ShadowAssist.ShadowDepth="Depth4"
+                                    Foreground="Black"
+                                    Height="Auto"
+                                    BorderThickness="0"
+                                    HorizontalContentAlignment="Left"
+                                    Background="#FFFFBC5B"
+                                    Margin="740,10,0,10" />
+
                         </StackPanel>
                     </Grid>
                     <!--Danh sách tour-->
-                    <Grid Grid.Row="1" Margin="0,5,5,5">
+                    <Grid Grid.Row="1"
+                          Margin="0,5,5,5">
                         <ScrollViewer>
                             <DataGrid ItemsSource="{Binding TOURLISTDTG,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"
                                       AlternatingRowBackground="#e2e2e2"
@@ -109,30 +117,41 @@
                                       CanUserReorderColumns="False">
                                 <DataGrid.Resources>
                                     <Style TargetType="DataGridRow">
-                                        <Setter Property="Height" Value="35"></Setter>
-                                        <Setter Property="FontSize" Value="13"></Setter>
-                                        <Setter Property="FontFamily" Value="Arial"></Setter>
+                                        <Setter Property="Height"
+                                                Value="35"></Setter>
+                                        <Setter Property="FontSize"
+                                                Value="13"></Setter>
+                                        <Setter Property="FontFamily"
+                                                Value="Arial"></Setter>
                                     </Style>
-                                    <Style TargetType="DataGridColumnHeader"  >
-                                        <Setter Property="Height" Value="30"></Setter>
-                                        <Setter Property="FontFamily" Value="Times New Roman"></Setter>
-                                        <Setter Property="FontSize" Value="15"></Setter>
-                                        <Setter Property="FontWeight" Value="Bold"></Setter>
-                                        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
-                                        <Setter Property="Background" Value="#e2e2e2"></Setter>
-                                        <Setter Property="BorderBrush" Value="Black"></Setter>
-                                        <Setter Property="BorderThickness" Value="2,2,1,2"></Setter>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Height"
+                                                Value="30"></Setter>
+                                        <Setter Property="FontFamily"
+                                                Value="Times New Roman"></Setter>
+                                        <Setter Property="FontSize"
+                                                Value="15"></Setter>
+                                        <Setter Property="FontWeight"
+                                                Value="Bold"></Setter>
+                                        <Setter Property="HorizontalContentAlignment"
+                                                Value="Center"></Setter>
+                                        <Setter Property="Background"
+                                                Value="#e2e2e2"></Setter>
+                                        <Setter Property="BorderBrush"
+                                                Value="Black"></Setter>
+                                        <Setter Property="BorderThickness"
+                                                Value="2,2,1,2"></Setter>
                                     </Style>
                                 </DataGrid.Resources>
                                 <DataGrid.Columns>
                                     <!--Cột Mã Tour-->
                                     <DataGridTextColumn Header="Mã Tour"
-                                            Width="90"
-                                            Binding="{Binding tour.IDTOUR}">
+                                                        Width="90"
+                                                        Binding="{Binding tour.IDTOUR}">
                                     </DataGridTextColumn>
                                     <!--Cột THAO TÁC-->
                                     <DataGridTemplateColumn Header="Thao tác"
-                                        Width="110">
+                                                            Width="110">
                                         <!--Mỗi dòng của cột chứa 2 button-->
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
@@ -143,48 +162,53 @@
                                                     </Grid.ColumnDefinitions>
                                                     <!--BUTTON EDIT-->
                                                     <Button Grid.Column="0"
-                                                Background="{x:Null}"
-                                                BorderThickness="0"
-                                                Command="{Binding Path=DataContext.EditTourCommand,
+                                                            Background="{x:Null}"
+                                                            BorderThickness="0"
+                                                            Command="{Binding Path=DataContext.EditTourCommand,
                                                 RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}"
-                                                CommandParameter="{Binding Path= tour.IDTOUR}"
-                                                Height="Auto"
-                                                Width="20" Margin="6,0,5,0">
+                                                            CommandParameter="{Binding Path= tour.IDTOUR}"
+                                                            Height="Auto"
+                                                            Width="20"
+                                                            Margin="6,0,5,0">
                                                         <!--Button EDIT-->
                                                         <!--Ảnh hình EDIT-->
                                                         <Grid>
-                                                            <Image Source="..\..\Photo\edit_icon.png" Margin="-17,-4,1,-4" RenderTransformOrigin="0.5,0.5">
+                                                            <Image Source="..\..\Photo\edit_icon.png"
+                                                                   Margin="-17,-4,1,-4"
+                                                                   RenderTransformOrigin="0.5,0.5">
                                                                 <Image.RenderTransform>
                                                                     <TransformGroup>
-                                                                        <ScaleTransform ScaleX="-1"/>
-                                                                        <SkewTransform/>
-                                                                        <RotateTransform/>
-                                                                        <TranslateTransform/>
+                                                                        <ScaleTransform ScaleX="-1" />
+                                                                        <SkewTransform />
+                                                                        <RotateTransform />
+                                                                        <TranslateTransform />
                                                                     </TransformGroup>
                                                                 </Image.RenderTransform>
                                                             </Image>
                                                         </Grid>
                                                     </Button>
                                                     <Button Grid.Column="1"
-                                                Background="{x:Null}"
-                                                BorderThickness="0"
-                                                Command="{Binding Path=DataContext.DeleteTourCommand,
+                                                            Background="{x:Null}"
+                                                            BorderThickness="0"
+                                                            Command="{Binding Path=DataContext.DeleteTourCommand,
                                                 RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}"
-                                                CommandParameter="{Binding Path= tour.IDTOUR}"
-                                                Height="Auto"
-                                                Width="20"
-                                                Margin="11,0,0,0">
-                                                        
+                                                            CommandParameter="{Binding Path= tour.IDTOUR}"
+                                                            Height="Auto"
+                                                            Width="20"
+                                                            Margin="11,0,0,0">
+
                                                         <!--Button DELETE-->
                                                         <!--Ảnh hình dấu X-->
                                                         <Grid>
-                                                            <Image Source="..\..\Photo\delete_icon.png" Margin="-17,-15,-4,-15" RenderTransformOrigin="0.5,0.5">
+                                                            <Image Source="..\..\Photo\delete_icon.png"
+                                                                   Margin="-17,-15,-4,-15"
+                                                                   RenderTransformOrigin="0.5,0.5">
                                                                 <Image.RenderTransform>
                                                                     <TransformGroup>
-                                                                        <ScaleTransform ScaleX="-1"/>
-                                                                        <SkewTransform/>
-                                                                        <RotateTransform/>
-                                                                        <TranslateTransform/>
+                                                                        <ScaleTransform ScaleX="-1" />
+                                                                        <SkewTransform />
+                                                                        <RotateTransform />
+                                                                        <TranslateTransform />
                                                                     </TransformGroup>
                                                                 </Image.RenderTransform>
                                                             </Image>
@@ -196,25 +220,24 @@
                                     </DataGridTemplateColumn>
                                     <!--Cột TÊN TOUR-->
                                     <DataGridTextColumn Header="Tên Tour"
-                                    Binding="{Binding tour.TENTOUR}"
-                                    Width="250"></DataGridTextColumn>
+                                                        Binding="{Binding tour.TENTOUR}"
+                                                        Width="250"></DataGridTextColumn>
                                     <!--Cột LOẠI HÌNH DU LỊCH-->
                                     <DataGridTextColumn Header="Loại hình"
-                                    Binding="{Binding tour.LOAIHINH}"
-                                    Width="250"></DataGridTextColumn>
+                                                        Binding="{Binding tour.LOAIHINH}"
+                                                        Width="250"></DataGridTextColumn>
                                     <!--Cột GIÁ TOUR-->
                                     <DataGridTextColumn Header="Giá Tour"
-                                    Binding="{Binding tour.GIATOUR}"
-                                    Width="200"></DataGridTextColumn>
+                                                        Binding="{Binding tour.GIATOUR}"
+                                                        Width="200"></DataGridTextColumn>
                                     <!--Cột GIÁ TOUR-->
                                     <DataGridTextColumn Header="Trạng thái"
-                                    Binding="{Binding STATUS}"
-                                    Width="200"></DataGridTextColumn>
+                                                        Binding="{Binding STATUS}"
+                                                        Width="200"></DataGridTextColumn>
                                     <!--Cột MÔ TẢ-->
                                     <DataGridTextColumn Header="Mô tả"
-                                    Binding="{Binding tour.MOTA}"
-                                                        
-                                    Width="350"></DataGridTextColumn>
+                                                        Binding="{Binding tour.MOTA}"
+                                                        Width="350"></DataGridTextColumn>
                                 </DataGrid.Columns>
                             </DataGrid>
                         </ScrollViewer>
@@ -227,10 +250,13 @@
         <Grid>
             <Grid.Style>
                 <Style TargetType="Grid">
-                    <Setter Property="Visibility" Value="Collapsed"></Setter>
+                    <Setter Property="Visibility"
+                            Value="Collapsed"></Setter>
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding ChucNang}" Value="1">
-                            <Setter Property="Visibility" Value="Visible"></Setter>
+                        <DataTrigger Binding="{Binding ChucNang}"
+                                     Value="1">
+                            <Setter Property="Visibility"
+                                    Value="Visible"></Setter>
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
@@ -238,6 +264,6 @@
             <viewManagePlace:UC_ManagePlace></viewManagePlace:UC_ManagePlace>
         </Grid>
 
-        
+
     </Grid>
 </UserControl>

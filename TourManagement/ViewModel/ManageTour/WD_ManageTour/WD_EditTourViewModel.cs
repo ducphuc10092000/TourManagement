@@ -77,6 +77,23 @@ namespace TourManagement.ViewModel.ManageTour.WD_ManageTour
                     return;
                 }
             });
+            ResetCommand = new RelayCommand<object>((p) =>
+            {
+                return true;
+            }, (p) =>
+            {
+                MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn muốn đặt lại thông tin như cũ?", "Thông báo", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+
+                    LoadSelectedTour();
+                }
+                else
+                {
+                    return;
+                }
+                
+            });
             ConfirmEditTourCommand = new RelayCommand<Window>((p) =>
             {
                 return true;
