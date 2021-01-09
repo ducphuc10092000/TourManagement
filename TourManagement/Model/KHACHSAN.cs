@@ -26,6 +26,9 @@ namespace TourManagement.Model
         public Nullable<int> IDTT { get; set; }
         public Nullable<bool> ACTIVE { get; set; }
         public string TINHTHANH { get; set; }
+        public string TENKS { get; set; }
+        public string MOTA { get; set; }
+        public string AVATAR { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CT_DOAN_KHACHSAN> CT_DOAN_KHACHSAN { get; set; }

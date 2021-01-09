@@ -17,6 +17,7 @@ namespace TourManagement.Model
         public int ID_CT_DIADIEM_TOUR { get; set; }
         public int IDDIADIEM { get; set; }
         public int IDTOUR { get; set; }
+        public Nullable<bool> ACTIVE { get; set; }
     
         public virtual DIADIEM DIADIEM { get; set; }
         public virtual TOUR TOUR { get; set; }

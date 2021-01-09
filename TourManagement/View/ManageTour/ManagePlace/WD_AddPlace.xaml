@@ -37,7 +37,6 @@
                     </Grid.ColumnDefinitions>
 
                     <StackPanel Orientation="Vertical" Grid.Column="0">
-
                         <TextBox materialDesign:HintAssist.Hint="Tên điểm tham quan"
                          Height="50"
                          Width="400"
@@ -49,16 +48,19 @@
                         <Grid>
                             <StackPanel Orientation="Horizontal">
                                 <ComboBox materialDesign:HintAssist.Hint="Tỉnh thành"
-                                          Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
-                                          ItemsSource="{Binding ProvinceNameList,UpdateSourceTrigger=PropertyChanged,NotifyOnSourceUpdated=True}"
+                                           Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                          ItemsSource="{Binding ProvinceNameList,UpdateSourceTrigger=Default,NotifyOnSourceUpdated=True,Mode=TwoWay}"
                                           Width="330"
+                                          IsEditable="True"
                                           Text="{Binding ProvinceName}"
                                           FontSize="20"
-                                          Height="50" 
+                                          Height="50"
                                           Margin="30,10,0,20">
                                 </ComboBox>
                                 <Button Height="30" 
                                         Width="70"
+                                        Command="{Binding AddNewProvinceCommand,UpdateSourceTrigger=PropertyChanged,NotifyOnSourceUpdated=True}"
+                                        CommandParameter="{Binding ElementName=wd_AddPlace}"
                                         Background="#FFADD8E6"
                                         Margin="10,0,0,0">
                                     Thêm
@@ -107,7 +109,7 @@
                                 Margin="5,5,5,5"
                             BorderBrush="Black"
                             BorderThickness="2">
-                            <Image Source="{Binding AvatarSource}"></Image>
+                            <Image Margin="2,2,2,2" Source="{Binding AvatarSource}"></Image>
                         </Border>
                         <StackPanel Grid.Row="1"
                         Orientation="Horizontal">

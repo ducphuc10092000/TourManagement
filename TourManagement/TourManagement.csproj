@@ -134,15 +134,25 @@
     <Compile Include="Model\TOUR.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Tour\HOTEL.cs" />
     <Compile Include="Model\Tour\PLACE.cs" />
+    <Compile Include="Model\Tour\PLACE_TOUR_DETAIL.cs" />
+    <Compile Include="Model\Tour\PROVINCE.cs" />
+    <Compile Include="Model\Tour\TOURs.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\ImageProvider.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\ManageTour\ManageHotel\WD_AddHotelViewModel.cs" />
+    <Compile Include="ViewModel\ManageTour\ManageHotel\WD_EditHotelViewModel.cs" />
     <Compile Include="ViewModel\ManageTour\ManagePlace\WD_AddPlaceViewModel.cs" />
     <Compile Include="ViewModel\ManageTour\ManagePlace\WD_EditPlaceViewModel.cs" />
     <Compile Include="ViewModel\ManageTour\ManageProvince\WD_AddProvinceViewModel.cs" />
     <Compile Include="ViewModel\ManageTour\ManageProvince\WD_EditProvinceViewModel.cs" />
     <Compile Include="ViewModel\ManageTour\UC_ManageTourViewModel.cs" />
+    <Compile Include="ViewModel\ManageTour\WD_ManageTour\WD_AddTourViewModel.cs" />
+    <Compile Include="ViewModel\ManageTour\WD_ManageTour\WD_EditTourViewModel.cs" />
+    <Compile Include="ViewModel\ManageTour\WD_ManageTour\WD_HotelListViewModel.cs" />
+    <Compile Include="ViewModel\ManageTour\WD_ManageTour\WD_PlaceListViewModel.cs" />
     <Compile Include="View\DashBoard\UC_DashBoard.xaml.cs">
       <DependentUpon>UC_DashBoard.xaml</DependentUpon>
     </Compile>
@@ -157,6 +167,15 @@
     </Compile>
     <Compile Include="View\ManageStaff\UC_ManageStaff.xaml.cs">
       <DependentUpon>UC_ManageStaff.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageTour\ManageHotel\UC_ManageHotel.xaml.cs">
+      <DependentUpon>UC_ManageHotel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageTour\ManageHotel\WD_AddHotel.xaml.cs">
+      <DependentUpon>WD_AddHotel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageTour\ManageHotel\WD_EditHotel.xaml.cs">
+      <DependentUpon>WD_EditHotel.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ManageTour\ManagePlace\UC_ManagePlace.xaml.cs">
       <DependentUpon>UC_ManagePlace.xaml</DependentUpon>
@@ -175,6 +194,18 @@
     </Compile>
     <Compile Include="View\ManageTour\UC_ManageTour.xaml.cs">
       <DependentUpon>UC_ManageTour.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageTour\WD_ManageTour\WD_AddTour.xaml.cs">
+      <DependentUpon>WD_AddTour.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageTour\WD_ManageTour\WD_EditTour.xaml.cs">
+      <DependentUpon>WD_EditTour.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageTour\WD_ManageTour\WD_HotelList.xaml.cs">
+      <DependentUpon>WD_HotelList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageTour\WD_ManageTour\WD_PlaceList.xaml.cs">
+      <DependentUpon>WD_PlaceList.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ManageTrip\UC_ManageTrip.xaml.cs">
       <DependentUpon>UC_ManageTrip.xaml</DependentUpon>
@@ -215,6 +246,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ManageTour\ManageHotel\UC_ManageHotel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManageTour\ManageHotel\WD_AddHotel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManageTour\ManageHotel\WD_EditHotel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ManageTour\ManagePlace\UC_ManagePlace.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -236,6 +279,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ManageTour\UC_ManageTour.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManageTour\WD_ManageTour\WD_AddTour.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManageTour\WD_ManageTour\WD_EditTour.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManageTour\WD_ManageTour\WD_HotelList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManageTour\WD_ManageTour\WD_PlaceList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -280,7 +339,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\TempFiles\" />
-    <Folder Include="View\ManageTour\ManageHotel\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Model\Model1.Context.tt">

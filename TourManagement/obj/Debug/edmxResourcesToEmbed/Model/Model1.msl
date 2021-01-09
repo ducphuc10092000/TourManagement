@@ -4,6 +4,7 @@
     <EntitySetMapping Name="CT_DIADIEM_TOUR">
       <EntityTypeMapping TypeName="TOURMANAGEMENTModel.CT_DIADIEM_TOUR">
         <MappingFragment StoreEntitySet="CT_DIADIEM_TOUR">
+          <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
           <ScalarProperty Name="IDTOUR" ColumnName="IDTOUR" />
           <ScalarProperty Name="IDDIADIEM" ColumnName="IDDIADIEM" />
           <ScalarProperty Name="ID_CT_DIADIEM_TOUR" ColumnName="ID_CT_DIADIEM_TOUR" />
@@ -79,6 +80,9 @@
     <EntitySetMapping Name="KHACHSAN">
       <EntityTypeMapping TypeName="TOURMANAGEMENTModel.KHACHSAN">
         <MappingFragment StoreEntitySet="KHACHSAN">
+          <ScalarProperty Name="AVATAR" ColumnName="AVATAR" />
+          <ScalarProperty Name="MOTA" ColumnName="MOTA" />
+          <ScalarProperty Name="TENKS" ColumnName="TENKS" />
           <ScalarProperty Name="TINHTHANH" ColumnName="TINHTHANH" />
           <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
           <ScalarProperty Name="IDTT" ColumnName="IDTT" />
@@ -144,6 +148,7 @@
     <EntitySetMapping Name="TOUR">
       <EntityTypeMapping TypeName="TOURMANAGEMENTModel.TOUR">
         <MappingFragment StoreEntitySet="TOUR">
+          <ScalarProperty Name="LOAIHINH" ColumnName="LOAIHINH" />
           <ScalarProperty Name="MOTA" ColumnName="MOTA" />
           <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
           <ScalarProperty Name="GIATOUR" ColumnName="GIATOUR" />

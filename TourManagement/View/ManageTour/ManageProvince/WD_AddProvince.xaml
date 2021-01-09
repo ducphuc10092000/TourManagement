@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:TourManagement.View.ManageTour.ManageProvince"
         mc:Ignorable="d"
         DataContext="{StaticResource WD_AddProvinceVM}"
+        WindowStartupLocation="CenterScreen"
         WindowStyle="None"
+        x:Name="wd_addprovince"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="WD_AddProvince" Height="450" Width="500">
     <Grid>
@@ -48,14 +50,14 @@
                 <Button Height="40" Width="150"
                             Background="#FFADD8E6"
                             Command="{Binding AddProvinceCommand}"
-                            CommandParameter="{Binding ElementName=wd_AddPlace}"
+                            CommandParameter="{Binding ElementName=wd_addprovince}"
                             Style="{DynamicResource MaterialDesignRaisedButton}"
                             materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     Thêm
                 </Button>
                 <Button Height="auto" Width="150"
                             Command="{Binding QuitCommand}"
-                            CommandParameter="{Binding ElementName=wd_AddPlace}"
+                            CommandParameter="{Binding ElementName=wd_addprovince}"
                             Style="{DynamicResource MaterialDesignRaisedButton}"
                             Margin="100,0,0,0"
                             Background="#FFF3A2A2"

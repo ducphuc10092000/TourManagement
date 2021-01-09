@@ -14,6 +14,7 @@
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         DataContext="{StaticResource MainVM}"
+        x:Name="mainWD"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         ResizeMode="NoResize"
@@ -41,27 +42,44 @@
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
-            <materialDesign:ColorZone Mode="Dark" Height="30">
+            <materialDesign:ColorZone Mode="Dark" Height="40">
                 <DockPanel>
                     <materialDesign:PopupBox DockPanel.Dock="Right"
                                              PlacementMode="BottomAndAlignRightEdges">
-                        <ListBox>
+                        <ListBox Background="LightBlue">
                             <ListBoxItem>
-                                <Button Height="auto" Width="auto">
+                                <Button Command="{Binding QuitCommand}"
+                                        Style="{DynamicResource MaterialDesignRaisedButton}"
+                                        Height="50"
+                                        Width="150"
+                                        Margin="-5,-5,-5,-5"
+                                        ToolTip="Resource name: MaterialDesignRaisedAccentButton"
+                                        materialDesign:RippleAssist.Feedback="#DD000000"
+                                        CommandParameter="{Binding ElementName=mainWD}">
                                     Quit
                                 </Button>
                             </ListBoxItem>
                             <ListBoxItem>
-                                <Button Height="auto" Width="auto">
+                                <Button Style="{DynamicResource MaterialDesignRaisedButton}"
+                                        Height="50"
+                                        Width="150"
+                                        Margin="-5,-5,-5,-5"
+                                        ToolTip="Resource name: MaterialDesignRaisedAccentButton"
+                                        materialDesign:RippleAssist.Feedback="#DD000000">
                                     Help
                                 </Button>
                             </ListBoxItem>
                             <ListBoxItem>
-                                <Button Height="auto" Width="auto">
+                                <Button Style="{DynamicResource MaterialDesignRaisedButton}"
+                                        Height="50"
+                                        Width="150"
+                                        Margin="-5,-5,-5,-5"
+                                        ToolTip="Resource name: MaterialDesignRaisedAccentButton"
+                                        materialDesign:RippleAssist.Feedback="#DD000000">
                                     About us
                                 </Button>
                             </ListBoxItem>
@@ -69,10 +87,10 @@
                     </materialDesign:PopupBox>
                     <StackPanel  Orientation="Horizontal">
                         <TextBlock VerticalAlignment="Center"
-                                   Margin="1400 0 0 0"
+                                   Margin="1350 0 0 0"
                                    Height="auto"
                                    Style="{StaticResource tblButtonFeature}"
-                                   FontSize="20"> TOUR MANAGEMENT
+                                   FontSize="25"> TOUR MANAGEMENT
                         </TextBlock>
                     </StackPanel>
                 </DockPanel>

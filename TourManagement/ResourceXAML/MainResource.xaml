@@ -3,11 +3,19 @@
                     xmlns:viewmodel="clr-namespace:TourManagement.ViewModel"
                     xmlns:viewmodel_ManageTour="clr-namespace:TourManagement.ViewModel.ManageTour"
                     xmlns:viewmodel_ManagePlace="clr-namespace:TourManagement.ViewModel.ManageTour.ManagePlace"
-                    xmlns:viewmodel_ManageProvince="clr-namespace:TourManagement.ViewModel.ManageTour.ManageProvince">
+                    xmlns:viewmodel_ManageProvince="clr-namespace:TourManagement.ViewModel.ManageTour.ManageProvince"
+                    xmlns:viewmodel_ManageHotel="clr-namespace:TourManagement.ViewModel.ManageTour.ManageHotel"
+                    xmlns:viewmodel_WD_ManageTour="clr-namespace:TourManagement.ViewModel.ManageTour.WD_ManageTour">
     <viewmodel:MainViewModel x:Key="MainVM"></viewmodel:MainViewModel>
     <viewmodel_ManageTour:UC_ManageTourViewModel x:Key="UC_ManageTourVM"></viewmodel_ManageTour:UC_ManageTourViewModel>
     <viewmodel_ManagePlace:WD_AddPlaceViewModel x:Key="WD_AddPlaceVM"></viewmodel_ManagePlace:WD_AddPlaceViewModel>
     <viewmodel_ManagePlace:WD_EditPlaceViewModel x:Key="WD_EditPlaceVM"></viewmodel_ManagePlace:WD_EditPlaceViewModel>
     <viewmodel_ManageProvince:WD_AddProvinceViewModel x:Key="WD_AddProvinceVM"></viewmodel_ManageProvince:WD_AddProvinceViewModel>
     <viewmodel_ManageProvince:WD_EditProvinceViewModel x:Key="WD_EditProvinceVM"></viewmodel_ManageProvince:WD_EditProvinceViewModel>
+    <viewmodel_ManageHotel:WD_AddHotelViewModel x:Key="WD_AddHotelVM"></viewmodel_ManageHotel:WD_AddHotelViewModel>
+    <viewmodel_ManageHotel:WD_EditHotelViewModel x:Key="WD_EditHotelVM"></viewmodel_ManageHotel:WD_EditHotelViewModel>
+    <viewmodel_WD_ManageTour:WD_AddTourViewModel x:Key="WD_AddTourVM"></viewmodel_WD_ManageTour:WD_AddTourViewModel>
+    <viewmodel_WD_ManageTour:WD_EditTourViewModel x:Key="WD_EditTourVM"></viewmodel_WD_ManageTour:WD_EditTourViewModel>
+    <viewmodel_WD_ManageTour:WD_PlaceListViewModel x:Key="WD_PlaceListVM"></viewmodel_WD_ManageTour:WD_PlaceListViewModel>
+    <viewmodel_WD_ManageTour:WD_HotelListViewModel x:Key="WD_HotelListVM"></viewmodel_WD_ManageTour:WD_HotelListViewModel>
 </ResourceDictionary>

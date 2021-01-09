@@ -11,6 +11,8 @@ using System.Windows.Media;
 using TourManagement.Model;
 using TourManagement.Model.Tour;
 using TourManagement.View.ManageTour.ManagePlace;
+using TourManagement.View.ManageTour.ManageProvince;
+using TourManagement.ViewModel.ManageTour.ManageProvince;
 
 namespace TourManagement.ViewModel.ManageTour.ManagePlace
 {
@@ -19,8 +21,8 @@ namespace TourManagement.ViewModel.ManageTour.ManagePlace
         private ObservableCollection<TINHTHANH> _PROVINCELIST;
         public ObservableCollection<TINHTHANH> PROVINCELIST { get => _PROVINCELIST; set { _PROVINCELIST = value; OnPropertyChanged(); } }
 
-        private List<string> _ProvinceNameList;
-        public List<string> ProvinceNameList { get => _ProvinceNameList; set { _ProvinceNameList = value; OnPropertyChanged(); } }
+        private ObservableCollection<string> _ProvinceNameList;
+        public ObservableCollection<string> ProvinceNameList { get => _ProvinceNameList; set { _ProvinceNameList = value; OnPropertyChanged(); } }
 
         private ImageSource _AvatarSource;
         public ImageSource AvatarSource { get => _AvatarSource; set { _AvatarSource = value; OnPropertyChanged(); } }
@@ -49,10 +51,11 @@ namespace TourManagement.ViewModel.ManageTour.ManagePlace
         #endregion
 
         #region Command
-        public ICommand EditPlaceCommand { get; set; }
+        public ICommand ConfirmEditPlaceCommand { get; set; }
         public ICommand QuitCommand { get; set; }
         public ICommand ChangePictureCommand { get; set; }
         public ICommand DeletePictureCommand { get; set; }
+        public ICommand AddNewProvinceCommand { get; set; }
         #endregion
         public WD_EditPlaceViewModel()
         {
@@ -77,10 +80,24 @@ namespace TourManagement.ViewModel.ManageTour.ManagePlace
                 }
                 else
                 {
-
+                    return;
                 }
             });
-            EditPlaceCommand = new RelayCommand<WD_EditPlace>((p) =>
+            AddNewProvinceCommand = new RelayCommand<WD_EditPlace>((p) =>
+            {
+                return true;
+            }, (p) =>
+            {
+                p.Hide();
+                WD_AddProvince wd_addprovince = new WD_AddProvince();
+                var wd_addprovince_DT = wd_addprovince.DataContext as WD_AddProvinceViewModel;
+                wd_addprovince_DT.Reset();
+                wd_addprovince.ShowDialog();
+                wd_addprovince.Close();
+                LoadProvinceList();
+                p.ShowDialog();
+            });
+            ConfirmEditPlaceCommand = new RelayCommand<WD_EditPlace>((p) =>
             {
                 //if (AccountPower == 0 || AccountPower == 1)
                 //{
@@ -171,7 +188,7 @@ namespace TourManagement.ViewModel.ManageTour.ManagePlace
         public void LoadProvinceList()
         {
             PROVINCELIST = new ObservableCollection<TINHTHANH>(DataProvider.Ins.DB.TINHTHANH);
-            ProvinceNameList = new List<string>();
+            ProvinceNameList = new ObservableCollection<string>();
             foreach (var item in PROVINCELIST)
             {
                 ProvinceNameList.Add(item.TENTT);

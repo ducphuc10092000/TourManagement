@@ -52,3 +52,17 @@ D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTour\Mana
 D:\QUANLYTOURDULICH\TourManagement\TourManagement\bin\Debug\System.Drawing.Common.dll
 D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTour\ManageProvince\WD_EditProvince.g.cs
 D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTour\ManageProvince\WD_EditProvince.baml
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTour\ManageHotel\UC_ManageHotel.g.cs
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTour\ManageHotel\UC_ManageHotel.baml
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTour\ManageHotel\WD_AddHotel.g.cs
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTour\ManageHotel\WD_EditHotel.g.cs
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTour\ManageHotel\WD_AddHotel.baml
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTour\ManageHotel\WD_EditHotel.baml
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTour\WD_ManageTour\WD_AddTour.g.cs
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTour\WD_ManageTour\WD_EditTour.g.cs
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTour\WD_ManageTour\WD_AddTour.baml
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTour\WD_ManageTour\WD_EditTour.baml
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTour\WD_ManageTour\WD_HotelList.g.cs
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTour\WD_ManageTour\WD_PlaceList.g.cs
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTour\WD_ManageTour\WD_HotelList.baml
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTour\WD_ManageTour\WD_PlaceList.baml

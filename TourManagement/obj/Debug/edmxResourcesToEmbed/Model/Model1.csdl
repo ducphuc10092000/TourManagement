@@ -71,6 +71,7 @@
     <Property Name="ID_CT_DIADIEM_TOUR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IDDIADIEM" Type="Int32" Nullable="false" />
     <Property Name="IDTOUR" Type="Int32" Nullable="false" />
+    <Property Name="ACTIVE" Type="Boolean" />
     <NavigationProperty Name="DIADIEM" Relationship="TOURMANAGEMENTModel.FK_CT_DIADIEM_TOUR_DIADIEM" FromRole="CT_DIADIEM_TOUR" ToRole="DIADIEM" />
     <NavigationProperty Name="TOUR" Relationship="TOURMANAGEMENTModel.FK_CT_DIADIEM_TOUR_TOUR" FromRole="CT_DIADIEM_TOUR" ToRole="TOUR" />
   </EntityType>
@@ -157,6 +158,9 @@
     <Property Name="IDTT" Type="Int32" />
     <Property Name="ACTIVE" Type="Boolean" />
     <Property Name="TINHTHANH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TENKS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MOTA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AVATAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="CT_DOAN_KHACHSAN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_KHACHSAN_KS" FromRole="KHACHSAN" ToRole="CT_DOAN_KHACHSAN" />
     <NavigationProperty Name="TINHTHANH1" Relationship="TOURMANAGEMENTModel.fk_KHACHSAN_TINHTHANH" FromRole="KHACHSAN" ToRole="TINHTHANH" />
   </EntityType>
@@ -222,6 +226,7 @@
     <Property Name="GIATOUR" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="ACTIVE" Type="Boolean" />
     <Property Name="MOTA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LOAIHINH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="CT_DIADIEM_TOUR" Relationship="TOURMANAGEMENTModel.FK_CT_DIADIEM_TOUR_TOUR" FromRole="TOUR" ToRole="CT_DIADIEM_TOUR" />
     <NavigationProperty Name="DOAN" Relationship="TOURMANAGEMENTModel.fk_DOAN_TOUR" FromRole="TOUR" ToRole="DOAN" />
   </EntityType>

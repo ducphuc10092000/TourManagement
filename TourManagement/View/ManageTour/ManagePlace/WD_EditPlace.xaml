@@ -60,6 +60,8 @@
                                 </ComboBox>
                                 <Button Height="30" 
                                         Width="70"
+                                        Command="{Binding AddNewProvinceCommand}"
+                                        CommandParameter="{Binding ElementName=wd_EditPlace}"
                                         Background="#FFADD8E6"
                                         Margin="10,0,0,0">
                                     Thêm
@@ -118,7 +120,7 @@
                             <Button Height="40" Width="150"
                             Margin="30,0,0,0"
                             Background="#FFADD8E6"
-                            Command="{Binding EditPlaceCommand}"
+                            Command="{Binding ConfirmEditPlaceCommand}"
                             CommandParameter="{Binding ElementName=wd_EditPlace}"
                             Style="{DynamicResource MaterialDesignRaisedButton}"
                             materialDesign:ShadowAssist.ShadowDepth="Depth3">
@@ -145,7 +147,7 @@
                                 Margin="5,5,5,5"
                             BorderBrush="Black"
                             BorderThickness="2">
-                            <Image Source="{Binding AvatarSource}"></Image>
+                            <Image Margin="2,2,2,2" Source="{Binding AvatarSource}"></Image>
                         </Border>
                         <StackPanel Grid.Row="1"
                         Orientation="Horizontal">

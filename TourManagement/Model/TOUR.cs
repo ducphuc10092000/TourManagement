@@ -26,6 +26,7 @@ namespace TourManagement.Model
         public string GIATOUR { get; set; }
         public Nullable<bool> ACTIVE { get; set; }
         public string MOTA { get; set; }
+        public string LOAIHINH { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CT_DIADIEM_TOUR> CT_DIADIEM_TOUR { get; set; }

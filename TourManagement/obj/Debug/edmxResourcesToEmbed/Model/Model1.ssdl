@@ -7,6 +7,7 @@
     <Property Name="ID_CT_DIADIEM_TOUR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IDDIADIEM" Type="int" Nullable="false" />
     <Property Name="IDTOUR" Type="int" Nullable="false" />
+    <Property Name="ACTIVE" Type="bit" />
   </EntityType>
   <EntityType Name="CT_DOAN_KHACHHANG">
     <Key>
@@ -78,6 +79,9 @@
     <Property Name="IDTT" Type="int" />
     <Property Name="ACTIVE" Type="bit" />
     <Property Name="TINHTHANH" Type="nvarchar(max)" />
+    <Property Name="TENKS" Type="nvarchar(max)" />
+    <Property Name="MOTA" Type="nvarchar(max)" />
+    <Property Name="AVATAR" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="NGUOIDUNG">
     <Key>
@@ -136,6 +140,7 @@
     <Property Name="GIATOUR" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ACTIVE" Type="bit" />
     <Property Name="MOTA" Type="nvarchar(max)" />
+    <Property Name="LOAIHINH" Type="nvarchar(max)" />
   </EntityType>
   <Association Name="FK_CT_DIADIEM_TOUR_DIADIEM">
     <End Role="DIADIEM" Type="Self.DIADIEM" Multiplicity="1" />

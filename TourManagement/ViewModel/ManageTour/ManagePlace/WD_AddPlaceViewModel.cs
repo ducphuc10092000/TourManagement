@@ -11,6 +11,8 @@ using System.Collections.ObjectModel;
 using TourManagement.Model.Tour;
 using System.Windows.Media;
 using Microsoft.Win32;
+using TourManagement.View.ManageTour.ManageProvince;
+using TourManagement.ViewModel.ManageTour.ManageProvince;
 
 namespace TourManagement.ViewModel.ManageTour.ManagePlace
 {
@@ -19,8 +21,9 @@ namespace TourManagement.ViewModel.ManageTour.ManagePlace
         private ObservableCollection<TINHTHANH> _PROVINCELIST;
         public ObservableCollection<TINHTHANH> PROVINCELIST { get => _PROVINCELIST; set { _PROVINCELIST = value; OnPropertyChanged(); } }
 
-        private List<string> _ProvinceNameList;
-        public List<string> ProvinceNameList { get=>_ProvinceNameList; set { _ProvinceNameList = value; OnPropertyChanged(); } }
+        private ObservableCollection<string> _ProvinceNameList;
+        public ObservableCollection<string> ProvinceNameList { get=>_ProvinceNameList; set { _ProvinceNameList = value; OnPropertyChanged(); } }
+
 
         private ImageSource _AvatarSource;
         public ImageSource AvatarSource { get => _AvatarSource; set { _AvatarSource = value; OnPropertyChanged(); } }
@@ -44,12 +47,12 @@ namespace TourManagement.ViewModel.ManageTour.ManagePlace
         public ICommand AddPlaceCommand { get; set; }
         public ICommand ChangePictureCommand { get; set; }
         public ICommand DeletePictureCommand { get; set; }
+        public ICommand AddNewProvinceCommand { get; set; }
         #endregion
 
         public WD_AddPlaceViewModel()
         {
             LoadProvinceList();
-
             QuitCommand = new RelayCommand<WD_AddPlace>((p) =>
             {
                 //if (AccountPower == 0 || AccountPower == 1)
@@ -70,7 +73,7 @@ namespace TourManagement.ViewModel.ManageTour.ManagePlace
                 }
                 else 
                 {
-                        
+                    return; 
                 }
             });
             AddPlaceCommand = new RelayCommand<WD_AddPlace>((p) =>
@@ -134,17 +137,39 @@ namespace TourManagement.ViewModel.ManageTour.ManagePlace
                 AvatarSource = null;
                 Avatar = null;
             });
+            AddNewProvinceCommand = new RelayCommand<WD_AddPlace>((p) =>
+            {
+                return true;
+            }, (p) =>
+            {
+                p.Hide();
+                WD_AddProvince wd_addprovince = new WD_AddProvince();
+                var wd_addprovince_DT = wd_addprovince.DataContext as WD_AddProvinceViewModel;
+                wd_addprovince_DT.Reset();
+                wd_addprovince.ShowDialog();
+                wd_addprovince.Close();
+                LoadProvinceList();
+                p.ShowDialog();
+            });
         }
 
         public void LoadProvinceList()
         {
             PROVINCELIST = new ObservableCollection<TINHTHANH>(DataProvider.Ins.DB.TINHTHANH);
-            ProvinceNameList = new List<string>();
+            ProvinceNameList = new ObservableCollection<string>();
             foreach(var item in PROVINCELIST)
             {
                 ProvinceNameList.Add(item.TENTT);
-            }    
+            }
+            ProvinceNameList = new ObservableCollection<string>(ProvinceNameList.OrderBy(x => x));
         }
-        
+        public void Reset()
+        {
+            PlaceName = null;
+            PlaceDescription = null;
+            ProvinceName = null;
+            Avatar = null;
+            AvatarSource = null;
+        }
     }
 }

@@ -5,6 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using TourManagement.View.ManageTour;
+using TourManagement.View.ManageTour.WD_ManageTour;
+using TourManagement.ViewModel.ManageTour;
+using TourManagement.ViewModel.ManageTour.WD_ManageTour;
 
 namespace TourManagement.ViewModel
 {
@@ -27,6 +31,7 @@ namespace TourManagement.ViewModel
         public ICommand BtnManageStaffCommand { get; set; }
         public ICommand BtnManageReportCommand { get; set; }
         public ICommand BtnManageAccountCommand { get; set; }
+        public ICommand QuitCommand { get; set; }
 
         #endregion
         public MainViewModel()
@@ -58,7 +63,13 @@ namespace TourManagement.ViewModel
                 return true;
             }, (p) =>
             {
+                //Set chức năng GRID
                 ChucNang = (int)CHUCNANG.ManageTour;
+
+                //Gọi hàm LoadTourList() từ UC_ManageTourViewModel
+                UC_ManageTour uc_ManageTour = new UC_ManageTour();
+                var uc_ManageTour_DT = uc_ManageTour.DataContext as UC_ManageTourViewModel;
+                uc_ManageTour_DT.LoadTourList();
             });
             BtnManageTripCommand = new RelayCommand<object>((p) =>
             {
@@ -130,7 +141,31 @@ namespace TourManagement.ViewModel
             {
                 ChucNang = (int)CHUCNANG.ManageAccount;
             });
+
+            QuitCommand = new RelayCommand<MainWindow>((p) =>
+            {
+                //if (AccountPower == 0 || AccountPower == 1)
+                //{
+                //    MessageBoxResult result = MessageBox.Show("Bạn không đủ quyền truy cập vào chức năng này!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                //    return false;
+                //}
+
+
+                return true;
+            }, (p) =>
+            {
+                MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn muốn thoát?", "Thông báo", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    p.Close();
+                }
+                else
+                {
+                    return;
+                }
+            });
             #endregion
         }
+        
     }
 }

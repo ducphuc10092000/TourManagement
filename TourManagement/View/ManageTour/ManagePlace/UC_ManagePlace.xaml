@@ -46,7 +46,7 @@
                               Padding="5,0,0,0"
                               VerticalContentAlignment="Center"
                               HorizontalContentAlignment="Left"
-                              Text="{Binding ProvinceNameFind, Mode=TwoWay}" 
+                              Text="{Binding ProvinceNamePlaceFind}" 
                               FontSize="14" Height="30"/>
                 </materialDesign:Card>
                 
