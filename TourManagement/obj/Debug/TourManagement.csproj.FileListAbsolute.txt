@@ -66,3 +66,11 @@ D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTour\WD_M
 D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTour\WD_ManageTour\WD_PlaceList.g.cs
 D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTour\WD_ManageTour\WD_HotelList.baml
 D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTour\WD_ManageTour\WD_PlaceList.baml
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageCustomer\WD_AddCustomer.g.cs
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageCustomer\WD_AddCustomer.baml
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageCustomer\WD_EditCustomer.g.cs
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageCustomer\WD_EditCustomer.baml
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTrip\WD_AddTrip.g.cs
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTrip\WD_AddTrip.baml
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTrip\WD_HotelList.g.cs
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTrip\WD_HotelList.baml

@@ -11,6 +11,7 @@ using TourManagement.Model.Tour;
 using TourManagement.View.ManageTour.ManagePlace;
 using TourManagement.View.ManageTour.WD_ManageTour;
 using TourManagement.ViewModel.ManageTour.ManagePlace;
+using TourManagement.ViewModel.ManageTrip;
 
 namespace TourManagement.ViewModel.ManageTour.WD_ManageTour
 {
@@ -76,7 +77,7 @@ namespace TourManagement.ViewModel.ManageTour.WD_ManageTour
         }
 
         public WD_AddTourViewModel()
-        {
+        { 
             TOUR_PLACELISTDTG = new ObservableCollection<PLACE>();
 
             TOUR_HOTELLISTDTG = new ObservableCollection<HOTEL>();
@@ -200,7 +201,7 @@ namespace TourManagement.ViewModel.ManageTour.WD_ManageTour
             }, (p) =>
             {
                 WD_HotelList wd_hotellist = new WD_HotelList();
-                var wd_hotellist_DT = wd_hotellist.DataContext as UC_ManageTourViewModel;
+                var wd_hotellist_DT = wd_hotellist.DataContext as UC_ManageTripViewModel;
                 wd_hotellist_DT.LoadHotelList();
                 wd_hotellist.ShowDialog();
                 wd_hotellist.Close();

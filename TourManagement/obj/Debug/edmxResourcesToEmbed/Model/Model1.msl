@@ -54,6 +54,7 @@
     <EntitySetMapping Name="DOAN">
       <EntityTypeMapping TypeName="TOURMANAGEMENTModel.DOAN">
         <MappingFragment StoreEntitySet="DOAN">
+          <ScalarProperty Name="SOLUONGPT" ColumnName="SOLUONGPT" />
           <ScalarProperty Name="NGAYKETTHUC" ColumnName="NGAYKETTHUC" />
           <ScalarProperty Name="NGAYBATDAU" ColumnName="NGAYBATDAU" />
           <ScalarProperty Name="SOLUONGKH" ColumnName="SOLUONGKH" />
@@ -66,6 +67,8 @@
     <EntitySetMapping Name="KHACHHANG">
       <EntityTypeMapping TypeName="TOURMANAGEMENTModel.KHACHHANG">
         <MappingFragment StoreEntitySet="KHACHHANG">
+          <ScalarProperty Name="AVATAR" ColumnName="AVATAR" />
+          <ScalarProperty Name="GIOITINH" ColumnName="GIOITINH" />
           <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
           <ScalarProperty Name="NGAYSINH" ColumnName="NGAYSINH" />
           <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />

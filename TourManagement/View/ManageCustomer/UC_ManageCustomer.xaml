@@ -5,12 +5,209 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TourManagement.View.ManageCustomer"
              mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
              Background="White"
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <TextBlock FontSize="30"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   FontWeight="Bold">MANAGE CUSTOMER</TextBlock>
-    </Grid>
+             DataContext="{StaticResource UC_ManageCustomerVM}"
+             d:DesignHeight="900" d:DesignWidth="1500">
+    <Border BorderBrush="Black"
+            BorderThickness="2"
+            Margin="5">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <!--Bộ lọc-->
+            <Grid Grid.Row="0">
+                <StackPanel Orientation="Horizontal">
+                    <!--Textblock để nhập tên TOUR tìm kiếm-->
+                    <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                                         Margin="20,10,0,10">
+
+                        <TextBox HorizontalAlignment="Left"
+                                 Width="200"
+                                 FontSize="14"
+                                 materialDesign:HintAssist.Hint="Nhập tên khách hàng"
+                                 TextAlignment="Left"
+                                 Padding="5,0,0,0"
+                                 Text="{Binding CustomerNameFind, UpdateSourceTrigger=PropertyChanged , NotifyOnSourceUpdated=True}"
+                                 Background="#E4E4E4"/>
+                    </materialDesign:Card>
+
+                    <!--<materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth2" Margin="20,10,0,10">
+                    <ComboBox materialDesign:HintAssist.Hint="CMND"
+                              ItemsSource="{Binding ProvinceNameList,UpdateSourceTrigger=PropertyChanged,NotifyOnSourceUpdated=True}"
+                              Width="200"
+                              Background="#E4E4E4"
+                              Padding="5,0,0,0"
+                              VerticalContentAlignment="Center"
+                              HorizontalContentAlignment="Left"
+                              Text="{Binding ProvinceNamePlaceFind}" 
+                              FontSize="14" Height="30"/>
+                </materialDesign:Card>-->
+
+                    <!--Btn Tìm Kiếm-->
+                    <Button Content="Tìm kiếm"
+                    IsDefault="True"
+                    Command="{Binding Path=CustomerFindCommand}"
+                    Style="{DynamicResource MaterialDesignRaisedButton}"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth4" 
+                    Foreground="Black"
+                    Height="Auto"
+                    BorderThickness="0"
+                    HorizontalContentAlignment="Left"
+                    Background="#FFF0EFEF" Margin="10,10,0,10"/>
+                    <!--Btn Mặc Định-->
+                    <Button Content="Mặc định"
+                    Command="{Binding Path=DefaultCustomerFindCommand}"
+                    Style="{DynamicResource MaterialDesignRaisedButton}"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth4" 
+                    Foreground="Black"
+                    Height="Auto"
+                    BorderThickness="0"
+                    HorizontalContentAlignment="Left"
+                    Background="#FFF0EFEF" Margin="10,10,0,10"/>
+                    <!--Button thêm-->
+                    <Button Style="{DynamicResource MaterialDesignRaisedButton}"
+                    Command="{Binding Path=AddCustomerCommand}"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth2" 
+                    Content="Thêm mới" 
+                    Width="100"
+                    Background="LightBlue"
+                    HorizontalAlignment="Left" 
+                    BorderThickness="0"
+                            Margin="20,0,0,0"
+                    Height="30"></Button>
+                </StackPanel>
+            </Grid>
+
+            <!--List ĐIỂM THAM QUAN-->
+            <Grid Grid.Row="1" Margin="5,5,10,5">
+                <ScrollViewer>
+                    <DataGrid ItemsSource="{Binding CUSTOMERLISTDTG,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"
+                          AlternatingRowBackground="#e2e2e2"
+                          IsReadOnly="True"
+                          SelectedItem="{Binding SelectedPLACE,UpdateSourceTrigger=PropertyChanged,
+                            NotifyOnSourceUpdated=True}"
+                           ScrollViewer.VerticalScrollBarVisibility="Auto"
+                          AutoGenerateColumns="False"
+                          CanUserResizeColumns="False"
+                          CanUserReorderColumns="False">
+                        <DataGrid.InputBindings>
+                            <MouseBinding
+                                Gesture="LeftDoubleClick"
+                                Command="{Binding DoubleClickSelectPlaceCommand}"
+                                CommandParameter="{Binding ElementName=wd_PlaceList}"/>
+                        </DataGrid.InputBindings>
+                        <DataGrid.Resources>
+                            <Style TargetType="DataGridRow">
+                                <Setter Property="Height" Value="35"></Setter>
+                                <Setter Property="FontSize" Value="13"></Setter>
+                                <Setter Property="FontFamily" Value="Arial"></Setter>
+                            </Style>
+                            <Style TargetType="DataGridColumnHeader"  >
+                                <Setter Property="Height" Value="30"></Setter>
+                                <Setter Property="FontFamily" Value="Times New Roman"></Setter>
+                                <Setter Property="FontSize" Value="15"></Setter>
+                                <Setter Property="FontWeight" Value="Bold"></Setter>
+                                <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+                                <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+                                <Setter Property="Background" Value="#e2e2e2"></Setter>
+                                <Setter Property="BorderBrush" Value="Black"></Setter>
+                                <Setter Property="BorderThickness" Value="1,1,0,1"></Setter>
+                            </Style>
+                        </DataGrid.Resources>
+                        <DataGrid.Columns>
+                            <!--Cột Mã DTQ-->
+                            <DataGridTextColumn Header="Mã KH"
+                                            Width="100"
+                                            Binding="{Binding khachhang.IDKH}">
+                            </DataGridTextColumn>
+                            <!--Cột THAO TÁC-->
+                            <DataGridTemplateColumn Header="Thao tác"
+                                        Width="110">
+                                <!--Mỗi dòng của cột chứa 2 button-->
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid Margin="0,0,12,0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="30"></ColumnDefinition>
+                                                <ColumnDefinition Width="30"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Button Grid.Column="0"
+                                                Background="{x:Null}"
+                                                BorderThickness="0"
+                                                Command="{Binding Path=DataContext.EditCustomerCommand,
+                                                RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}"
+                                                CommandParameter="{Binding Path= khachhang.IDKH}"
+                                                Height="Auto"
+                                                Width="20" Margin="6,0,5,0">
+                                                <!--Button EDIT-->
+                                                <!--Ảnh hình EDIT-->
+                                                <Grid>
+                                                    <Image Source="..\..\Photo\edit_icon.png" Margin="-17,-4,1,-4" RenderTransformOrigin="0.5,0.5">
+                                                        <Image.RenderTransform>
+                                                            <TransformGroup>
+                                                                <ScaleTransform ScaleX="-1"/>
+                                                                <SkewTransform/>
+                                                                <RotateTransform/>
+                                                                <TranslateTransform/>
+                                                            </TransformGroup>
+                                                        </Image.RenderTransform>
+                                                    </Image>
+                                                </Grid>
+                                            </Button>
+                                            <Button Grid.Column="1"
+                                                Background="{x:Null}"
+                                                BorderThickness="0"
+                                                Command="{Binding Path=DataContext.DeletePlaceCommand,
+                                                RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}"
+                                                CommandParameter="{Binding Path=khachhang.IDKH}"
+                                                Height="Auto"
+                                                Width="20"
+                                                Margin="11,0,0,0">
+                                                <!--Button DELETE-->
+                                                <!--Ảnh hình dấu X-->
+                                                <Grid>
+                                                    <Image Source="..\..\Photo\delete_icon.png" Margin="-17,-15,-4,-15" RenderTransformOrigin="0.5,0.5">
+                                                        <Image.RenderTransform>
+                                                            <TransformGroup>
+                                                                <ScaleTransform ScaleX="-1"/>
+                                                                <SkewTransform/>
+                                                                <RotateTransform/>
+                                                                <TranslateTransform/>
+                                                            </TransformGroup>
+                                                        </Image.RenderTransform>
+                                                    </Image>
+                                                </Grid>
+                                            </Button>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <!--Cột TÊN điểm tham quan-->
+                            <DataGridTextColumn Header="Tên khách hàng"
+                                    Binding="{Binding khachhang.TENKH}"
+                                    Width="250"></DataGridTextColumn>
+                            <!--Tỉnh thành-->
+                            <DataGridTextColumn Header="Số CMND"
+                                            Binding="{Binding khachhang.CMND}"
+                                    Width="150"></DataGridTextColumn>
+
+                            <!--Trạng thái-->
+                            <DataGridTextColumn Header="Email"
+                                            Width="300"
+                                            Binding="{Binding khachhang.EMAIL}">
+                            </DataGridTextColumn>
+                            <!--Mô tả-->
+                            <DataGridTextColumn Header="Địa chỉ"
+                                            Binding="{Binding khachhang.DIACHI}"
+                                            Width="520"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+    </Border>
 </UserControl>

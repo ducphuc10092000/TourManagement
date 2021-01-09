@@ -28,6 +28,7 @@ namespace TourManagement.Model
         public int SOLUONGKH { get; set; }
         public string NGAYBATDAU { get; set; }
         public string NGAYKETTHUC { get; set; }
+        public Nullable<int> SOLUONGPT { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CT_DOAN_KHACHHANG> CT_DOAN_KHACHHANG { get; set; }

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\QUANLYTOURDULICH\TourManagement\TourManagement\App.xaml
-21867492566
+25308603364
 2-1556844510
-601152520202
+71-1785583838
 22-756496204
-MainWindow.xaml;ResourceXAML\MainResource.xaml;View\DashBoard\UC_DashBoard.xaml;View\ManageAccount\UC_ManageAccount.xaml;View\ManageCustomer\UC_ManageCustomer.xaml;View\ManageReport\UC_ManageReport.xaml;View\ManageStaff\UC_ManageStaff.xaml;View\ManageTour\ManageHotel\UC_ManageHotel.xaml;View\ManageTour\ManageHotel\WD_AddHotel.xaml;View\ManageTour\ManageHotel\WD_EditHotel.xaml;View\ManageTour\ManagePlace\UC_ManagePlace.xaml;View\ManageTour\ManagePlace\WD_AddPlace.xaml;View\ManageTour\ManagePlace\WD_EditPlace.xaml;View\ManageTour\ManageProvince\WD_AddProvince.xaml;View\ManageTour\ManageProvince\WD_EditProvince.xaml;View\ManageTour\UC_ManageTour.xaml;View\ManageTour\WD_ManageTour\WD_AddTour.xaml;View\ManageTour\WD_ManageTour\WD_EditTour.xaml;View\ManageTour\WD_ManageTour\WD_HotelList.xaml;View\ManageTour\WD_ManageTour\WD_PlaceList.xaml;View\ManageTrip\UC_ManageTrip.xaml;
+MainWindow.xaml;ResourceXAML\MainResource.xaml;View\DashBoard\UC_DashBoard.xaml;View\ManageAccount\UC_ManageAccount.xaml;View\ManageCustomer\UC_ManageCustomer.xaml;View\ManageCustomer\WD_AddCustomer.xaml;View\ManageCustomer\WD_EditCustomer.xaml;View\ManageReport\UC_ManageReport.xaml;View\ManageStaff\UC_ManageStaff.xaml;View\ManageTour\ManageHotel\UC_ManageHotel.xaml;View\ManageTour\ManageHotel\WD_AddHotel.xaml;View\ManageTour\ManageHotel\WD_EditHotel.xaml;View\ManageTour\ManagePlace\UC_ManagePlace.xaml;View\ManageTour\ManagePlace\WD_AddPlace.xaml;View\ManageTour\ManagePlace\WD_EditPlace.xaml;View\ManageTour\ManageProvince\WD_AddProvince.xaml;View\ManageTour\ManageProvince\WD_EditProvince.xaml;View\ManageTour\UC_ManageTour.xaml;View\ManageTour\WD_ManageTour\WD_AddTour.xaml;View\ManageTour\WD_ManageTour\WD_EditTour.xaml;View\ManageTour\WD_ManageTour\WD_HotelList.xaml;View\ManageTour\WD_ManageTour\WD_PlaceList.xaml;View\ManageTrip\UC_ManageTrip.xaml;View\ManageTrip\WD_AddTrip.xaml;View\ManageTrip\WD_HotelList.xaml;
 
-False
+True
 

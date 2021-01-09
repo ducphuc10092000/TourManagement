@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:TourManagement.View.ManageTour"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
              xmlns:viewManagePlace="clr-namespace:TourManagement.View.ManageTour.ManagePlace"
-             xmlns:viewManageHotel="clr-namespace:TourManagement.View.ManageTour.ManageHotel"
+             
              mc:Ignorable="d" 
              x:Name="uc_ManageTour"
              DataContext="{StaticResource UC_ManageTourVM}"
@@ -92,17 +92,8 @@
                     Height="Auto"
                     BorderThickness="0"
                     HorizontalContentAlignment="Left"
-                    Background="#FFFFBC5B" Margin="600,10,0,10"/>
-                            <Button Content="QL KHÁCH SẠN"
-                    IsDefault="True"
-                    Command="{Binding Path=BtnManageHotelCommand}"
-                    Style="{DynamicResource MaterialDesignRaisedButton}"
-                    materialDesign:ShadowAssist.ShadowDepth="Depth4" 
-                    Foreground="Black"
-                    Height="Auto"
-                    BorderThickness="0"
-                    HorizontalContentAlignment="Left"
-                    Background="#FFFFBC5B" Margin="10,10,0,10"/>
+                    Background="#FFFFBC5B" Margin="740,10,0,10"/>
+                            
                         </StackPanel>
                     </Grid>
                     <!--Danh sách tour-->
@@ -247,19 +238,6 @@
             <viewManagePlace:UC_ManagePlace></viewManagePlace:UC_ManagePlace>
         </Grid>
 
-        <!--ManageHotel-->
-        <Grid>
-            <Grid.Style>
-                <Style TargetType="Grid">
-                    <Setter Property="Visibility" Value="Collapsed"></Setter>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding ChucNang}" Value="2">
-                            <Setter Property="Visibility" Value="Visible"></Setter>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Grid.Style>
-            <viewManageHotel:UC_ManageHotel></viewManageHotel:UC_ManageHotel>
-        </Grid>
+        
     </Grid>
 </UserControl>

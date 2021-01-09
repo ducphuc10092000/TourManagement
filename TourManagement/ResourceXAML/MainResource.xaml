@@ -5,7 +5,9 @@
                     xmlns:viewmodel_ManagePlace="clr-namespace:TourManagement.ViewModel.ManageTour.ManagePlace"
                     xmlns:viewmodel_ManageProvince="clr-namespace:TourManagement.ViewModel.ManageTour.ManageProvince"
                     xmlns:viewmodel_ManageHotel="clr-namespace:TourManagement.ViewModel.ManageTour.ManageHotel"
-                    xmlns:viewmodel_WD_ManageTour="clr-namespace:TourManagement.ViewModel.ManageTour.WD_ManageTour">
+                    xmlns:viewmodel_WD_ManageTour="clr-namespace:TourManagement.ViewModel.ManageTour.WD_ManageTour"
+                    xmlns:viewmodel_ManageCustomer="clr-namespace:TourManagement.ViewModel.ManageCustomer"
+                    xmlns:viewmodel_ManageTrip="clr-namespace:TourManagement.ViewModel.ManageTrip">
     <viewmodel:MainViewModel x:Key="MainVM"></viewmodel:MainViewModel>
     <viewmodel_ManageTour:UC_ManageTourViewModel x:Key="UC_ManageTourVM"></viewmodel_ManageTour:UC_ManageTourViewModel>
     <viewmodel_ManagePlace:WD_AddPlaceViewModel x:Key="WD_AddPlaceVM"></viewmodel_ManagePlace:WD_AddPlaceViewModel>
@@ -16,6 +18,10 @@
     <viewmodel_ManageHotel:WD_EditHotelViewModel x:Key="WD_EditHotelVM"></viewmodel_ManageHotel:WD_EditHotelViewModel>
     <viewmodel_WD_ManageTour:WD_AddTourViewModel x:Key="WD_AddTourVM"></viewmodel_WD_ManageTour:WD_AddTourViewModel>
     <viewmodel_WD_ManageTour:WD_EditTourViewModel x:Key="WD_EditTourVM"></viewmodel_WD_ManageTour:WD_EditTourViewModel>
-    <viewmodel_WD_ManageTour:WD_PlaceListViewModel x:Key="WD_PlaceListVM"></viewmodel_WD_ManageTour:WD_PlaceListViewModel>
-    <viewmodel_WD_ManageTour:WD_HotelListViewModel x:Key="WD_HotelListVM"></viewmodel_WD_ManageTour:WD_HotelListViewModel>
+    <viewmodel_ManageCustomer:WD_AddCustomerViewModel x:Key="WD_AddCustomerVM"></viewmodel_ManageCustomer:WD_AddCustomerViewModel>
+    <viewmodel_ManageCustomer:WD_EditCustomerViewModel x:Key="WD_EditCustomerVM"></viewmodel_ManageCustomer:WD_EditCustomerViewModel>
+    <viewmodel_ManageCustomer:UC_ManageCustomerViewModel x:Key="UC_ManageCustomerVM"></viewmodel_ManageCustomer:UC_ManageCustomerViewModel>
+    <viewmodel_ManageTrip:UC_ManageTripViewModel x:Key="UC_ManageTripVM"></viewmodel_ManageTrip:UC_ManageTripViewModel>
+    <viewmodel_ManageTrip:WD_AddTripViewModel x:Key="WD_AddTripVM"></viewmodel_ManageTrip:WD_AddTripViewModel>
+
 </ResourceDictionary>

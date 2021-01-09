@@ -5,6 +5,8 @@ FD:\QUANLYTOURDULICH\TourManagement\TourManagement\ResourceXAML\MainResource.xam
 FD:\QUANLYTOURDULICH\TourManagement\TourManagement\View\DashBoard\UC_DashBoard.xaml;;
 FD:\QUANLYTOURDULICH\TourManagement\TourManagement\View\ManageAccount\UC_ManageAccount.xaml;;
 FD:\QUANLYTOURDULICH\TourManagement\TourManagement\View\ManageCustomer\UC_ManageCustomer.xaml;;
+FD:\QUANLYTOURDULICH\TourManagement\TourManagement\View\ManageCustomer\WD_AddCustomer.xaml;;
+FD:\QUANLYTOURDULICH\TourManagement\TourManagement\View\ManageCustomer\WD_EditCustomer.xaml;;
 FD:\QUANLYTOURDULICH\TourManagement\TourManagement\View\ManageReport\UC_ManageReport.xaml;;
 FD:\QUANLYTOURDULICH\TourManagement\TourManagement\View\ManageStaff\UC_ManageStaff.xaml;;
 FD:\QUANLYTOURDULICH\TourManagement\TourManagement\View\ManageTour\ManageHotel\UC_ManageHotel.xaml;;
@@ -21,4 +23,6 @@ FD:\QUANLYTOURDULICH\TourManagement\TourManagement\View\ManageTour\WD_ManageTour
 FD:\QUANLYTOURDULICH\TourManagement\TourManagement\View\ManageTour\WD_ManageTour\WD_HotelList.xaml;;
 FD:\QUANLYTOURDULICH\TourManagement\TourManagement\View\ManageTour\WD_ManageTour\WD_PlaceList.xaml;;
 FD:\QUANLYTOURDULICH\TourManagement\TourManagement\View\ManageTrip\UC_ManageTrip.xaml;;
+FD:\QUANLYTOURDULICH\TourManagement\TourManagement\View\ManageTrip\WD_AddTrip.xaml;;
+FD:\QUANLYTOURDULICH\TourManagement\TourManagement\View\ManageTrip\WD_HotelList.xaml;;
 

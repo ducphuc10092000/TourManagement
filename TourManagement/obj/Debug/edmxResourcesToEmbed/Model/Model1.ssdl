@@ -55,6 +55,7 @@
     <Property Name="SOLUONGKH" Type="int" Nullable="false" />
     <Property Name="NGAYBATDAU" Type="nvarchar(max)" />
     <Property Name="NGAYKETTHUC" Type="nvarchar(max)" />
+    <Property Name="SOLUONGPT" Type="int" />
   </EntityType>
   <EntityType Name="KHACHHANG">
     <Key>
@@ -68,6 +69,8 @@
     <Property Name="EMAIL" Type="nvarchar(max)" />
     <Property Name="NGAYSINH" Type="nvarchar(max)" />
     <Property Name="ACTIVE" Type="bit" />
+    <Property Name="GIOITINH" Type="nvarchar(max)" />
+    <Property Name="AVATAR" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="KHACHSAN">
     <Key>

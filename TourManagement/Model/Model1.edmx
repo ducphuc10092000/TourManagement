@@ -60,6 +60,7 @@
           <Property Name="SOLUONGKH" Type="int" Nullable="false" />
           <Property Name="NGAYBATDAU" Type="nvarchar(max)" />
           <Property Name="NGAYKETTHUC" Type="nvarchar(max)" />
+          <Property Name="SOLUONGPT" Type="int" />
         </EntityType>
         <EntityType Name="KHACHHANG">
           <Key>
@@ -73,6 +74,8 @@
           <Property Name="EMAIL" Type="nvarchar(max)" />
           <Property Name="NGAYSINH" Type="nvarchar(max)" />
           <Property Name="ACTIVE" Type="bit" />
+          <Property Name="GIOITINH" Type="nvarchar(max)" />
+          <Property Name="AVATAR" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="KHACHSAN">
           <Key>
@@ -488,6 +491,7 @@
           <Property Name="SOLUONGKH" Type="Int32" Nullable="false" />
           <Property Name="NGAYBATDAU" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NGAYKETTHUC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SOLUONGPT" Type="Int32" />
           <NavigationProperty Name="CT_DOAN_KHACHHANG" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_KHACHHANG" FromRole="DOAN" ToRole="CT_DOAN_KHACHHANG" />
           <NavigationProperty Name="CT_DOAN_KHACHSAN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_KHACHSAN" FromRole="DOAN" ToRole="CT_DOAN_KHACHSAN" />
           <NavigationProperty Name="CT_DOAN_PHUONGTIEN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_PHUONGTIEN" FromRole="DOAN" ToRole="CT_DOAN_PHUONGTIEN" />
@@ -505,6 +509,8 @@
           <Property Name="EMAIL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NGAYSINH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ACTIVE" Type="Boolean" />
+          <Property Name="GIOITINH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AVATAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CT_DOAN_KHACHHANG" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_KHACHHANG_KH" FromRole="KHACHHANG" ToRole="CT_DOAN_KHACHHANG" />
         </EntityType>
         <EntityType Name="KHACHSAN">
@@ -792,6 +798,7 @@
           <EntitySetMapping Name="DOAN">
             <EntityTypeMapping TypeName="TOURMANAGEMENTModel.DOAN">
               <MappingFragment StoreEntitySet="DOAN">
+                <ScalarProperty Name="SOLUONGPT" ColumnName="SOLUONGPT" />
                 <ScalarProperty Name="NGAYKETTHUC" ColumnName="NGAYKETTHUC" />
                 <ScalarProperty Name="NGAYBATDAU" ColumnName="NGAYBATDAU" />
                 <ScalarProperty Name="SOLUONGKH" ColumnName="SOLUONGKH" />
@@ -804,6 +811,8 @@
           <EntitySetMapping Name="KHACHHANG">
             <EntityTypeMapping TypeName="TOURMANAGEMENTModel.KHACHHANG">
               <MappingFragment StoreEntitySet="KHACHHANG">
+                <ScalarProperty Name="AVATAR" ColumnName="AVATAR" />
+                <ScalarProperty Name="GIOITINH" ColumnName="GIOITINH" />
                 <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
                 <ScalarProperty Name="NGAYSINH" ColumnName="NGAYSINH" />
                 <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
