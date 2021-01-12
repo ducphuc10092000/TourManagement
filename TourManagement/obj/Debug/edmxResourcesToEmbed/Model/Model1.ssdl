@@ -9,6 +9,24 @@
     <Property Name="IDTOUR" Type="int" Nullable="false" />
     <Property Name="ACTIVE" Type="bit" />
   </EntityType>
+  <EntityType Name="CT_DOAN_BUAAN">
+    <Key>
+      <PropertyRef Name="IDCT" />
+    </Key>
+    <Property Name="IDCT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDDOAN" Type="int" Nullable="false" />
+    <Property Name="CHIPHIBUAAN" Type="nvarchar(max)" />
+    <Property Name="MOTA" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="CT_DOAN_CHIPHIKHAC">
+    <Key>
+      <PropertyRef Name="IDCT" />
+    </Key>
+    <Property Name="IDCT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDDOAN" Type="int" Nullable="false" />
+    <Property Name="CHIPHI" Type="nvarchar(max)" />
+    <Property Name="MOTA" Type="nvarchar(max)" />
+  </EntityType>
   <EntityType Name="CT_DOAN_KHACHHANG">
     <Key>
       <PropertyRef Name="IDCT" />
@@ -24,6 +42,16 @@
     <Property Name="IDCT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IDDOAN" Type="int" />
     <Property Name="IDKS" Type="int" />
+    <Property Name="CHIPHIKS" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="CT_DOAN_NHANVIEN">
+    <Key>
+      <PropertyRef Name="IDCT" />
+    </Key>
+    <Property Name="IDCT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDDOAN" Type="int" Nullable="false" />
+    <Property Name="IDNV" Type="int" Nullable="false" />
+    <Property Name="NHIEMVU" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="CT_DOAN_PHUONGTIEN">
     <Key>
@@ -32,6 +60,7 @@
     <Property Name="IDCT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IDDOAN" Type="int" />
     <Property Name="IDPT" Type="int" />
+    <Property Name="CHIPHIPT" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="DIADIEM">
     <Key>
@@ -56,6 +85,8 @@
     <Property Name="NGAYBATDAU" Type="nvarchar(max)" />
     <Property Name="NGAYKETTHUC" Type="nvarchar(max)" />
     <Property Name="SOLUONGPT" Type="int" />
+    <Property Name="MOTA" Type="nvarchar(max)" />
+    <Property Name="TONGCHIPHI" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="KHACHHANG">
     <Key>
@@ -85,6 +116,7 @@
     <Property Name="TENKS" Type="nvarchar(max)" />
     <Property Name="MOTA" Type="nvarchar(max)" />
     <Property Name="AVATAR" Type="nvarchar(max)" />
+    <Property Name="GIAKS" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="NGUOIDUNG">
     <Key>
@@ -107,6 +139,8 @@
     <Property Name="EMAIL" Type="nvarchar(max)" />
     <Property Name="NGAYSINH" Type="nvarchar(max)" />
     <Property Name="CHUCVU" Type="nvarchar(max)" />
+    <Property Name="CMND" Type="nvarchar(max)" />
+    <Property Name="AVATAR" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="PHUONGTIEN">
     <Key>
@@ -169,6 +203,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="fk_CT_DOAN_BUAAN_DOAN">
+    <End Role="DOAN" Type="Self.DOAN" Multiplicity="1" />
+    <End Role="CT_DOAN_BUAAN" Type="Self.CT_DOAN_BUAAN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOAN">
+        <PropertyRef Name="IDDOAN" />
+      </Principal>
+      <Dependent Role="CT_DOAN_BUAAN">
+        <PropertyRef Name="IDDOAN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CT_DOAN_CHIPHIKHAC_DOAN">
+    <End Role="DOAN" Type="Self.DOAN" Multiplicity="1" />
+    <End Role="CT_DOAN_CHIPHIKHAC" Type="Self.CT_DOAN_CHIPHIKHAC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOAN">
+        <PropertyRef Name="IDDOAN" />
+      </Principal>
+      <Dependent Role="CT_DOAN_CHIPHIKHAC">
+        <PropertyRef Name="IDDOAN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="fk_CT_DOAN_KHACHHANG">
     <End Role="DOAN" Type="Self.DOAN" Multiplicity="0..1" />
     <End Role="CT_DOAN_KHACHHANG" Type="Self.CT_DOAN_KHACHHANG" Multiplicity="*" />
@@ -214,6 +272,30 @@
       </Principal>
       <Dependent Role="CT_DOAN_KHACHSAN">
         <PropertyRef Name="IDKS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CT_DOAN_NHANVIEN_DOAN">
+    <End Role="DOAN" Type="Self.DOAN" Multiplicity="1" />
+    <End Role="CT_DOAN_NHANVIEN" Type="Self.CT_DOAN_NHANVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOAN">
+        <PropertyRef Name="IDDOAN" />
+      </Principal>
+      <Dependent Role="CT_DOAN_NHANVIEN">
+        <PropertyRef Name="IDDOAN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CT_DOAN_NHANVIEN_NHANVIEN">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
+    <End Role="CT_DOAN_NHANVIEN" Type="Self.CT_DOAN_NHANVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="IDNV" />
+      </Principal>
+      <Dependent Role="CT_DOAN_NHANVIEN">
+        <PropertyRef Name="IDNV" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -291,8 +373,11 @@
   </Association>
   <EntityContainer Name="TOURMANAGEMENTModelStoreContainer">
     <EntitySet Name="CT_DIADIEM_TOUR" EntityType="Self.CT_DIADIEM_TOUR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CT_DOAN_BUAAN" EntityType="Self.CT_DOAN_BUAAN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CT_DOAN_CHIPHIKHAC" EntityType="Self.CT_DOAN_CHIPHIKHAC" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CT_DOAN_KHACHHANG" EntityType="Self.CT_DOAN_KHACHHANG" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CT_DOAN_KHACHSAN" EntityType="Self.CT_DOAN_KHACHSAN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CT_DOAN_NHANVIEN" EntityType="Self.CT_DOAN_NHANVIEN" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CT_DOAN_PHUONGTIEN" EntityType="Self.CT_DOAN_PHUONGTIEN" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DIADIEM" EntityType="Self.DIADIEM" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DOAN" EntityType="Self.DOAN" Schema="dbo" store:Type="Tables" />
@@ -312,6 +397,14 @@
       <End Role="TOUR" EntitySet="TOUR" />
       <End Role="CT_DIADIEM_TOUR" EntitySet="CT_DIADIEM_TOUR" />
     </AssociationSet>
+    <AssociationSet Name="fk_CT_DOAN_BUAAN_DOAN" Association="Self.fk_CT_DOAN_BUAAN_DOAN">
+      <End Role="DOAN" EntitySet="DOAN" />
+      <End Role="CT_DOAN_BUAAN" EntitySet="CT_DOAN_BUAAN" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CT_DOAN_CHIPHIKHAC_DOAN" Association="Self.fk_CT_DOAN_CHIPHIKHAC_DOAN">
+      <End Role="DOAN" EntitySet="DOAN" />
+      <End Role="CT_DOAN_CHIPHIKHAC" EntitySet="CT_DOAN_CHIPHIKHAC" />
+    </AssociationSet>
     <AssociationSet Name="fk_CT_DOAN_KHACHHANG" Association="Self.fk_CT_DOAN_KHACHHANG">
       <End Role="DOAN" EntitySet="DOAN" />
       <End Role="CT_DOAN_KHACHHANG" EntitySet="CT_DOAN_KHACHHANG" />
@@ -327,6 +420,14 @@
     <AssociationSet Name="fk_CT_DOAN_KHACHSAN_KS" Association="Self.fk_CT_DOAN_KHACHSAN_KS">
       <End Role="KHACHSAN" EntitySet="KHACHSAN" />
       <End Role="CT_DOAN_KHACHSAN" EntitySet="CT_DOAN_KHACHSAN" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CT_DOAN_NHANVIEN_DOAN" Association="Self.fk_CT_DOAN_NHANVIEN_DOAN">
+      <End Role="DOAN" EntitySet="DOAN" />
+      <End Role="CT_DOAN_NHANVIEN" EntitySet="CT_DOAN_NHANVIEN" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CT_DOAN_NHANVIEN_NHANVIEN" Association="Self.fk_CT_DOAN_NHANVIEN_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+      <End Role="CT_DOAN_NHANVIEN" EntitySet="CT_DOAN_NHANVIEN" />
     </AssociationSet>
     <AssociationSet Name="fk_CT_DOAN_PHUONGTIEN" Association="Self.fk_CT_DOAN_PHUONGTIEN">
       <End Role="DOAN" EntitySet="DOAN" />

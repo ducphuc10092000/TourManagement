@@ -140,6 +140,7 @@ namespace TourManagement.ViewModel.ManageTour.WD_ManageTour
                 wd_placelist_DT.LoadPlaceList();
                 wd_placelist.ShowDialog();
                 wd_placelist.Close();
+
                 if (wd_placelist_DT.SelectedPLACE == null)
                 {
                     return;

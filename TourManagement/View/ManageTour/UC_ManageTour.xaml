@@ -263,7 +263,6 @@
             </Grid.Style>
             <viewManagePlace:UC_ManagePlace></viewManagePlace:UC_ManagePlace>
         </Grid>
-
-
+        
     </Grid>
 </UserControl>

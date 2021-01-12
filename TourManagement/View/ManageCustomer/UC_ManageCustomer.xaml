@@ -85,20 +85,14 @@
             <Grid Grid.Row="1" Margin="5,5,10,5">
                 <ScrollViewer>
                     <DataGrid ItemsSource="{Binding CUSTOMERLISTDTG,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"
-                          AlternatingRowBackground="#e2e2e2"
-                          IsReadOnly="True"
-                          SelectedItem="{Binding SelectedPLACE,UpdateSourceTrigger=PropertyChanged,
+                              AlternatingRowBackground="#e2e2e2"
+                              IsReadOnly="True"
+                              SelectedItem="{Binding SelectedCUSTOMER,UpdateSourceTrigger=PropertyChanged,
                             NotifyOnSourceUpdated=True}"
-                           ScrollViewer.VerticalScrollBarVisibility="Auto"
-                          AutoGenerateColumns="False"
-                          CanUserResizeColumns="False"
-                          CanUserReorderColumns="False">
-                        <DataGrid.InputBindings>
-                            <MouseBinding
-                                Gesture="LeftDoubleClick"
-                                Command="{Binding DoubleClickSelectPlaceCommand}"
-                                CommandParameter="{Binding ElementName=wd_PlaceList}"/>
-                        </DataGrid.InputBindings>
+                              ScrollViewer.VerticalScrollBarVisibility="Auto"
+                              AutoGenerateColumns="False"
+                              CanUserResizeColumns="False"
+                              CanUserReorderColumns="False">
                         <DataGrid.Resources>
                             <Style TargetType="DataGridRow">
                                 <Setter Property="Height" Value="35"></Setter>

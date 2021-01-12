@@ -11,6 +11,26 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="CT_DOAN_BUAAN">
+      <EntityTypeMapping TypeName="TOURMANAGEMENTModel.CT_DOAN_BUAAN">
+        <MappingFragment StoreEntitySet="CT_DOAN_BUAAN">
+          <ScalarProperty Name="MOTA" ColumnName="MOTA" />
+          <ScalarProperty Name="CHIPHIBUAAN" ColumnName="CHIPHIBUAAN" />
+          <ScalarProperty Name="IDDOAN" ColumnName="IDDOAN" />
+          <ScalarProperty Name="IDCT" ColumnName="IDCT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CT_DOAN_CHIPHIKHAC">
+      <EntityTypeMapping TypeName="TOURMANAGEMENTModel.CT_DOAN_CHIPHIKHAC">
+        <MappingFragment StoreEntitySet="CT_DOAN_CHIPHIKHAC">
+          <ScalarProperty Name="MOTA" ColumnName="MOTA" />
+          <ScalarProperty Name="CHIPHI" ColumnName="CHIPHI" />
+          <ScalarProperty Name="IDDOAN" ColumnName="IDDOAN" />
+          <ScalarProperty Name="IDCT" ColumnName="IDCT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="CT_DOAN_KHACHHANG">
       <EntityTypeMapping TypeName="TOURMANAGEMENTModel.CT_DOAN_KHACHHANG">
         <MappingFragment StoreEntitySet="CT_DOAN_KHACHHANG">
@@ -23,7 +43,18 @@
     <EntitySetMapping Name="CT_DOAN_KHACHSAN">
       <EntityTypeMapping TypeName="TOURMANAGEMENTModel.CT_DOAN_KHACHSAN">
         <MappingFragment StoreEntitySet="CT_DOAN_KHACHSAN">
+          <ScalarProperty Name="CHIPHIKS" ColumnName="CHIPHIKS" />
           <ScalarProperty Name="IDKS" ColumnName="IDKS" />
+          <ScalarProperty Name="IDDOAN" ColumnName="IDDOAN" />
+          <ScalarProperty Name="IDCT" ColumnName="IDCT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CT_DOAN_NHANVIEN">
+      <EntityTypeMapping TypeName="TOURMANAGEMENTModel.CT_DOAN_NHANVIEN">
+        <MappingFragment StoreEntitySet="CT_DOAN_NHANVIEN">
+          <ScalarProperty Name="NHIEMVU" ColumnName="NHIEMVU" />
+          <ScalarProperty Name="IDNV" ColumnName="IDNV" />
           <ScalarProperty Name="IDDOAN" ColumnName="IDDOAN" />
           <ScalarProperty Name="IDCT" ColumnName="IDCT" />
         </MappingFragment>
@@ -32,6 +63,7 @@
     <EntitySetMapping Name="CT_DOAN_PHUONGTIEN">
       <EntityTypeMapping TypeName="TOURMANAGEMENTModel.CT_DOAN_PHUONGTIEN">
         <MappingFragment StoreEntitySet="CT_DOAN_PHUONGTIEN">
+          <ScalarProperty Name="CHIPHIPT" ColumnName="CHIPHIPT" />
           <ScalarProperty Name="IDPT" ColumnName="IDPT" />
           <ScalarProperty Name="IDDOAN" ColumnName="IDDOAN" />
           <ScalarProperty Name="IDCT" ColumnName="IDCT" />
@@ -54,6 +86,8 @@
     <EntitySetMapping Name="DOAN">
       <EntityTypeMapping TypeName="TOURMANAGEMENTModel.DOAN">
         <MappingFragment StoreEntitySet="DOAN">
+          <ScalarProperty Name="TONGCHIPHI" ColumnName="TONGCHIPHI" />
+          <ScalarProperty Name="MOTA" ColumnName="MOTA" />
           <ScalarProperty Name="SOLUONGPT" ColumnName="SOLUONGPT" />
           <ScalarProperty Name="NGAYKETTHUC" ColumnName="NGAYKETTHUC" />
           <ScalarProperty Name="NGAYBATDAU" ColumnName="NGAYBATDAU" />
@@ -83,6 +117,7 @@
     <EntitySetMapping Name="KHACHSAN">
       <EntityTypeMapping TypeName="TOURMANAGEMENTModel.KHACHSAN">
         <MappingFragment StoreEntitySet="KHACHSAN">
+          <ScalarProperty Name="GIAKS" ColumnName="GIAKS" />
           <ScalarProperty Name="AVATAR" ColumnName="AVATAR" />
           <ScalarProperty Name="MOTA" ColumnName="MOTA" />
           <ScalarProperty Name="TENKS" ColumnName="TENKS" />
@@ -109,6 +144,8 @@
     <EntitySetMapping Name="NHANVIEN">
       <EntityTypeMapping TypeName="TOURMANAGEMENTModel.NHANVIEN">
         <MappingFragment StoreEntitySet="NHANVIEN">
+          <ScalarProperty Name="AVATAR" ColumnName="AVATAR" />
+          <ScalarProperty Name="CMND" ColumnName="CMND" />
           <ScalarProperty Name="CHUCVU" ColumnName="CHUCVU" />
           <ScalarProperty Name="NGAYSINH" ColumnName="NGAYSINH" />
           <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />

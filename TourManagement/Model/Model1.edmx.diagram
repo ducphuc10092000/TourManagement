@@ -5,26 +5,33 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="1ce4c4e08a4f4593b018940220c98e0e" Name="Diagram1" ZoomLevel="68">
-        <EntityTypeShape EntityType="TOURMANAGEMENTModel.CT_DIADIEM_TOUR" Width="1.5" PointX="3" PointY="5.25" />
-        <EntityTypeShape EntityType="TOURMANAGEMENTModel.CT_DOAN_KHACHHANG" Width="1.5" PointX="5.25" PointY="12.375" />
-        <EntityTypeShape EntityType="TOURMANAGEMENTModel.CT_DOAN_KHACHSAN" Width="1.5" PointX="5.25" PointY="6.375" />
-        <EntityTypeShape EntityType="TOURMANAGEMENTModel.CT_DOAN_PHUONGTIEN" Width="1.5" PointX="5.25" PointY="9.375" />
-        <EntityTypeShape EntityType="TOURMANAGEMENTModel.DIADIEM" Width="1.5" PointX="0.75" PointY="2" />
-        <EntityTypeShape EntityType="TOURMANAGEMENTModel.DOAN" Width="1.5" PointX="3" PointY="8.75" />
-        <EntityTypeShape EntityType="TOURMANAGEMENTModel.KHACHHANG" Width="1.5" PointX="3" PointY="19.75" />
-        <EntityTypeShape EntityType="TOURMANAGEMENTModel.KHACHSAN" Width="1.5" PointX="3" PointY="0.75" />
-        <EntityTypeShape EntityType="TOURMANAGEMENTModel.NGUOIDUNG" Width="1.5" PointX="8" PointY="2" />
-        <EntityTypeShape EntityType="TOURMANAGEMENTModel.NHANVIEN" Width="1.5" PointX="5.75" PointY="1.875" />
-        <EntityTypeShape EntityType="TOURMANAGEMENTModel.PHUONGTIEN" Width="1.5" PointX="3" PointY="16.375" />
-        <EntityTypeShape EntityType="TOURMANAGEMENTModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="5.625" />
-        <EntityTypeShape EntityType="TOURMANAGEMENTModel.TINHTHANH" Width="1.5" PointX="1.5" PointY="13.5" />
-        <EntityTypeShape EntityType="TOURMANAGEMENTModel.TOUR" Width="1.5" PointX="0.75" PointY="6.125" />
+        <EntityTypeShape EntityType="TOURMANAGEMENTModel.CT_DIADIEM_TOUR" Width="1.5" PointX="3" PointY="9.25" />
+        <EntityTypeShape EntityType="TOURMANAGEMENTModel.CT_DOAN_BUAAN" Width="1.5" PointX="5.25" PointY="26.125" />
+        <EntityTypeShape EntityType="TOURMANAGEMENTModel.CT_DOAN_CHIPHIKHAC" Width="1.5" PointX="5.25" PointY="23.375" />
+        <EntityTypeShape EntityType="TOURMANAGEMENTModel.CT_DOAN_KHACHHANG" Width="1.5" PointX="5.25" PointY="13.25" />
+        <EntityTypeShape EntityType="TOURMANAGEMENTModel.CT_DOAN_KHACHSAN" Width="1.5" PointX="8.25" PointY="13.125" />
+        <EntityTypeShape EntityType="TOURMANAGEMENTModel.CT_DOAN_NHANVIEN" Width="1.5" PointX="5.25" PointY="10.125" />
+        <EntityTypeShape EntityType="TOURMANAGEMENTModel.CT_DOAN_PHUONGTIEN" Width="1.5" PointX="5.25" PointY="16.125" />
+        <EntityTypeShape EntityType="TOURMANAGEMENTModel.DIADIEM" Width="1.5" PointX="0.75" PointY="6" />
+        <EntityTypeShape EntityType="TOURMANAGEMENTModel.DOAN" Width="1.5" PointX="3" PointY="12.25" />
+        <EntityTypeShape EntityType="TOURMANAGEMENTModel.KHACHHANG" Width="1.5" PointX="3" PointY="21.75" />
+        <EntityTypeShape EntityType="TOURMANAGEMENTModel.KHACHSAN" Width="1.5" PointX="6" PointY="5.625" />
+        <EntityTypeShape EntityType="TOURMANAGEMENTModel.NGUOIDUNG" Width="1.5" PointX="5.25" PointY="19.125" />
+        <EntityTypeShape EntityType="TOURMANAGEMENTModel.NHANVIEN" Width="1.5" PointX="3" PointY="17.75" />
+        <EntityTypeShape EntityType="TOURMANAGEMENTModel.PHUONGTIEN" Width="1.5" PointX="3" PointY="6.25" />
+        <EntityTypeShape EntityType="TOURMANAGEMENTModel.sysdiagrams" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TOURMANAGEMENTModel.TINHTHANH" Width="1.5" PointX="1.5" PointY="2.5" />
+        <EntityTypeShape EntityType="TOURMANAGEMENTModel.TOUR" Width="1.5" PointX="0.75" PointY="10.125" />
         <AssociationConnector Association="TOURMANAGEMENTModel.FK_CT_DIADIEM_TOUR_DIADIEM" />
         <AssociationConnector Association="TOURMANAGEMENTModel.FK_CT_DIADIEM_TOUR_TOUR" />
+        <AssociationConnector Association="TOURMANAGEMENTModel.fk_CT_DOAN_BUAAN_DOAN" />
+        <AssociationConnector Association="TOURMANAGEMENTModel.fk_CT_DOAN_CHIPHIKHAC_DOAN" />
         <AssociationConnector Association="TOURMANAGEMENTModel.fk_CT_DOAN_KHACHHANG" />
         <AssociationConnector Association="TOURMANAGEMENTModel.fk_CT_DOAN_KHACHHANG_KH" />
         <AssociationConnector Association="TOURMANAGEMENTModel.fk_CT_DOAN_KHACHSAN" />
         <AssociationConnector Association="TOURMANAGEMENTModel.fk_CT_DOAN_KHACHSAN_KS" />
+        <AssociationConnector Association="TOURMANAGEMENTModel.fk_CT_DOAN_NHANVIEN_DOAN" />
+        <AssociationConnector Association="TOURMANAGEMENTModel.fk_CT_DOAN_NHANVIEN_NHANVIEN" />
         <AssociationConnector Association="TOURMANAGEMENTModel.fk_CT_DOAN_PHUONGTIEN" />
         <AssociationConnector Association="TOURMANAGEMENTModel.fk_CT_DOAN_PHUONGTIEN_PT" />
         <AssociationConnector Association="TOURMANAGEMENTModel.fk_DIADIEM_TINHTHANH" />

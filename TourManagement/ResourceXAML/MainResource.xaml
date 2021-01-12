@@ -7,7 +7,8 @@
                     xmlns:viewmodel_ManageHotel="clr-namespace:TourManagement.ViewModel.ManageTour.ManageHotel"
                     xmlns:viewmodel_WD_ManageTour="clr-namespace:TourManagement.ViewModel.ManageTour.WD_ManageTour"
                     xmlns:viewmodel_ManageCustomer="clr-namespace:TourManagement.ViewModel.ManageCustomer"
-                    xmlns:viewmodel_ManageTrip="clr-namespace:TourManagement.ViewModel.ManageTrip">
+                    xmlns:viewmodel_ManageTrip="clr-namespace:TourManagement.ViewModel.ManageTrip"
+                    xmlns:viewmodel_ManageStaff="clr-namespace:TourManagement.ViewModel.ManageStaff">
     <viewmodel:MainViewModel x:Key="MainVM"></viewmodel:MainViewModel>
     <viewmodel_ManageTour:UC_ManageTourViewModel x:Key="UC_ManageTourVM"></viewmodel_ManageTour:UC_ManageTourViewModel>
     <viewmodel_ManagePlace:WD_AddPlaceViewModel x:Key="WD_AddPlaceVM"></viewmodel_ManagePlace:WD_AddPlaceViewModel>
@@ -23,5 +24,7 @@
     <viewmodel_ManageCustomer:UC_ManageCustomerViewModel x:Key="UC_ManageCustomerVM"></viewmodel_ManageCustomer:UC_ManageCustomerViewModel>
     <viewmodel_ManageTrip:UC_ManageTripViewModel x:Key="UC_ManageTripVM"></viewmodel_ManageTrip:UC_ManageTripViewModel>
     <viewmodel_ManageTrip:WD_AddTripViewModel x:Key="WD_AddTripVM"></viewmodel_ManageTrip:WD_AddTripViewModel>
-
+    <viewmodel_ManageStaff:UC_ManageStaffViewModel x:Key="UC_ManageStaffVM"></viewmodel_ManageStaff:UC_ManageStaffViewModel>
+    <viewmodel_ManageStaff:WD_AddStaffViewModel x:Key="WD_AddStaffVM"></viewmodel_ManageStaff:WD_AddStaffViewModel>
+    <viewmodel_ManageStaff:WD_EditStaffViewModel x:Key="WD_EditStaffVM"></viewmodel_ManageStaff:WD_EditStaffViewModel>
 </ResourceDictionary>

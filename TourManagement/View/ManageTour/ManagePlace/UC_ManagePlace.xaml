@@ -40,13 +40,14 @@
                 </materialDesign:Card>
                 <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth2" Margin="20,10,0,10">
                     <ComboBox materialDesign:HintAssist.Hint="Tỉnh thành"
-                              ItemsSource="{Binding ProvinceNameList,UpdateSourceTrigger=PropertyChanged,NotifyOnSourceUpdated=True}"
+                              ItemsSource="{Binding ProvinceNameList,UpdateSourceTrigger=PropertyChanged,NotifyOnSourceUpdated=True,Mode=TwoWay}"
                               Width="200"
+                              IsEditable="True"
                               Background="#E4E4E4"
                               Padding="5,0,0,0"
                               VerticalContentAlignment="Center"
                               HorizontalContentAlignment="Left"
-                              Text="{Binding ProvinceNamePlaceFind}" 
+                              Text="{Binding ProvinceNamePlaceFind,UpdateSourceTrigger=PropertyChanged,NotifyOnSourceUpdated=True,Mode=TwoWay}" 
                               FontSize="14" Height="30"/>
                 </materialDesign:Card>
                 

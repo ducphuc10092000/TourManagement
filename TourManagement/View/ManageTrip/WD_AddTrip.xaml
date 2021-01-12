@@ -55,7 +55,8 @@
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="70"></RowDefinition>
                                             <RowDefinition Height="70"></RowDefinition>
-                                            <RowDefinition Height="500"></RowDefinition>
+                                            <RowDefinition Height="70"></RowDefinition>
+                                            <RowDefinition Height="430"></RowDefinition>
                                             <RowDefinition></RowDefinition>
                                         </Grid.RowDefinitions>
 
@@ -63,14 +64,23 @@
                                                     Orientation="Horizontal">
                                             <TextBox materialDesign:HintAssist.Hint="Tên tour"
                                                      materialDesign:ValidationAssist.HasError="True"
-                                                     Width="500"
-                                                     Text="{Binding TourPrice}"
+                                                     Width="300"
+                                                     Text="{Binding SelectedTOURs.tour.TENTOUR}"
                                                      Padding="5,-5,0,0"
                                                      Margin="20,15,0,10"
                                                      FontSize="20"
                                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                                            <TextBox materialDesign:HintAssist.Hint="Giá tour"
+                                                     materialDesign:ValidationAssist.HasError="True"
+                                                     Width="200"
+                                                     Text="{Binding SelectedTOURs.tour.GIATOUR}"
+                                                     Padding="5,-5,0,0"
+                                                     Margin="10,15,0,10"
+                                                     FontSize="20"
+                                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                                             <Button Height="35"
                                                     Width="120"
+                                                    FontSize="15"
                                                     Margin="5,0,20,0"
                                                     Background="#FFADD8E6"
                                                     HorizontalContentAlignment="Center"
@@ -86,40 +96,84 @@
                                                  materialDesign:HintAssist.Hint="Tên đoàn du lịch"
                                                  TextWrapping="NoWrap"
                                                  Width="Auto"
-                                                 Text="{Binding TourName}"
+                                                 Text="{Binding TripName}"
                                                  Padding="5,-5,0,0"
                                                  FontSize="20"
                                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                                  Margin="20,15,135,10" />
-                                        <Border Grid.Row="2"
+                                        <StackPanel Grid.Row="2"
+                                                    Orientation="Horizontal">
+                                            <TextBox materialDesign:HintAssist.Hint="Số lượng nhân viên"
+                                                     materialDesign:ValidationAssist.HasError="True"
+                                                     Width="500"
+                                                     Text="{Binding NumberStaff}"
+                                                     Padding="5,-5,0,0"
+                                                     Margin="20,15,0,10"
+                                                     FontSize="20"
+                                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                                            <Button Height="35"
+                                                    Width="120"
+                                                    FontSize="15"
+                                                    Margin="5,0,20,0"
+                                                    Background="#FFADD8E6"
+                                                    HorizontalContentAlignment="Center"
+                                                    VerticalContentAlignment="Center"
+                                                    materialDesign:RippleAssist.Feedback="#FF03A9F4"
+                                                    Command="{Binding Trip_Staff_Command}"
+                                                    Style="{DynamicResource MaterialDesignRaisedButton}"
+                                                    materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                                                Chỉnh sửa
+                                            </Button>
+                                        </StackPanel>
+                                        <Border Grid.Row="3"
                                                 BorderBrush="Black"
                                                 BorderThickness="1"
                                                 Margin="20,10,20,0">
                                             <TextBox materialDesign:HintAssist.Hint="Mô tả lịch trình"
                                                      materialDesign:ValidationAssist.HasError="True"
-                                                     Text="{Binding TourDescription}"
+                                                     Text="{Binding TripDescription}"
                                                      Padding="5,0,0,0"
                                                      FontSize="20"
                                                      TextWrapping="Wrap"
                                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                                         </Border>
-                                        <Grid Grid.Row="3">
+                                        <Grid Grid.Row="4">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition></ColumnDefinition>
                                                 <ColumnDefinition></ColumnDefinition>
                                             </Grid.ColumnDefinitions>
                                             <Grid Grid.Column="0">
-                                                <Button Height="60"
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Border Grid.Row="0"
+                                                        HorizontalAlignment="Center"
+                                                        BorderBrush="Black"
+                                                        Height="60"
+                                                        Margin="10"
+                                                        BorderThickness="2">
+                                                    <TextBox materialDesign:HintAssist.Hint="Tổng chi phí"
+                                                             Width="300"
+                                                             materialDesign:ValidationAssist.HasError="True"
+                                                             Text="{Binding AllTripCost}"
+                                                             FontSize="18"
+                                                             Padding="5,0,0,0"
+                                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                                                </Border>
+                                                <Button Grid.Row="1"
+                                                        Height="60"
                                                         Width="300"
                                                         Background="#FFFFBC5B"
                                                         HorizontalContentAlignment="Center"
+                                                        HorizontalAlignment="Center"
                                                         FontSize="20"
                                                         VerticalContentAlignment="Center"
                                                         materialDesign:RippleAssist.Feedback="#FF03A9F4"
-                                                        Command="{Binding SelectTourCommand}"
+                                                        Command="{Binding DetailCostCommand}"
                                                         Style="{DynamicResource MaterialDesignRaisedButton}"
                                                         materialDesign:ShadowAssist.ShadowDepth="Depth1">
-                                                    DS KHÁCH HÀNG - ĐOÀN
+                                                    Chi tiết
                                                 </Button>
                                             </Grid>
                                             <Grid Grid.Column="1">
@@ -127,18 +181,9 @@
                                                     <RowDefinition></RowDefinition>
                                                     <RowDefinition></RowDefinition>
                                                 </Grid.RowDefinitions>
-                                                <Border Grid.Row="0"
-                                                        Margin="50,15,20,15"
-                                                        BorderBrush="Black"
-                                                        BorderThickness="2">
-                                                    <TextBox materialDesign:HintAssist.Hint="Tổng chi phí"
-                                                             materialDesign:ValidationAssist.HasError="True"
-                                                             Text="{Binding TourType}"
-                                                             Padding="5,-2,0,0"
-                                                             FontSize="18"
-                                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                                             Margin="0,0,0,-2" />
-                                                </Border>
+                                                <Grid Grid.Row="0"> 
+                                                    
+                                                </Grid>
                                                 <StackPanel Orientation="Horizontal"
                                                             Grid.Row="1">
                                                     <Button Height="40"
@@ -148,7 +193,7 @@
                                                             HorizontalContentAlignment="Center"
                                                             VerticalContentAlignment="Center"
                                                             materialDesign:RippleAssist.Feedback="#FF03A9F4"
-                                                            Command="{Binding SelectTourCommand}"
+                                                            Command="{Binding ResetParameterCommand}"
                                                             Style="{DynamicResource MaterialDesignRaisedButton}"
                                                             materialDesign:ShadowAssist.ShadowDepth="Depth1">
                                                         Đặt lại
@@ -160,612 +205,180 @@
                                                             HorizontalContentAlignment="Center"
                                                             VerticalContentAlignment="Center"
                                                             materialDesign:RippleAssist.Feedback="#FF03A9F4"
-                                                            Command="{Binding SelectTourCommand}"
+                                                            Command="{Binding AddTripCommand}"
                                                             Style="{DynamicResource MaterialDesignRaisedButton}"
                                                             materialDesign:ShadowAssist.ShadowDepth="Depth1">
-                                                        Thêm mới
+                                                        Thêm
                                                     </Button>
                                                 </StackPanel>
                                             </Grid>
                                         </Grid>
                                     </Grid>
-
                                 </Border>
                             </Grid>
                         </Grid>
 
+
                         <Grid Grid.Column="1">
-                            <Grid.RowDefinitions>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <Grid Grid.Row="0">
+                            <Border BorderBrush="Black"
+                                    BorderThickness="2"
+                                    Margin="5">
                                 <Grid>
-                                    <Border BorderBrush="Black"
-                                            BorderThickness="2"
-                                            Margin="5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="50"></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Border Grid.Row="0"
+                                            BorderBrush="Black"
+                                            BorderThickness="0,0,0,2">
                                         <Grid>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="40"></RowDefinition>
-                                                <RowDefinition></RowDefinition>
-                                                <RowDefinition Height="40"></RowDefinition>
-                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="350"></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
                                             <Border Grid.Row="0"
                                                     BorderBrush="Black"
-                                                    BorderThickness="0,0,0,2">
-                                                <Grid>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="485"></ColumnDefinition>
-                                                        <ColumnDefinition></ColumnDefinition>
-                                                    </Grid.ColumnDefinitions>
-                                                    <Border Grid.Column="0"
-                                                            BorderBrush="Black"
-                                                            BorderThickness="0,0,2,0">
-                                                        <Grid>
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition></ColumnDefinition>
-                                                                <ColumnDefinition></ColumnDefinition>
-                                                            </Grid.ColumnDefinitions>
-                                                            <Border Grid.Column="0"
-                                                                    BorderBrush="Black"
-                                                                    BorderThickness="0,0,2,0">
-                                                                <TextBox Grid.Column="0"
-                                                                         materialDesign:HintAssist.Hint="Tên khách sạn"
-                                                                         IsReadOnly="True"
-                                                                         Padding="10,0,0,0"
-                                                                         materialDesign:ValidationAssist.HasError="True"
-                                                                         VerticalContentAlignment="Center"
-                                                                         VerticalAlignment="Center"
-                                                                         FontSize="16"
-                                                                         HorizontalContentAlignment="Left"
-                                                                         Text="{Binding PlaceName}"
-                                                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                                                         Height="47"
-                                                                         Margin="0,-7,0,-2" />
-                                                            </Border>
-                                                            <Border Grid.Column="1">
-                                                                <TextBox materialDesign:HintAssist.Hint="Chi phí"
-                                                                         IsReadOnly="True"
-                                                                         Padding="10,0,0,0"
-                                                                         materialDesign:ValidationAssist.HasError="True"
-                                                                         VerticalContentAlignment="Center"
-                                                                         VerticalAlignment="Center"
-                                                                         FontSize="16"
-                                                                         HorizontalContentAlignment="Left"
-                                                                         Text="{Binding PlaceName}"
-                                                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                                                         Height="47"
-                                                                         Margin="0,-7,0,-2" />
-                                                            </Border>
-                                                        </Grid>
-                                                    </Border>
-                                                    <StackPanel Grid.Column="1"
-                                                                Orientation="Horizontal">
-                                                        <Button Height="35"
-                                                                Width="130"
-                                                                materialDesign:RippleAssist.Feedback="#FF03A9F4"
-                                                                Margin="15,0,20,0"
-                                                                Background="#FFADD8E6"
-                                                                Command="{Binding AddHotelToTripCommand}"
-                                                                Style="{DynamicResource MaterialDesignRaisedButton}"
-                                                                materialDesign:ShadowAssist.ShadowDepth="Depth1">
-                                                            Thêm chi phí
-                                                        </Button>
-                                                        <Button Height="35"
-                                                                Width="100"
-                                                                Margin="5,0,20,0"
-                                                                Background="#FFADD8E6"
-                                                                HorizontalContentAlignment="Center"
-                                                                VerticalContentAlignment="Center"
-                                                                materialDesign:RippleAssist.Feedback="#FF03A9F4"
-                                                                Command="{Binding SelectHotelCommand}"
-                                                                Style="{DynamicResource MaterialDesignRaisedButton}"
-                                                                materialDesign:ShadowAssist.ShadowDepth="Depth1">
-                                                            Chọn KS
-                                                        </Button>
-                                                    </StackPanel>
-                                                </Grid>
+                                                    BorderThickness="0,0,2,0">
+                                                <TextBox materialDesign:HintAssist.Hint="Tên khách hàng"
+                                                         Padding="10,0,0,0"
+                                                         IsReadOnly="True"
+                                                         materialDesign:ValidationAssist.HasError="True"
+                                                         VerticalContentAlignment="Center"
+                                                         HorizontalContentAlignment="Left"
+                                                         Text="{Binding SelectedCUSTOMER.khachhang.TENKH}"
+                                                         FontSize="20"
+                                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                                         Margin="0,-7,0,0" />
                                             </Border>
-                                            <Grid Grid.Row="1"
-                                                  Margin="5,5,10,5">
-                                                <ScrollViewer>
-                                                    <DataGrid ItemsSource="{Binding TRIP_HOTELLISTDTG,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"
-                                                              AlternatingRowBackground="#e2e2e2"
-                                                              IsReadOnly="True"
-                                                              BorderBrush="Black"
-                                                              BorderThickness="0,0,1,0"
-                                                              ScrollViewer.VerticalScrollBarVisibility="Auto"
-                                                              AutoGenerateColumns="False"
-                                                              CanUserResizeColumns="False"
-                                                              CanUserReorderColumns="False">
-                                                        <DataGrid.Resources>
-                                                            <Style TargetType="DataGridRow">
-                                                                <Setter Property="Height"
-                                                                        Value="35"></Setter>
-                                                                <Setter Property="FontSize"
-                                                                        Value="16"></Setter>
-                                                                <Setter Property="FontFamily"
-                                                                        Value="Arial"></Setter>
-                                                            </Style>
-                                                            <Style TargetType="DataGridColumnHeader">
-                                                                <Setter Property="Height"
-                                                                        Value="30"></Setter>
-                                                                <Setter Property="FontFamily"
-                                                                        Value="Times New Roman"></Setter>
-                                                                <Setter Property="FontSize"
-                                                                        Value="18"></Setter>
-                                                                <Setter Property="FontWeight"
-                                                                        Value="Bold"></Setter>
-                                                                <Setter Property="HorizontalContentAlignment"
-                                                                        Value="Center"></Setter>
-                                                                <Setter Property="VerticalContentAlignment"
-                                                                        Value="Center"></Setter>
-                                                                <Setter Property="Background"
-                                                                        Value="#e2e2e2"></Setter>
-                                                                <Setter Property="BorderBrush"
-                                                                        Value="Black"></Setter>
-                                                                <Setter Property="BorderThickness"
-                                                                        Value="1,1,0,1"></Setter>
-                                                            </Style>
-                                                        </DataGrid.Resources>
-                                                        <DataGrid.Columns>
-                                                            <!--Cột Mã DTQ-->
-                                                            <DataGridTextColumn Header="Mã KS"
-                                                                                Width="100"
-                                                                                Binding="{Binding diadiem.IDDIADIEM}">
-                                                            </DataGridTextColumn>
-                                                            <!--Cột THAO TÁC-->
-                                                            <DataGridTemplateColumn Header="Xoá"
-                                                                                    Width="90">
-                                                                <!--Mỗi dòng của cột chứa 2 button-->
-                                                                <DataGridTemplateColumn.CellTemplate>
-                                                                    <DataTemplate>
-                                                                        <Grid Margin="0,0,12,0">
-                                                                            <Button Background="{x:Null}"
-                                                                                    BorderThickness="0"
-                                                                                    Command="{Binding Path=DataContext.DeletePlaceFromListCommand,
-                                                RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}"
-                                                                                    CommandParameter="{Binding Path=diadiem.IDDIADIEM}"
-                                                                                    Height="Auto"
-                                                                                    Width="20"
-                                                                                    Margin="11,0,0,0">
-                                                                                <!--Button DELETE-->
-                                                                                <!--Ảnh hình dấu X-->
-                                                                                <Grid>
-                                                                                    <Image Source="..\..\Photo\delete_icon.png"
-                                                                                           Margin="-17,-15,-4,-15"
-                                                                                           RenderTransformOrigin="0.5,0.5">
-                                                                                        <Image.RenderTransform>
-                                                                                            <TransformGroup>
-                                                                                                <ScaleTransform ScaleX="-1" />
-                                                                                                <SkewTransform />
-                                                                                                <RotateTransform />
-                                                                                                <TranslateTransform />
-                                                                                            </TransformGroup>
-                                                                                        </Image.RenderTransform>
-                                                                                    </Image>
-                                                                                </Grid>
-                                                                            </Button>
-                                                                        </Grid>
-                                                                    </DataTemplate>
-                                                                </DataGridTemplateColumn.CellTemplate>
-                                                            </DataGridTemplateColumn>
-                                                            <!--Cột TÊN điểm tham quan-->
-                                                            <DataGridTextColumn Header="Tên khách sạn"
-                                                                                Binding="{Binding diadiem.TENDIADIEM}"
-                                                                                Width="250"></DataGridTextColumn>
-                                                            <!--Tỉnh thành-->
-                                                            <DataGridTextColumn Header="Chi phí"
-                                                                                Binding="{Binding diadiem.TINHTHANH}"
-                                                                                Width="150"></DataGridTextColumn>
-                                                            <!--Tỉnh thành-->
-                                                            <DataGridTextColumn Header="SDT"
-                                                                                Binding="{Binding diadiem.MOTA}"
-                                                                                Width="150"></DataGridTextColumn>
-                                                        </DataGrid.Columns>
-                                                    </DataGrid>
-                                                </ScrollViewer>
-                                            </Grid>
-                                            <StackPanel Grid.Row="2"
-                                                        Orientation="Horizontal"
-                                                        Margin="0,0,0,-7">
-                                                <TextBlock VerticalAlignment="Center"
-                                                           FontSize="16"
-                                                           FontWeight="DemiBold"
-                                                           Margin="20,10,0,11"
-                                                           Height="26">
-                                                                Tổng chi phí khách sạn:
-                                                </TextBlock>
-                                                <Border BorderBrush="Black"
-                                                        BorderThickness="1"
-                                                        Margin="10,7,0,10">
-                                                    <TextBox Width="150"
-                                                             FontSize="16"
-                                                             VerticalContentAlignment="Center"
-                                                             HorizontalContentAlignment="Center"
-                                                             Margin="0,0,0,-1" />
-                                                </Border>
+                                            <StackPanel Grid.Column="1"
+                                                        Orientation="Horizontal">
+                                                <Button Height="35"
+                                                        Width="130"
+                                                        materialDesign:RippleAssist.Feedback="#FF03A9F4"
+                                                        Margin="20,0,20,0"
+                                                        Background="#FFADD8E6"
+                                                        Command="{Binding AddCustomerToTripCommand}"
+                                                        Style="{DynamicResource MaterialDesignRaisedButton}"
+                                                        materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                                                    Thêm vào đoàn
+                                                </Button>
+                                                <Button Height="35"
+                                                        Width="100"
+                                                        Margin="5,0,20,0"
+                                                        Background="#FFADD8E6"
+                                                        HorizontalContentAlignment="Center"
+                                                        VerticalContentAlignment="Center"
+                                                        materialDesign:RippleAssist.Feedback="#FF03A9F4"
+                                                        Command="{Binding SelectCustomerCommand}"
+                                                        Style="{DynamicResource MaterialDesignRaisedButton}"
+                                                        materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                                                    Chọn KH
+                                                </Button>
                                             </StackPanel>
                                         </Grid>
                                     </Border>
-                                </Grid>
-                            </Grid>
-                            <Grid Grid.Row="2">
-                                <Grid>
-                                    <Border BorderBrush="Black"
-                                            BorderThickness="2"
-                                            Margin="5">
-                                        <Grid>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="40"></RowDefinition>
-                                                <RowDefinition></RowDefinition>
-                                                <RowDefinition Height="40"></RowDefinition>
-                                            </Grid.RowDefinitions>
-                                            <Border Grid.Row="0"
-                                                    BorderBrush="Black"
-                                                    BorderThickness="0,0,0,2">
-                                                <Grid>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="485"></ColumnDefinition>
-                                                        <ColumnDefinition></ColumnDefinition>
-                                                    </Grid.ColumnDefinitions>
-                                                    <Border Grid.Column="0"
-                                                            BorderBrush="Black"
-                                                            BorderThickness="0,0,2,0">
-                                                        <Grid>
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition></ColumnDefinition>
-                                                                <ColumnDefinition></ColumnDefinition>
-                                                            </Grid.ColumnDefinitions>
-                                                            <Border Grid.Column="0"
-                                                                    BorderBrush="Black"
-                                                                    BorderThickness="0,0,2,0">
-                                                                <TextBox Grid.Column="0"
-                                                                         materialDesign:HintAssist.Hint="Tên phương tiện"
-                                                                         IsReadOnly="True"
-                                                                         Padding="10,0,0,0"
-                                                                         materialDesign:ValidationAssist.HasError="True"
-                                                                         VerticalContentAlignment="Center"
-                                                                         VerticalAlignment="Center"
-                                                                         FontSize="16"
-                                                                         HorizontalContentAlignment="Left"
-                                                                         Text="{Binding PlaceName}"
-                                                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                                                         Height="47"
-                                                                         Margin="0,-7,0,-2" />
-                                                            </Border>
-                                                            <Border Grid.Column="1">
-                                                                <TextBox materialDesign:HintAssist.Hint="Chi phí"
-                                                                         IsReadOnly="True"
-                                                                         Padding="10,0,0,0"
-                                                                         materialDesign:ValidationAssist.HasError="True"
-                                                                         VerticalContentAlignment="Center"
-                                                                         VerticalAlignment="Center"
-                                                                         FontSize="16"
-                                                                         HorizontalContentAlignment="Left"
-                                                                         Text="{Binding PlaceName}"
-                                                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                                                         Height="47"
-                                                                         Margin="0,-7,0,-2" />
-                                                            </Border>
-                                                        </Grid>
-                                                    </Border>
-                                                    <StackPanel Grid.Column="1"
-                                                                Orientation="Horizontal">
-                                                        <Button Height="35"
-                                                                Width="130"
-                                                                materialDesign:RippleAssist.Feedback="#FF03A9F4"
-                                                                Margin="15,0,20,0"
-                                                                Background="#FFADD8E6"
-                                                                Command="{Binding AddHotelToTripCommand}"
-                                                                Style="{DynamicResource MaterialDesignRaisedButton}"
-                                                                materialDesign:ShadowAssist.ShadowDepth="Depth1">
-                                                            Thêm chi phí
-                                                        </Button>
-                                                        <Button Height="35"
-                                                                Width="100"
-                                                                Margin="5,0,20,0"
-                                                                Background="#FFADD8E6"
-                                                                HorizontalContentAlignment="Center"
-                                                                VerticalContentAlignment="Center"
-                                                                materialDesign:RippleAssist.Feedback="#FF03A9F4"
-                                                                Command="{Binding SelectHotelCommand}"
-                                                                Style="{DynamicResource MaterialDesignRaisedButton}"
-                                                                materialDesign:ShadowAssist.ShadowDepth="Depth1">
-                                                            Chọn PT
-                                                        </Button>
-                                                    </StackPanel>
-                                                </Grid>
-                                            </Border>
-                                            <Grid Grid.Row="1"
-                                                  Margin="5,5,10,5">
-                                                <ScrollViewer>
-                                                    <DataGrid ItemsSource="{Binding TRIP_VEHICLELISTDTG,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"
-                                                              AlternatingRowBackground="#e2e2e2"
-                                                              IsReadOnly="True"
-                                                              BorderBrush="Black"
-                                                              BorderThickness="0,0,1,0"
-                                                              ScrollViewer.VerticalScrollBarVisibility="Auto"
-                                                              AutoGenerateColumns="False"
-                                                              CanUserResizeColumns="False"
-                                                              CanUserReorderColumns="False">
-                                                        <DataGrid.Resources>
-                                                            <Style TargetType="DataGridRow">
-                                                                <Setter Property="Height"
-                                                                        Value="35"></Setter>
-                                                                <Setter Property="FontSize"
-                                                                        Value="16"></Setter>
-                                                                <Setter Property="FontFamily"
-                                                                        Value="Arial"></Setter>
-                                                            </Style>
-                                                            <Style TargetType="DataGridColumnHeader">
-                                                                <Setter Property="Height"
-                                                                        Value="30"></Setter>
-                                                                <Setter Property="FontFamily"
-                                                                        Value="Times New Roman"></Setter>
-                                                                <Setter Property="FontSize"
-                                                                        Value="18"></Setter>
-                                                                <Setter Property="FontWeight"
-                                                                        Value="Bold"></Setter>
-                                                                <Setter Property="HorizontalContentAlignment"
-                                                                        Value="Center"></Setter>
-                                                                <Setter Property="VerticalContentAlignment"
-                                                                        Value="Center"></Setter>
-                                                                <Setter Property="Background"
-                                                                        Value="#e2e2e2"></Setter>
-                                                                <Setter Property="BorderBrush"
-                                                                        Value="Black"></Setter>
-                                                                <Setter Property="BorderThickness"
-                                                                        Value="1,1,0,1"></Setter>
-                                                            </Style>
-                                                        </DataGrid.Resources>
-                                                        <DataGrid.Columns>
-                                                            <!--Cột Mã DTQ-->
-                                                            <DataGridTextColumn Header="Mã PT"
-                                                                                Width="100"
-                                                                                Binding="{Binding diadiem.IDDIADIEM}">
-                                                            </DataGridTextColumn>
-                                                            <!--Cột THAO TÁC-->
-                                                            <DataGridTemplateColumn Header="Xoá"
-                                                                                    Width="90">
-                                                                <!--Mỗi dòng của cột chứa 2 button-->
-                                                                <DataGridTemplateColumn.CellTemplate>
-                                                                    <DataTemplate>
-                                                                        <Grid Margin="0,0,12,0">
-                                                                            <Button Background="{x:Null}"
-                                                                                    BorderThickness="0"
-                                                                                    Command="{Binding Path=DataContext.DeletePlaceFromListCommand,
+                                    <Grid Grid.Row="1"
+                                          Margin="5,5,5,5">
+                                        <ScrollViewer>
+                                            <DataGrid ItemsSource="{Binding TRIP_CUSTOMERLISTDTG,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"
+                                                      AlternatingRowBackground="#e2e2e2"
+                                                      IsReadOnly="True"
+                                                      BorderBrush="Black"
+                                                      BorderThickness="0,0,1,0"
+                                                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                                      AutoGenerateColumns="False"
+                                                      CanUserResizeColumns="False"
+                                                      CanUserReorderColumns="False">
+                                                <DataGrid.Resources>
+                                                    <Style TargetType="DataGridRow">
+                                                        <Setter Property="Height"
+                                                                Value="35"></Setter>
+                                                        <Setter Property="FontSize"
+                                                                Value="16"></Setter>
+                                                        <Setter Property="FontFamily"
+                                                                Value="Arial"></Setter>
+                                                    </Style>
+                                                    <Style TargetType="DataGridColumnHeader">
+                                                        <Setter Property="Height"
+                                                                Value="30"></Setter>
+                                                        <Setter Property="FontFamily"
+                                                                Value="Times New Roman"></Setter>
+                                                        <Setter Property="FontSize"
+                                                                Value="18"></Setter>
+                                                        <Setter Property="FontWeight"
+                                                                Value="Bold"></Setter>
+                                                        <Setter Property="HorizontalContentAlignment"
+                                                                Value="Center"></Setter>
+                                                        <Setter Property="VerticalContentAlignment"
+                                                                Value="Center"></Setter>
+                                                        <Setter Property="Background"
+                                                                Value="#e2e2e2"></Setter>
+                                                        <Setter Property="BorderBrush"
+                                                                Value="Black"></Setter>
+                                                        <Setter Property="BorderThickness"
+                                                                Value="1,1,0,1"></Setter>
+                                                    </Style>
+                                                </DataGrid.Resources>
+                                                <DataGrid.Columns>
+                                                    <!--Cột Mã DTQ-->
+                                                    <DataGridTextColumn Header="Mã KH"
+                                                                        Width="100"
+                                                                        Binding="{Binding khachhang.IDKH}">
+                                                    </DataGridTextColumn>
+                                                    <!--Cột THAO TÁC-->
+                                                    <DataGridTemplateColumn Header="Xoá"
+                                                                            Width="90">
+                                                        <!--Mỗi dòng của cột chứa 2 button-->
+                                                        <DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <Grid Margin="0,0,12,0">
+                                                                    <Button Background="{x:Null}"
+                                                                            BorderThickness="0"
+                                                                            Command="{Binding Path=DataContext.DeletePlaceFromListCommand,
                                                 RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}"
-                                                                                    CommandParameter="{Binding Path=diadiem.IDDIADIEM}"
-                                                                                    Height="Auto"
-                                                                                    Width="20"
-                                                                                    Margin="11,0,0,0">
-                                                                                <!--Button DELETE-->
-                                                                                <!--Ảnh hình dấu X-->
-                                                                                <Grid>
-                                                                                    <Image Source="..\..\Photo\delete_icon.png"
-                                                                                           Margin="-17,-15,-4,-15"
-                                                                                           RenderTransformOrigin="0.5,0.5">
-                                                                                        <Image.RenderTransform>
-                                                                                            <TransformGroup>
-                                                                                                <ScaleTransform ScaleX="-1" />
-                                                                                                <SkewTransform />
-                                                                                                <RotateTransform />
-                                                                                                <TranslateTransform />
-                                                                                            </TransformGroup>
-                                                                                        </Image.RenderTransform>
-                                                                                    </Image>
-                                                                                </Grid>
-                                                                            </Button>
+                                                                            CommandParameter="{Binding Path=khachhang.IDKH}"
+                                                                            Height="Auto"
+                                                                            Width="20"
+                                                                            Margin="11,0,0,0">
+                                                                        <!--Button DELETE-->
+                                                                        <!--Ảnh hình dấu X-->
+                                                                        <Grid>
+                                                                            <Image Source="..\..\Photo\delete_icon.png"
+                                                                                   Margin="-17,-15,-4,-15"
+                                                                                   RenderTransformOrigin="0.5,0.5">
+                                                                                <Image.RenderTransform>
+                                                                                    <TransformGroup>
+                                                                                        <ScaleTransform ScaleX="-1" />
+                                                                                        <SkewTransform />
+                                                                                        <RotateTransform />
+                                                                                        <TranslateTransform />
+                                                                                    </TransformGroup>
+                                                                                </Image.RenderTransform>
+                                                                            </Image>
                                                                         </Grid>
-                                                                    </DataTemplate>
-                                                                </DataGridTemplateColumn.CellTemplate>
-                                                            </DataGridTemplateColumn>
-                                                            <!--Cột TÊN điểm tham quan-->
-                                                            <DataGridTextColumn Header="Tên phương tiện - BKS"
-                                                                                Binding="{Binding diadiem.TENDIADIEM}"
-                                                                                Width="250"></DataGridTextColumn>
-                                                            <!--Tỉnh thành-->
-                                                            <DataGridTextColumn Header="Chi phí"
-                                                                                Binding="{Binding diadiem.TINHTHANH}"
-                                                                                Width="120"></DataGridTextColumn>
-                                                            <!--Tỉnh thành-->
-                                                            <DataGridTextColumn Header="Mô tả"
-                                                                                Binding="{Binding diadiem.TINHTHANH}"
-                                                                                Width="180"></DataGridTextColumn>
-                                                        </DataGrid.Columns>
-                                                    </DataGrid>
-                                                </ScrollViewer>
-                                            </Grid>
-                                            <StackPanel Grid.Row="2"
-                                                        Orientation="Horizontal"
-                                                        Margin="0,0,0,-7">
-                                                <TextBlock VerticalAlignment="Center"
-                                                           FontSize="16"
-                                                           FontWeight="DemiBold"
-                                                           Margin="20,10,0,11"
-                                                           Height="26">
-                                                                Tổng chi phí phương tiện:
-                                                </TextBlock>
-                                                <Border BorderBrush="Black"
-                                                        BorderThickness="1"
-                                                        Margin="10,7,0,10">
-                                                    <TextBox Width="150"
-                                                             FontSize="16"
-                                                             VerticalContentAlignment="Center"
-                                                             HorizontalContentAlignment="Center"
-                                                             Margin="0,0,0,-1" />
-                                                </Border>
-                                            </StackPanel>
-                                        </Grid>
-                                    </Border>
+                                                                    </Button>
+                                                                </Grid>
+                                                            </DataTemplate>
+                                                        </DataGridTemplateColumn.CellTemplate>
+                                                    </DataGridTemplateColumn>
+                                                    <!--Cột TÊN điểm tham quan-->
+                                                    <DataGridTextColumn Header="Tên khách hàng"
+                                                                        Binding="{Binding khachhang.TENKH}"
+                                                                        Width="250"></DataGridTextColumn>
+                                                    <!--Tỉnh thành-->
+                                                    <DataGridTextColumn Header="Giới tính"
+                                                                        Binding="{Binding GIOITINH}"
+                                                                        Width="120"></DataGridTextColumn>
+                                                    <!--Tỉnh thành-->
+                                                    <DataGridTextColumn Header="SDT"
+                                                                        Binding="{Binding khachhang.SDT}"
+                                                                        Width="180"></DataGridTextColumn>
+                                                </DataGrid.Columns>
+                                            </DataGrid>
+                                        </ScrollViewer>
+                                    </Grid>
                                 </Grid>
-                            </Grid>
-                            <Grid Grid.Row="1">
-                                <Grid>
-                                    <Border BorderBrush="Black"
-                                            BorderThickness="2"
-                                            Margin="5">
-                                        <Grid>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="40"></RowDefinition>
-                                                <RowDefinition></RowDefinition>
-                                                <RowDefinition Height="40"></RowDefinition>
-                                            </Grid.RowDefinitions>
-                                            <Border Grid.Row="0"
-                                                    BorderBrush="Black"
-                                                    BorderThickness="0,0,0,2">
-
-                                                <Border Grid.Row="0"
-                                                        BorderBrush="Black"
-                                                        BorderThickness="0,0,0,0">
-                                                    <materialDesign:ColorZone Mode="Light"
-                                                                              Height="50">
-                                                        <DockPanel>
-                                                            <StackPanel Orientation="Horizontal"
-                                                                        HorizontalAlignment="Right"
-                                                                        Margin="0,0,0,12">
-                                                                <Button Height="35"
-                                                                        Width="150"
-                                                                        Margin="0,1.5,27,1.5"
-                                                                        Background="#FFADD8E6"
-                                                                        materialDesign:RippleAssist.Feedback="#FF03A9F4"
-                                                                        Command="{Binding AddNewTripCommand}"
-                                                                        CommandParameter="{Binding ElementName=wd_AddTour}"
-                                                                        Style="{DynamicResource MaterialDesignRaisedButton}"
-                                                                        materialDesign:ShadowAssist.ShadowDepth="Depth3">
-                                                                    Thêm chi phí
-                                                                </Button>
-                                                            </StackPanel>
-                                                        </DockPanel>
-                                                    </materialDesign:ColorZone>
-                                                </Border>
-
-                                            </Border>
-                                            <Grid Grid.Row="1"
-                                                  Margin="5,5,10,5">
-                                                <ScrollViewer>
-                                                    <DataGrid ItemsSource="{Binding TRIP_VEHICLELISTDTG,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"
-                                                              AlternatingRowBackground="#e2e2e2"
-                                                              IsReadOnly="True"
-                                                              BorderBrush="Black"
-                                                              BorderThickness="0,0,1,0"
-                                                              ScrollViewer.VerticalScrollBarVisibility="Auto"
-                                                              AutoGenerateColumns="False"
-                                                              CanUserResizeColumns="False"
-                                                              CanUserReorderColumns="False">
-                                                        <DataGrid.Resources>
-                                                            <Style TargetType="DataGridRow">
-                                                                <Setter Property="Height"
-                                                                        Value="35"></Setter>
-                                                                <Setter Property="FontSize"
-                                                                        Value="16"></Setter>
-                                                                <Setter Property="FontFamily"
-                                                                        Value="Arial"></Setter>
-                                                            </Style>
-                                                            <Style TargetType="DataGridColumnHeader">
-                                                                <Setter Property="Height"
-                                                                        Value="30"></Setter>
-                                                                <Setter Property="FontFamily"
-                                                                        Value="Times New Roman"></Setter>
-                                                                <Setter Property="FontSize"
-                                                                        Value="18"></Setter>
-                                                                <Setter Property="FontWeight"
-                                                                        Value="Bold"></Setter>
-                                                                <Setter Property="HorizontalContentAlignment"
-                                                                        Value="Center"></Setter>
-                                                                <Setter Property="VerticalContentAlignment"
-                                                                        Value="Center"></Setter>
-                                                                <Setter Property="Background"
-                                                                        Value="#e2e2e2"></Setter>
-                                                                <Setter Property="BorderBrush"
-                                                                        Value="Black"></Setter>
-                                                                <Setter Property="BorderThickness"
-                                                                        Value="1,1,0,1"></Setter>
-                                                            </Style>
-                                                        </DataGrid.Resources>
-                                                        <DataGrid.Columns>
-                                                            <!--Cột THAO TÁC-->
-                                                            <DataGridTemplateColumn Header="Xoá"
-                                                                                    Width="90">
-                                                                <!--Mỗi dòng của cột chứa 2 button-->
-                                                                <DataGridTemplateColumn.CellTemplate>
-                                                                    <DataTemplate>
-                                                                        <Grid Margin="0,0,12,0">
-                                                                            <Button Background="{x:Null}"
-                                                                                    BorderThickness="0"
-                                                                                    Command="{Binding Path=DataContext.DeletePlaceFromListCommand,
-                                                RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}"
-                                                                                    CommandParameter="{Binding Path=diadiem.IDDIADIEM}"
-                                                                                    Height="Auto"
-                                                                                    Width="20"
-                                                                                    Margin="11,0,0,0">
-                                                                                <!--Button DELETE-->
-                                                                                <!--Ảnh hình dấu X-->
-                                                                                <Grid>
-                                                                                    <Image Source="..\..\Photo\delete_icon.png"
-                                                                                           Margin="-17,-15,-4,-15"
-                                                                                           RenderTransformOrigin="0.5,0.5">
-                                                                                        <Image.RenderTransform>
-                                                                                            <TransformGroup>
-                                                                                                <ScaleTransform ScaleX="-1" />
-                                                                                                <SkewTransform />
-                                                                                                <RotateTransform />
-                                                                                                <TranslateTransform />
-                                                                                            </TransformGroup>
-                                                                                        </Image.RenderTransform>
-                                                                                    </Image>
-                                                                                </Grid>
-                                                                            </Button>
-                                                                        </Grid>
-                                                                    </DataTemplate>
-                                                                </DataGridTemplateColumn.CellTemplate>
-                                                            </DataGridTemplateColumn>
-                                                            <!--Tỉnh thành-->
-                                                            <DataGridTextColumn Header="Chi phí bữa ăn"
-                                                                                Binding="{Binding diadiem.TINHTHANH}"
-                                                                                Width="250"></DataGridTextColumn>
-                                                            <!--Tỉnh thành-->
-                                                            <DataGridTextColumn Header="Mô tả"
-                                                                                Binding="{Binding diadiem.MOTA}"
-                                                                                Width="400"></DataGridTextColumn>
-                                                        </DataGrid.Columns>
-                                                    </DataGrid>
-                                                </ScrollViewer>
-                                            </Grid>
-                                            <Border Grid.Row="2"
-                                                    BorderBrush="Black"
-                                                    BorderThickness="0,0,0,0">
-                                                <materialDesign:ColorZone Mode="Light"
-                                                                          Height="50">
-                                                    <DockPanel>
-                                                        <StackPanel Orientation="Horizontal">
-                                                            <TextBlock VerticalAlignment="Center"
-                                                                       FontSize="16"
-                                                                       FontWeight="DemiBold"
-                                                                       Margin="20,6,0,17"
-                                                                       Height="27">
-                                                                Tổng chi phí bữa ăn:
-                                                            </TextBlock>
-                                                            <Border BorderBrush="Black"
-                                                                    BorderThickness="1"
-                                                                    Margin="10,4,0,15">
-                                                                <TextBox Width="150"
-                                                                         FontSize="16"
-                                                                         VerticalContentAlignment="Center"
-                                                                         HorizontalContentAlignment="Center"
-                                                                         Margin="0,0,0,-1" />
-                                                            </Border>
-
-                                                        </StackPanel>
-                                                    </DockPanel>
-                                                </materialDesign:ColorZone>
-                                            </Border>
-                                        </Grid>
-                                    </Border>
-                                </Grid>
-                            </Grid>
+                            </Border>
                         </Grid>
                     </Grid>
                 </materialDesign:Card>

@@ -25,4 +25,8 @@ FD:\QUANLYTOURDULICH\TourManagement\TourManagement\View\ManageTour\WD_ManageTour
 FD:\QUANLYTOURDULICH\TourManagement\TourManagement\View\ManageTrip\UC_ManageTrip.xaml;;
 FD:\QUANLYTOURDULICH\TourManagement\TourManagement\View\ManageTrip\WD_AddTrip.xaml;;
 FD:\QUANLYTOURDULICH\TourManagement\TourManagement\View\ManageTrip\WD_HotelList.xaml;;
+FD:\QUANLYTOURDULICH\TourManagement\TourManagement\ViewModel\ManageTrip\WD_CustomerList.xaml;;
+FD:\QUANLYTOURDULICH\TourManagement\TourManagement\View\ManageTrip\WD_TourList.xaml;;
+FD:\QUANLYTOURDULICH\TourManagement\TourManagement\View\ManageStaff\WD_AddStaff.xaml;;
+FD:\QUANLYTOURDULICH\TourManagement\TourManagement\View\ManageStaff\WD_EditStaff.xaml;;
 

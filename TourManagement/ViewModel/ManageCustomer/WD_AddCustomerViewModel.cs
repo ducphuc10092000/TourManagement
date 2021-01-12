@@ -46,7 +46,7 @@ namespace TourManagement.ViewModel.ManageCustomer
         {
             LoadCurrentTime();
 
-            QuitCommand = new RelayCommand<WD_AddCustomer>((p) =>
+            QuitCommand = new RelayCommand<Window>((p) =>
             {
                 //if (AccountPower == 0 || AccountPower == 1)
                 //{
@@ -69,7 +69,7 @@ namespace TourManagement.ViewModel.ManageCustomer
                     return;
                 }
             });
-            AddNewCustomerCommand = new RelayCommand<WD_AddCustomer>((p) =>
+            AddNewCustomerCommand = new RelayCommand<Window>((p) =>
             {
                 //if (AccountPower == 0 || AccountPower == 1)
                 //{

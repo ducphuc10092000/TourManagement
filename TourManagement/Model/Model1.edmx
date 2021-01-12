@@ -14,6 +14,24 @@
           <Property Name="IDTOUR" Type="int" Nullable="false" />
           <Property Name="ACTIVE" Type="bit" />
         </EntityType>
+        <EntityType Name="CT_DOAN_BUAAN">
+          <Key>
+            <PropertyRef Name="IDCT" />
+          </Key>
+          <Property Name="IDCT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDDOAN" Type="int" Nullable="false" />
+          <Property Name="CHIPHIBUAAN" Type="nvarchar(max)" />
+          <Property Name="MOTA" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="CT_DOAN_CHIPHIKHAC">
+          <Key>
+            <PropertyRef Name="IDCT" />
+          </Key>
+          <Property Name="IDCT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDDOAN" Type="int" Nullable="false" />
+          <Property Name="CHIPHI" Type="nvarchar(max)" />
+          <Property Name="MOTA" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="CT_DOAN_KHACHHANG">
           <Key>
             <PropertyRef Name="IDCT" />
@@ -29,6 +47,16 @@
           <Property Name="IDCT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDDOAN" Type="int" />
           <Property Name="IDKS" Type="int" />
+          <Property Name="CHIPHIKS" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="CT_DOAN_NHANVIEN">
+          <Key>
+            <PropertyRef Name="IDCT" />
+          </Key>
+          <Property Name="IDCT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDDOAN" Type="int" Nullable="false" />
+          <Property Name="IDNV" Type="int" Nullable="false" />
+          <Property Name="NHIEMVU" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="CT_DOAN_PHUONGTIEN">
           <Key>
@@ -37,6 +65,7 @@
           <Property Name="IDCT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDDOAN" Type="int" />
           <Property Name="IDPT" Type="int" />
+          <Property Name="CHIPHIPT" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="DIADIEM">
           <Key>
@@ -61,6 +90,8 @@
           <Property Name="NGAYBATDAU" Type="nvarchar(max)" />
           <Property Name="NGAYKETTHUC" Type="nvarchar(max)" />
           <Property Name="SOLUONGPT" Type="int" />
+          <Property Name="MOTA" Type="nvarchar(max)" />
+          <Property Name="TONGCHIPHI" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="KHACHHANG">
           <Key>
@@ -90,6 +121,7 @@
           <Property Name="TENKS" Type="nvarchar(max)" />
           <Property Name="MOTA" Type="nvarchar(max)" />
           <Property Name="AVATAR" Type="nvarchar(max)" />
+          <Property Name="GIAKS" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="NGUOIDUNG">
           <Key>
@@ -112,6 +144,8 @@
           <Property Name="EMAIL" Type="nvarchar(max)" />
           <Property Name="NGAYSINH" Type="nvarchar(max)" />
           <Property Name="CHUCVU" Type="nvarchar(max)" />
+          <Property Name="CMND" Type="nvarchar(max)" />
+          <Property Name="AVATAR" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="PHUONGTIEN">
           <Key>
@@ -174,6 +208,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_CT_DOAN_BUAAN_DOAN">
+          <End Role="DOAN" Type="Self.DOAN" Multiplicity="1" />
+          <End Role="CT_DOAN_BUAAN" Type="Self.CT_DOAN_BUAAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOAN">
+              <PropertyRef Name="IDDOAN" />
+            </Principal>
+            <Dependent Role="CT_DOAN_BUAAN">
+              <PropertyRef Name="IDDOAN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CT_DOAN_CHIPHIKHAC_DOAN">
+          <End Role="DOAN" Type="Self.DOAN" Multiplicity="1" />
+          <End Role="CT_DOAN_CHIPHIKHAC" Type="Self.CT_DOAN_CHIPHIKHAC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOAN">
+              <PropertyRef Name="IDDOAN" />
+            </Principal>
+            <Dependent Role="CT_DOAN_CHIPHIKHAC">
+              <PropertyRef Name="IDDOAN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_CT_DOAN_KHACHHANG">
           <End Role="DOAN" Type="Self.DOAN" Multiplicity="0..1" />
           <End Role="CT_DOAN_KHACHHANG" Type="Self.CT_DOAN_KHACHHANG" Multiplicity="*" />
@@ -219,6 +277,30 @@
             </Principal>
             <Dependent Role="CT_DOAN_KHACHSAN">
               <PropertyRef Name="IDKS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CT_DOAN_NHANVIEN_DOAN">
+          <End Role="DOAN" Type="Self.DOAN" Multiplicity="1" />
+          <End Role="CT_DOAN_NHANVIEN" Type="Self.CT_DOAN_NHANVIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOAN">
+              <PropertyRef Name="IDDOAN" />
+            </Principal>
+            <Dependent Role="CT_DOAN_NHANVIEN">
+              <PropertyRef Name="IDDOAN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CT_DOAN_NHANVIEN_NHANVIEN">
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
+          <End Role="CT_DOAN_NHANVIEN" Type="Self.CT_DOAN_NHANVIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="IDNV" />
+            </Principal>
+            <Dependent Role="CT_DOAN_NHANVIEN">
+              <PropertyRef Name="IDNV" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -296,8 +378,11 @@
         </Association>
         <EntityContainer Name="TOURMANAGEMENTModelStoreContainer">
           <EntitySet Name="CT_DIADIEM_TOUR" EntityType="Self.CT_DIADIEM_TOUR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CT_DOAN_BUAAN" EntityType="Self.CT_DOAN_BUAAN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CT_DOAN_CHIPHIKHAC" EntityType="Self.CT_DOAN_CHIPHIKHAC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CT_DOAN_KHACHHANG" EntityType="Self.CT_DOAN_KHACHHANG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CT_DOAN_KHACHSAN" EntityType="Self.CT_DOAN_KHACHSAN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CT_DOAN_NHANVIEN" EntityType="Self.CT_DOAN_NHANVIEN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CT_DOAN_PHUONGTIEN" EntityType="Self.CT_DOAN_PHUONGTIEN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DIADIEM" EntityType="Self.DIADIEM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DOAN" EntityType="Self.DOAN" Schema="dbo" store:Type="Tables" />
@@ -317,6 +402,14 @@
             <End Role="TOUR" EntitySet="TOUR" />
             <End Role="CT_DIADIEM_TOUR" EntitySet="CT_DIADIEM_TOUR" />
           </AssociationSet>
+          <AssociationSet Name="fk_CT_DOAN_BUAAN_DOAN" Association="Self.fk_CT_DOAN_BUAAN_DOAN">
+            <End Role="DOAN" EntitySet="DOAN" />
+            <End Role="CT_DOAN_BUAAN" EntitySet="CT_DOAN_BUAAN" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CT_DOAN_CHIPHIKHAC_DOAN" Association="Self.fk_CT_DOAN_CHIPHIKHAC_DOAN">
+            <End Role="DOAN" EntitySet="DOAN" />
+            <End Role="CT_DOAN_CHIPHIKHAC" EntitySet="CT_DOAN_CHIPHIKHAC" />
+          </AssociationSet>
           <AssociationSet Name="fk_CT_DOAN_KHACHHANG" Association="Self.fk_CT_DOAN_KHACHHANG">
             <End Role="DOAN" EntitySet="DOAN" />
             <End Role="CT_DOAN_KHACHHANG" EntitySet="CT_DOAN_KHACHHANG" />
@@ -332,6 +425,14 @@
           <AssociationSet Name="fk_CT_DOAN_KHACHSAN_KS" Association="Self.fk_CT_DOAN_KHACHSAN_KS">
             <End Role="KHACHSAN" EntitySet="KHACHSAN" />
             <End Role="CT_DOAN_KHACHSAN" EntitySet="CT_DOAN_KHACHSAN" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CT_DOAN_NHANVIEN_DOAN" Association="Self.fk_CT_DOAN_NHANVIEN_DOAN">
+            <End Role="DOAN" EntitySet="DOAN" />
+            <End Role="CT_DOAN_NHANVIEN" EntitySet="CT_DOAN_NHANVIEN" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CT_DOAN_NHANVIEN_NHANVIEN" Association="Self.fk_CT_DOAN_NHANVIEN_NHANVIEN">
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+            <End Role="CT_DOAN_NHANVIEN" EntitySet="CT_DOAN_NHANVIEN" />
           </AssociationSet>
           <AssociationSet Name="fk_CT_DOAN_PHUONGTIEN" Association="Self.fk_CT_DOAN_PHUONGTIEN">
             <End Role="DOAN" EntitySet="DOAN" />
@@ -364,8 +465,11 @@
       <Schema Namespace="TOURMANAGEMENTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="TOURMANAGEMENTEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CT_DIADIEM_TOUR" EntityType="TOURMANAGEMENTModel.CT_DIADIEM_TOUR" />
+          <EntitySet Name="CT_DOAN_BUAAN" EntityType="TOURMANAGEMENTModel.CT_DOAN_BUAAN" />
+          <EntitySet Name="CT_DOAN_CHIPHIKHAC" EntityType="TOURMANAGEMENTModel.CT_DOAN_CHIPHIKHAC" />
           <EntitySet Name="CT_DOAN_KHACHHANG" EntityType="TOURMANAGEMENTModel.CT_DOAN_KHACHHANG" />
           <EntitySet Name="CT_DOAN_KHACHSAN" EntityType="TOURMANAGEMENTModel.CT_DOAN_KHACHSAN" />
+          <EntitySet Name="CT_DOAN_NHANVIEN" EntityType="TOURMANAGEMENTModel.CT_DOAN_NHANVIEN" />
           <EntitySet Name="CT_DOAN_PHUONGTIEN" EntityType="TOURMANAGEMENTModel.CT_DOAN_PHUONGTIEN" />
           <EntitySet Name="DIADIEM" EntityType="TOURMANAGEMENTModel.DIADIEM" />
           <EntitySet Name="DOAN" EntityType="TOURMANAGEMENTModel.DOAN" />
@@ -385,6 +489,14 @@
             <End Role="TOUR" EntitySet="TOUR" />
             <End Role="CT_DIADIEM_TOUR" EntitySet="CT_DIADIEM_TOUR" />
           </AssociationSet>
+          <AssociationSet Name="fk_CT_DOAN_BUAAN_DOAN" Association="TOURMANAGEMENTModel.fk_CT_DOAN_BUAAN_DOAN">
+            <End Role="DOAN" EntitySet="DOAN" />
+            <End Role="CT_DOAN_BUAAN" EntitySet="CT_DOAN_BUAAN" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CT_DOAN_CHIPHIKHAC_DOAN" Association="TOURMANAGEMENTModel.fk_CT_DOAN_CHIPHIKHAC_DOAN">
+            <End Role="DOAN" EntitySet="DOAN" />
+            <End Role="CT_DOAN_CHIPHIKHAC" EntitySet="CT_DOAN_CHIPHIKHAC" />
+          </AssociationSet>
           <AssociationSet Name="fk_CT_DOAN_KHACHHANG" Association="TOURMANAGEMENTModel.fk_CT_DOAN_KHACHHANG">
             <End Role="DOAN" EntitySet="DOAN" />
             <End Role="CT_DOAN_KHACHHANG" EntitySet="CT_DOAN_KHACHHANG" />
@@ -400,6 +512,14 @@
           <AssociationSet Name="fk_CT_DOAN_KHACHSAN_KS" Association="TOURMANAGEMENTModel.fk_CT_DOAN_KHACHSAN_KS">
             <End Role="KHACHSAN" EntitySet="KHACHSAN" />
             <End Role="CT_DOAN_KHACHSAN" EntitySet="CT_DOAN_KHACHSAN" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CT_DOAN_NHANVIEN_DOAN" Association="TOURMANAGEMENTModel.fk_CT_DOAN_NHANVIEN_DOAN">
+            <End Role="DOAN" EntitySet="DOAN" />
+            <End Role="CT_DOAN_NHANVIEN" EntitySet="CT_DOAN_NHANVIEN" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CT_DOAN_NHANVIEN_NHANVIEN" Association="TOURMANAGEMENTModel.fk_CT_DOAN_NHANVIEN_NHANVIEN">
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+            <End Role="CT_DOAN_NHANVIEN" EntitySet="CT_DOAN_NHANVIEN" />
           </AssociationSet>
           <AssociationSet Name="fk_CT_DOAN_PHUONGTIEN" Association="TOURMANAGEMENTModel.fk_CT_DOAN_PHUONGTIEN">
             <End Role="DOAN" EntitySet="DOAN" />
@@ -437,6 +557,26 @@
           <NavigationProperty Name="DIADIEM" Relationship="TOURMANAGEMENTModel.FK_CT_DIADIEM_TOUR_DIADIEM" FromRole="CT_DIADIEM_TOUR" ToRole="DIADIEM" />
           <NavigationProperty Name="TOUR" Relationship="TOURMANAGEMENTModel.FK_CT_DIADIEM_TOUR_TOUR" FromRole="CT_DIADIEM_TOUR" ToRole="TOUR" />
         </EntityType>
+        <EntityType Name="CT_DOAN_BUAAN">
+          <Key>
+            <PropertyRef Name="IDCT" />
+          </Key>
+          <Property Name="IDCT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDDOAN" Type="Int32" Nullable="false" />
+          <Property Name="CHIPHIBUAAN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MOTA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DOAN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_BUAAN_DOAN" FromRole="CT_DOAN_BUAAN" ToRole="DOAN" />
+        </EntityType>
+        <EntityType Name="CT_DOAN_CHIPHIKHAC">
+          <Key>
+            <PropertyRef Name="IDCT" />
+          </Key>
+          <Property Name="IDCT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDDOAN" Type="Int32" Nullable="false" />
+          <Property Name="CHIPHI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MOTA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DOAN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_CHIPHIKHAC_DOAN" FromRole="CT_DOAN_CHIPHIKHAC" ToRole="DOAN" />
+        </EntityType>
         <EntityType Name="CT_DOAN_KHACHHANG">
           <Key>
             <PropertyRef Name="IDCT" />
@@ -454,8 +594,20 @@
           <Property Name="IDCT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDDOAN" Type="Int32" />
           <Property Name="IDKS" Type="Int32" />
+          <Property Name="CHIPHIKS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="DOAN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_KHACHSAN" FromRole="CT_DOAN_KHACHSAN" ToRole="DOAN" />
           <NavigationProperty Name="KHACHSAN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_KHACHSAN_KS" FromRole="CT_DOAN_KHACHSAN" ToRole="KHACHSAN" />
+        </EntityType>
+        <EntityType Name="CT_DOAN_NHANVIEN">
+          <Key>
+            <PropertyRef Name="IDCT" />
+          </Key>
+          <Property Name="IDCT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDDOAN" Type="Int32" Nullable="false" />
+          <Property Name="IDNV" Type="Int32" Nullable="false" />
+          <Property Name="NHIEMVU" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DOAN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_NHANVIEN_DOAN" FromRole="CT_DOAN_NHANVIEN" ToRole="DOAN" />
+          <NavigationProperty Name="NHANVIEN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_NHANVIEN_NHANVIEN" FromRole="CT_DOAN_NHANVIEN" ToRole="NHANVIEN" />
         </EntityType>
         <EntityType Name="CT_DOAN_PHUONGTIEN">
           <Key>
@@ -464,6 +616,7 @@
           <Property Name="IDCT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDDOAN" Type="Int32" />
           <Property Name="IDPT" Type="Int32" />
+          <Property Name="CHIPHIPT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="DOAN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_PHUONGTIEN" FromRole="CT_DOAN_PHUONGTIEN" ToRole="DOAN" />
           <NavigationProperty Name="PHUONGTIEN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_PHUONGTIEN_PT" FromRole="CT_DOAN_PHUONGTIEN" ToRole="PHUONGTIEN" />
         </EntityType>
@@ -492,8 +645,13 @@
           <Property Name="NGAYBATDAU" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NGAYKETTHUC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="SOLUONGPT" Type="Int32" />
+          <Property Name="MOTA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TONGCHIPHI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CT_DOAN_BUAAN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_BUAAN_DOAN" FromRole="DOAN" ToRole="CT_DOAN_BUAAN" />
+          <NavigationProperty Name="CT_DOAN_CHIPHIKHAC" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_CHIPHIKHAC_DOAN" FromRole="DOAN" ToRole="CT_DOAN_CHIPHIKHAC" />
           <NavigationProperty Name="CT_DOAN_KHACHHANG" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_KHACHHANG" FromRole="DOAN" ToRole="CT_DOAN_KHACHHANG" />
           <NavigationProperty Name="CT_DOAN_KHACHSAN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_KHACHSAN" FromRole="DOAN" ToRole="CT_DOAN_KHACHSAN" />
+          <NavigationProperty Name="CT_DOAN_NHANVIEN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_NHANVIEN_DOAN" FromRole="DOAN" ToRole="CT_DOAN_NHANVIEN" />
           <NavigationProperty Name="CT_DOAN_PHUONGTIEN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_PHUONGTIEN" FromRole="DOAN" ToRole="CT_DOAN_PHUONGTIEN" />
           <NavigationProperty Name="TOUR" Relationship="TOURMANAGEMENTModel.fk_DOAN_TOUR" FromRole="DOAN" ToRole="TOUR" />
         </EntityType>
@@ -526,6 +684,7 @@
           <Property Name="TENKS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="MOTA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="AVATAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GIAKS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CT_DOAN_KHACHSAN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_KHACHSAN_KS" FromRole="KHACHSAN" ToRole="CT_DOAN_KHACHSAN" />
           <NavigationProperty Name="TINHTHANH1" Relationship="TOURMANAGEMENTModel.fk_KHACHSAN_TINHTHANH" FromRole="KHACHSAN" ToRole="TINHTHANH" />
         </EntityType>
@@ -551,6 +710,9 @@
           <Property Name="EMAIL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NGAYSINH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CHUCVU" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CMND" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AVATAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CT_DOAN_NHANVIEN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_NHANVIEN_NHANVIEN" FromRole="NHANVIEN" ToRole="CT_DOAN_NHANVIEN" />
           <NavigationProperty Name="NGUOIDUNG" Relationship="TOURMANAGEMENTModel.fk_NGUOIDUNG_NHANVIEN" FromRole="NHANVIEN" ToRole="NGUOIDUNG" />
         </EntityType>
         <EntityType Name="PHUONGTIEN">
@@ -619,6 +781,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_CT_DOAN_BUAAN_DOAN">
+          <End Type="TOURMANAGEMENTModel.DOAN" Role="DOAN" Multiplicity="1" />
+          <End Type="TOURMANAGEMENTModel.CT_DOAN_BUAAN" Role="CT_DOAN_BUAAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOAN">
+              <PropertyRef Name="IDDOAN" />
+            </Principal>
+            <Dependent Role="CT_DOAN_BUAAN">
+              <PropertyRef Name="IDDOAN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CT_DOAN_CHIPHIKHAC_DOAN">
+          <End Type="TOURMANAGEMENTModel.DOAN" Role="DOAN" Multiplicity="1" />
+          <End Type="TOURMANAGEMENTModel.CT_DOAN_CHIPHIKHAC" Role="CT_DOAN_CHIPHIKHAC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOAN">
+              <PropertyRef Name="IDDOAN" />
+            </Principal>
+            <Dependent Role="CT_DOAN_CHIPHIKHAC">
+              <PropertyRef Name="IDDOAN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_CT_DOAN_KHACHHANG">
           <End Type="TOURMANAGEMENTModel.DOAN" Role="DOAN" Multiplicity="0..1" />
           <End Type="TOURMANAGEMENTModel.CT_DOAN_KHACHHANG" Role="CT_DOAN_KHACHHANG" Multiplicity="*" />
@@ -664,6 +850,30 @@
             </Principal>
             <Dependent Role="CT_DOAN_KHACHSAN">
               <PropertyRef Name="IDKS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CT_DOAN_NHANVIEN_DOAN">
+          <End Type="TOURMANAGEMENTModel.DOAN" Role="DOAN" Multiplicity="1" />
+          <End Type="TOURMANAGEMENTModel.CT_DOAN_NHANVIEN" Role="CT_DOAN_NHANVIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOAN">
+              <PropertyRef Name="IDDOAN" />
+            </Principal>
+            <Dependent Role="CT_DOAN_NHANVIEN">
+              <PropertyRef Name="IDDOAN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CT_DOAN_NHANVIEN_NHANVIEN">
+          <End Type="TOURMANAGEMENTModel.NHANVIEN" Role="NHANVIEN" Multiplicity="1" />
+          <End Type="TOURMANAGEMENTModel.CT_DOAN_NHANVIEN" Role="CT_DOAN_NHANVIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="IDNV" />
+            </Principal>
+            <Dependent Role="CT_DOAN_NHANVIEN">
+              <PropertyRef Name="IDNV" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -755,6 +965,26 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="CT_DOAN_BUAAN">
+            <EntityTypeMapping TypeName="TOURMANAGEMENTModel.CT_DOAN_BUAAN">
+              <MappingFragment StoreEntitySet="CT_DOAN_BUAAN">
+                <ScalarProperty Name="MOTA" ColumnName="MOTA" />
+                <ScalarProperty Name="CHIPHIBUAAN" ColumnName="CHIPHIBUAAN" />
+                <ScalarProperty Name="IDDOAN" ColumnName="IDDOAN" />
+                <ScalarProperty Name="IDCT" ColumnName="IDCT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CT_DOAN_CHIPHIKHAC">
+            <EntityTypeMapping TypeName="TOURMANAGEMENTModel.CT_DOAN_CHIPHIKHAC">
+              <MappingFragment StoreEntitySet="CT_DOAN_CHIPHIKHAC">
+                <ScalarProperty Name="MOTA" ColumnName="MOTA" />
+                <ScalarProperty Name="CHIPHI" ColumnName="CHIPHI" />
+                <ScalarProperty Name="IDDOAN" ColumnName="IDDOAN" />
+                <ScalarProperty Name="IDCT" ColumnName="IDCT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="CT_DOAN_KHACHHANG">
             <EntityTypeMapping TypeName="TOURMANAGEMENTModel.CT_DOAN_KHACHHANG">
               <MappingFragment StoreEntitySet="CT_DOAN_KHACHHANG">
@@ -767,7 +997,18 @@
           <EntitySetMapping Name="CT_DOAN_KHACHSAN">
             <EntityTypeMapping TypeName="TOURMANAGEMENTModel.CT_DOAN_KHACHSAN">
               <MappingFragment StoreEntitySet="CT_DOAN_KHACHSAN">
+                <ScalarProperty Name="CHIPHIKS" ColumnName="CHIPHIKS" />
                 <ScalarProperty Name="IDKS" ColumnName="IDKS" />
+                <ScalarProperty Name="IDDOAN" ColumnName="IDDOAN" />
+                <ScalarProperty Name="IDCT" ColumnName="IDCT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CT_DOAN_NHANVIEN">
+            <EntityTypeMapping TypeName="TOURMANAGEMENTModel.CT_DOAN_NHANVIEN">
+              <MappingFragment StoreEntitySet="CT_DOAN_NHANVIEN">
+                <ScalarProperty Name="NHIEMVU" ColumnName="NHIEMVU" />
+                <ScalarProperty Name="IDNV" ColumnName="IDNV" />
                 <ScalarProperty Name="IDDOAN" ColumnName="IDDOAN" />
                 <ScalarProperty Name="IDCT" ColumnName="IDCT" />
               </MappingFragment>
@@ -776,6 +1017,7 @@
           <EntitySetMapping Name="CT_DOAN_PHUONGTIEN">
             <EntityTypeMapping TypeName="TOURMANAGEMENTModel.CT_DOAN_PHUONGTIEN">
               <MappingFragment StoreEntitySet="CT_DOAN_PHUONGTIEN">
+                <ScalarProperty Name="CHIPHIPT" ColumnName="CHIPHIPT" />
                 <ScalarProperty Name="IDPT" ColumnName="IDPT" />
                 <ScalarProperty Name="IDDOAN" ColumnName="IDDOAN" />
                 <ScalarProperty Name="IDCT" ColumnName="IDCT" />
@@ -798,6 +1040,8 @@
           <EntitySetMapping Name="DOAN">
             <EntityTypeMapping TypeName="TOURMANAGEMENTModel.DOAN">
               <MappingFragment StoreEntitySet="DOAN">
+                <ScalarProperty Name="TONGCHIPHI" ColumnName="TONGCHIPHI" />
+                <ScalarProperty Name="MOTA" ColumnName="MOTA" />
                 <ScalarProperty Name="SOLUONGPT" ColumnName="SOLUONGPT" />
                 <ScalarProperty Name="NGAYKETTHUC" ColumnName="NGAYKETTHUC" />
                 <ScalarProperty Name="NGAYBATDAU" ColumnName="NGAYBATDAU" />
@@ -827,6 +1071,7 @@
           <EntitySetMapping Name="KHACHSAN">
             <EntityTypeMapping TypeName="TOURMANAGEMENTModel.KHACHSAN">
               <MappingFragment StoreEntitySet="KHACHSAN">
+                <ScalarProperty Name="GIAKS" ColumnName="GIAKS" />
                 <ScalarProperty Name="AVATAR" ColumnName="AVATAR" />
                 <ScalarProperty Name="MOTA" ColumnName="MOTA" />
                 <ScalarProperty Name="TENKS" ColumnName="TENKS" />
@@ -853,6 +1098,8 @@
           <EntitySetMapping Name="NHANVIEN">
             <EntityTypeMapping TypeName="TOURMANAGEMENTModel.NHANVIEN">
               <MappingFragment StoreEntitySet="NHANVIEN">
+                <ScalarProperty Name="AVATAR" ColumnName="AVATAR" />
+                <ScalarProperty Name="CMND" ColumnName="CMND" />
                 <ScalarProperty Name="CHUCVU" ColumnName="CHUCVU" />
                 <ScalarProperty Name="NGAYSINH" ColumnName="NGAYSINH" />
                 <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />

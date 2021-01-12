@@ -85,12 +85,20 @@ namespace TourManagement.ViewModel.ManageTour
         public ICommand DoubleClickSelectPlaceCommand { get; set; }
         #endregion
 
+        #region Declare Command WD_TourList
+        public ICommand WD_TourList_QuitCommand { get; set; }
+        public ICommand DoubleClickSelectTourCommand { get; set; }
+        #endregion
         #region Declare Binding Text WD_PlaceList
         private PLACE _SelectedPLACE;
         public PLACE SelectedPLACE { get => _SelectedPLACE; set { _SelectedPLACE = value; OnPropertyChanged(); } }
         #endregion
+        #region Declare Binding Text WD_TourList
+        private TOURs _SelectedTOURs;
+        public TOURs SelectedTOURs { get => _SelectedTOURs; set { _SelectedTOURs = value; OnPropertyChanged(); } }
+        #endregion
 
-        
+
         public UC_ManageTourViewModel()
         {
             #region XỬ LÝ COMMAND CHUYẾN GRID CHỨC NĂNG
@@ -315,7 +323,52 @@ namespace TourManagement.ViewModel.ManageTour
                 }    
             });
             #endregion
-            
+
+            #region XỬ LÝ COMMAND WD_TOURLIST
+            WD_TourList_QuitCommand = new RelayCommand<Window>((p) =>
+            {
+                //if (AccountPower == 0 || AccountPower == 1)
+                //{
+                //    MessageBoxResult result = MessageBox.Show("Bạn không đủ quyền truy cập vào chức năng này!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                //    return false;
+                //}
+
+
+                return true;
+            }, (p) =>
+            {
+                MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn muốn thoát?", "Thông báo", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    p.Close();
+                }
+                else
+                {
+                    return;
+                }    
+            });
+            DoubleClickSelectTourCommand = new RelayCommand<Window>((p) =>
+            {
+                //if (AccountPower == 0 || AccountPower == 1)
+                //{
+                //    MessageBoxResult result = MessageBox.Show("Bạn không đủ quyền truy cập vào chức năng này!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                //    return false;
+                //}
+
+
+                return true;
+            }, (p) =>
+            {
+                if(SelectedTOURs == null)
+                {
+                    return;
+                }    
+                else
+                {
+                    p.Close();
+                }    
+            });
+            #endregion
         }
 
 

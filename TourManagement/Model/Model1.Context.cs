@@ -26,8 +26,11 @@ namespace TourManagement.Model
         }
     
         public virtual DbSet<CT_DIADIEM_TOUR> CT_DIADIEM_TOUR { get; set; }
+        public virtual DbSet<CT_DOAN_BUAAN> CT_DOAN_BUAAN { get; set; }
+        public virtual DbSet<CT_DOAN_CHIPHIKHAC> CT_DOAN_CHIPHIKHAC { get; set; }
         public virtual DbSet<CT_DOAN_KHACHHANG> CT_DOAN_KHACHHANG { get; set; }
         public virtual DbSet<CT_DOAN_KHACHSAN> CT_DOAN_KHACHSAN { get; set; }
+        public virtual DbSet<CT_DOAN_NHANVIEN> CT_DOAN_NHANVIEN { get; set; }
         public virtual DbSet<CT_DOAN_PHUONGTIEN> CT_DOAN_PHUONGTIEN { get; set; }
         public virtual DbSet<DIADIEM> DIADIEM { get; set; }
         public virtual DbSet<DOAN> DOAN { get; set; }

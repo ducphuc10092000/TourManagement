@@ -11,6 +11,9 @@ namespace TourManagement.Model.Customer
     {
         public KHACHHANG khachhang { get; set; }
 
+        public string GIOITINH { get; set; }
+        
+
         public CUSTOMER()
         {
 

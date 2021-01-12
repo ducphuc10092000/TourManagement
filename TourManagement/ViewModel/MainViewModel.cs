@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using TourManagement.View.ManageCustomer;
+using TourManagement.View.ManageStaff;
 using TourManagement.View.ManageTour;
 using TourManagement.View.ManageTour.WD_ManageTour;
 using TourManagement.ViewModel.ManageCustomer;
+using TourManagement.ViewModel.ManageStaff;
 using TourManagement.ViewModel.ManageTour;
 using TourManagement.ViewModel.ManageTour.WD_ManageTour;
 
@@ -117,6 +119,9 @@ namespace TourManagement.ViewModel
             }, (p) =>
             {
                 ChucNang = (int)CHUCNANG.ManageStaff;
+                UC_ManageStaff uc_ManageStaff = new UC_ManageStaff();
+                var uc_ManageStaff_DT = uc_ManageStaff.DataContext as UC_ManageStaffViewModel;
+                uc_ManageStaff_DT.LoadStaffList();
             });
             BtnManageReportCommand = new RelayCommand<object>((p) =>
             {

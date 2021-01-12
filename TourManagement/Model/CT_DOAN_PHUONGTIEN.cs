@@ -17,6 +17,7 @@ namespace TourManagement.Model
         public int IDCT { get; set; }
         public Nullable<int> IDDOAN { get; set; }
         public Nullable<int> IDPT { get; set; }
+        public string CHIPHIPT { get; set; }
     
         public virtual DOAN DOAN { get; set; }
         public virtual PHUONGTIEN PHUONGTIEN { get; set; }

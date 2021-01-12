@@ -17,6 +17,7 @@ namespace TourManagement.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public NHANVIEN()
         {
+            this.CT_DOAN_NHANVIEN = new HashSet<CT_DOAN_NHANVIEN>();
             this.NGUOIDUNG = new HashSet<NGUOIDUNG>();
         }
     
@@ -27,7 +28,11 @@ namespace TourManagement.Model
         public string EMAIL { get; set; }
         public string NGAYSINH { get; set; }
         public string CHUCVU { get; set; }
+        public string CMND { get; set; }
+        public string AVATAR { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CT_DOAN_NHANVIEN> CT_DOAN_NHANVIEN { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NGUOIDUNG> NGUOIDUNG { get; set; }
     }

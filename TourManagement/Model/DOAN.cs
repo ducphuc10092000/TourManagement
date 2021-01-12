@@ -17,8 +17,11 @@ namespace TourManagement.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DOAN()
         {
+            this.CT_DOAN_BUAAN = new HashSet<CT_DOAN_BUAAN>();
+            this.CT_DOAN_CHIPHIKHAC = new HashSet<CT_DOAN_CHIPHIKHAC>();
             this.CT_DOAN_KHACHHANG = new HashSet<CT_DOAN_KHACHHANG>();
             this.CT_DOAN_KHACHSAN = new HashSet<CT_DOAN_KHACHSAN>();
+            this.CT_DOAN_NHANVIEN = new HashSet<CT_DOAN_NHANVIEN>();
             this.CT_DOAN_PHUONGTIEN = new HashSet<CT_DOAN_PHUONGTIEN>();
         }
     
@@ -29,11 +32,19 @@ namespace TourManagement.Model
         public string NGAYBATDAU { get; set; }
         public string NGAYKETTHUC { get; set; }
         public Nullable<int> SOLUONGPT { get; set; }
+        public string MOTA { get; set; }
+        public string TONGCHIPHI { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CT_DOAN_BUAAN> CT_DOAN_BUAAN { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CT_DOAN_CHIPHIKHAC> CT_DOAN_CHIPHIKHAC { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CT_DOAN_KHACHHANG> CT_DOAN_KHACHHANG { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CT_DOAN_KHACHSAN> CT_DOAN_KHACHSAN { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CT_DOAN_NHANVIEN> CT_DOAN_NHANVIEN { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CT_DOAN_PHUONGTIEN> CT_DOAN_PHUONGTIEN { get; set; }
         public virtual TOUR TOUR { get; set; }

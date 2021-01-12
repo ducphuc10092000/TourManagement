@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
 using TourManagement.Model;
@@ -14,6 +15,14 @@ namespace TourManagement.ViewModel.ManageCustomer
 {
     public class UC_ManageCustomerViewModel : BaseViewModel
     {
+        #region BINDING TEXT WD_CustomerList
+        private string _SelectedCustomerID;
+        public string SelectedCustomerID { get => _SelectedCustomerID; set { _SelectedCustomerID = value; OnPropertyChanged(); } }
+
+        private CUSTOMER _SelectedCUSTOMER;
+        public CUSTOMER SelectedCUSTOMER { get => _SelectedCUSTOMER; set { _SelectedCUSTOMER = value; OnPropertyChanged(); } }
+        #endregion
+
         private ObservableCollection<KHACHHANG> _CUSTOMERLIST;
         public ObservableCollection<KHACHHANG> CUSTOMERLIST { get => _CUSTOMERLIST; set { _CUSTOMERLIST = value; OnPropertyChanged(); } }
 
@@ -30,8 +39,14 @@ namespace TourManagement.ViewModel.ManageCustomer
         public ICommand DefaultCustomerFindCommand { get; set; }
         #endregion
 
+        #region DECALRE COMMAND WD_CUSTOMERLIST
+        public ICommand QuitCommand { get; set; }
+        public ICommand DoubleClickSelectCustomerCommand { get; set; }
+        #endregion
+
         public UC_ManageCustomerViewModel()
         {
+            #region COMMAND UC_MANAGECUSTOMER
             CustomerFindCommand = new RelayCommand<object>((p) =>
             {
                 //if (AccountPower == 0 || AccountPower == 1)
@@ -44,10 +59,10 @@ namespace TourManagement.ViewModel.ManageCustomer
                 return true;
             }, (p) =>
             {
-                if(string.IsNullOrEmpty(CustomerNameFind))
+                if (string.IsNullOrEmpty(CustomerNameFind))
                 {
                     return;
-                }    
+                }
 
                 CollectionViewSource.GetDefaultView(CUSTOMERLISTDTG).Filter = (customerfind) =>
                 {
@@ -109,6 +124,52 @@ namespace TourManagement.ViewModel.ManageCustomer
 
                 LoadCustomerList();
             });
+            #endregion
+            #region COMMAND WD_CUSTOMERLIST
+            QuitCommand = new RelayCommand<Window>((p) =>
+            {
+                //if (AccountPower == 0 || AccountPower == 1)
+                //{
+                //    MessageBoxResult result = MessageBox.Show("Bạn không đủ quyền truy cập vào chức năng này!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                //    return false;
+                //}
+
+
+                return true;
+            }, (p) =>
+            {
+                MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn muốn thoát?", "Thông báo", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if(result == MessageBoxResult.Yes)
+                {
+                    p.Close();
+                }    
+                else
+                {
+                    return;
+                }    
+            });
+            DoubleClickSelectCustomerCommand = new RelayCommand<Window>((p) =>
+            {
+                //if (AccountPower == 0 || AccountPower == 1)
+                //{
+                //    MessageBoxResult result = MessageBox.Show("Bạn không đủ quyền truy cập vào chức năng này!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                //    return false;
+                //}
+
+
+                return true;
+            }, (p) =>
+            {
+                if(SelectedCUSTOMER == null)
+                {
+                    return;
+                }    
+                else
+                {
+                    p.Close();
+                }    
+            });
+            #endregion
         }
         public void LoadCustomerList()
         {
@@ -118,6 +179,14 @@ namespace TourManagement.ViewModel.ManageCustomer
             {
                 CUSTOMER temp = new CUSTOMER();
                 temp.khachhang = item;
+                if(item.ACTIVE == true)
+                {
+                    temp.GIOITINH = "Nam";
+                }    
+                else
+                {
+                    temp.GIOITINH = "Nữ";
+                }    
                 CUSTOMERLISTDTG.Add(temp);
             }    
         }

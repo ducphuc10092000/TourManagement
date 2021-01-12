@@ -79,10 +79,19 @@
     <Compile Include="Model\CT_DIADIEM_TOUR.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\CT_DOAN_BUAAN.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CT_DOAN_CHIPHIKHAC.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\CT_DOAN_KHACHHANG.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\CT_DOAN_KHACHSAN.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CT_DOAN_NHANVIEN.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\CT_DOAN_PHUONGTIEN.cs">
@@ -126,6 +135,7 @@
     <Compile Include="Model\PHUONGTIEN.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Staff\STAFF.cs" />
     <Compile Include="Model\sysdiagrams.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -147,6 +157,9 @@
     <Compile Include="ViewModel\ManageCustomer\UC_ManageCustomerViewModel.cs" />
     <Compile Include="ViewModel\ManageCustomer\WD_AddCustomerViewModel.cs" />
     <Compile Include="ViewModel\ManageCustomer\WD_EditCustomerViewModel.cs" />
+    <Compile Include="ViewModel\ManageStaff\UC_ManageStaffViewModel.cs" />
+    <Compile Include="ViewModel\ManageStaff\WD_AddStaffViewModel.cs" />
+    <Compile Include="ViewModel\ManageStaff\WD_EditStaffViewModel.cs" />
     <Compile Include="ViewModel\ManageTour\ManageHotel\WD_AddHotelViewModel.cs" />
     <Compile Include="ViewModel\ManageTour\ManageHotel\WD_EditHotelViewModel.cs" />
     <Compile Include="ViewModel\ManageTour\ManagePlace\WD_AddPlaceViewModel.cs" />
@@ -158,6 +171,9 @@
     <Compile Include="ViewModel\ManageTour\WD_ManageTour\WD_EditTourViewModel.cs" />
     <Compile Include="ViewModel\ManageTrip\UC_ManageTripViewModel.cs" />
     <Compile Include="ViewModel\ManageTrip\WD_AddTripViewModel.cs" />
+    <Compile Include="ViewModel\ManageTrip\WD_CustomerList.xaml.cs">
+      <DependentUpon>WD_CustomerList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\DashBoard\UC_DashBoard.xaml.cs">
       <DependentUpon>UC_DashBoard.xaml</DependentUpon>
     </Compile>
@@ -178,6 +194,12 @@
     </Compile>
     <Compile Include="View\ManageStaff\UC_ManageStaff.xaml.cs">
       <DependentUpon>UC_ManageStaff.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageStaff\WD_AddStaff.xaml.cs">
+      <DependentUpon>WD_AddStaff.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageStaff\WD_EditStaff.xaml.cs">
+      <DependentUpon>WD_EditStaff.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ManageTour\ManageHotel\UC_ManageHotel.xaml.cs">
       <DependentUpon>UC_ManageHotel.xaml</DependentUpon>
@@ -227,6 +249,9 @@
     <Compile Include="View\ManageTrip\WD_HotelList.xaml.cs">
       <DependentUpon>WD_HotelList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ManageTrip\WD_TourList.xaml.cs">
+      <DependentUpon>WD_TourList.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -240,6 +265,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ResourceXAML\MainResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewModel\ManageTrip\WD_CustomerList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -268,6 +297,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ManageStaff\UC_ManageStaff.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManageStaff\WD_AddStaff.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManageStaff\WD_EditStaff.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -332,6 +369,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ManageTrip\WD_HotelList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManageTrip\WD_TourList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
