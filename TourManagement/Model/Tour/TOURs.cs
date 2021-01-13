@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using TourManagement.ViewModel;
 
 namespace TourManagement.Model.Tour
@@ -25,19 +26,19 @@ namespace TourManagement.Model.Tour
         }
         public void AddNewTour(string tentour, string giatour, string loaihinh, string mota, ObservableCollection<PLACE> placelist)
         {
-            tour = new TOUR();
-            tour.TENTOUR = tentour;
-            tour.GIATOUR = giatour;
-            tour.LOAIHINH = loaihinh;
-            tour.MOTA = mota;
-            tour.ACTIVE = true;
-            DataProvider.Ins.DB.TOUR.Add(tour);
-            DataProvider.Ins.DB.SaveChanges();
-            foreach(var item in placelist)
-            {
-                PLACE_TOUR_DETAIL place_tour_detail = new PLACE_TOUR_DETAIL();
-                place_tour_detail.AddNewPlace_Tour_Detail(tour.IDTOUR, item.diadiem.IDDIADIEM);
-            }    
+                tour = new TOUR();
+                tour.TENTOUR = tentour;
+                tour.GIATOUR = giatour;
+                tour.LOAIHINH = loaihinh;
+                tour.MOTA = mota;
+                tour.ACTIVE = true;
+                DataProvider.Ins.DB.TOUR.Add(tour);
+                DataProvider.Ins.DB.SaveChanges();
+                foreach (var item in placelist)
+                {
+                    PLACE_TOUR_DETAIL place_tour_detail = new PLACE_TOUR_DETAIL();
+                    place_tour_detail.AddNewPlace_Tour_Detail(tour.IDTOUR, item.diadiem.IDDIADIEM);
+                }
         }
         public void EditTour(int idtour, string tentour, string giatour, string loaihinh, string mota, ObservableCollection<PLACE> placelist)
         {

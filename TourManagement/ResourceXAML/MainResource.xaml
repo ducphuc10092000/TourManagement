@@ -8,6 +8,7 @@
                     xmlns:viewmodel_WD_ManageTour="clr-namespace:TourManagement.ViewModel.ManageTour.WD_ManageTour"
                     xmlns:viewmodel_ManageCustomer="clr-namespace:TourManagement.ViewModel.ManageCustomer"
                     xmlns:viewmodel_ManageTrip="clr-namespace:TourManagement.ViewModel.ManageTrip"
+                    xmlns:viewmodel_ManageVehicle="clr-namespace:TourManagement.ViewModel.ManageTrip.ManageVehicle"
                     xmlns:viewmodel_ManageStaff="clr-namespace:TourManagement.ViewModel.ManageStaff">
     <viewmodel:MainViewModel x:Key="MainVM"></viewmodel:MainViewModel>
     <viewmodel_ManageTour:UC_ManageTourViewModel x:Key="UC_ManageTourVM"></viewmodel_ManageTour:UC_ManageTourViewModel>
@@ -27,4 +28,7 @@
     <viewmodel_ManageStaff:UC_ManageStaffViewModel x:Key="UC_ManageStaffVM"></viewmodel_ManageStaff:UC_ManageStaffViewModel>
     <viewmodel_ManageStaff:WD_AddStaffViewModel x:Key="WD_AddStaffVM"></viewmodel_ManageStaff:WD_AddStaffViewModel>
     <viewmodel_ManageStaff:WD_EditStaffViewModel x:Key="WD_EditStaffVM"></viewmodel_ManageStaff:WD_EditStaffViewModel>
+    <viewmodel_ManageVehicle:UC_ManageVehicleViewModel x:Key="UC_ManageVehicleVM"></viewmodel_ManageVehicle:UC_ManageVehicleViewModel>
+    <viewmodel_ManageVehicle:WD_AddVehicleViewModel x:Key="WD_AddVehicleVM"></viewmodel_ManageVehicle:WD_AddVehicleViewModel>
+    <viewmodel_ManageVehicle:WD_EditVehicleViewModel x:Key="WD_EditVehicleVM"></viewmodel_ManageVehicle:WD_EditVehicleViewModel>
 </ResourceDictionary>

@@ -184,6 +184,7 @@
     <Property Name="SOLUONGPT" Type="Int32" />
     <Property Name="MOTA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="TONGCHIPHI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DOANHTHU" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="CT_DOAN_BUAAN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_BUAAN_DOAN" FromRole="DOAN" ToRole="CT_DOAN_BUAAN" />
     <NavigationProperty Name="CT_DOAN_CHIPHIKHAC" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_CHIPHIKHAC_DOAN" FromRole="DOAN" ToRole="CT_DOAN_CHIPHIKHAC" />
     <NavigationProperty Name="CT_DOAN_KHACHHANG" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_KHACHHANG" FromRole="DOAN" ToRole="CT_DOAN_KHACHHANG" />
@@ -260,6 +261,8 @@
     <Property Name="LOAIPT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="SOGHE" Type="Int32" />
     <Property Name="ACTIVE" Type="Boolean" />
+    <Property Name="ISAVAILABLE" Type="Boolean" />
+    <Property Name="BKS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="CT_DOAN_PHUONGTIEN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_PHUONGTIEN_PT" FromRole="PHUONGTIEN" ToRole="CT_DOAN_PHUONGTIEN" />
   </EntityType>
   <EntityType Name="sysdiagrams">

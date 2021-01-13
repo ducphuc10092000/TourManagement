@@ -86,6 +86,7 @@
     <EntitySetMapping Name="DOAN">
       <EntityTypeMapping TypeName="TOURMANAGEMENTModel.DOAN">
         <MappingFragment StoreEntitySet="DOAN">
+          <ScalarProperty Name="DOANHTHU" ColumnName="DOANHTHU" />
           <ScalarProperty Name="TONGCHIPHI" ColumnName="TONGCHIPHI" />
           <ScalarProperty Name="MOTA" ColumnName="MOTA" />
           <ScalarProperty Name="SOLUONGPT" ColumnName="SOLUONGPT" />
@@ -159,6 +160,8 @@
     <EntitySetMapping Name="PHUONGTIEN">
       <EntityTypeMapping TypeName="TOURMANAGEMENTModel.PHUONGTIEN">
         <MappingFragment StoreEntitySet="PHUONGTIEN">
+          <ScalarProperty Name="BKS" ColumnName="BKS" />
+          <ScalarProperty Name="ISAVAILABLE" ColumnName="ISAVAILABLE" />
           <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
           <ScalarProperty Name="SOGHE" ColumnName="SOGHE" />
           <ScalarProperty Name="LOAIPT" ColumnName="LOAIPT" />

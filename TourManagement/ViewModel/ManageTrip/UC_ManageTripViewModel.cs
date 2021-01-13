@@ -8,9 +8,12 @@ using System.Windows.Data;
 using System.Windows.Input;
 using TourManagement.Model;
 using TourManagement.Model.Tour;
+using TourManagement.Model.Trip;
 using TourManagement.View.ManageTour.ManageHotel;
 using TourManagement.View.ManageTrip;
+using TourManagement.View.ManageTrip.ManageVehicle;
 using TourManagement.ViewModel.ManageTour.ManageHotel;
+using TourManagement.ViewModel.ManageTrip.ManageVehicle;
 
 namespace TourManagement.ViewModel.ManageTrip
 {
@@ -51,6 +54,24 @@ namespace TourManagement.ViewModel.ManageTrip
         private string _ProvinceNameHotelFind
 ;
         public string ProvinceNameHotelFind { get => _ProvinceNameHotelFind; set { _ProvinceNameHotelFind = value; OnPropertyChanged(); } }
+        #endregion
+
+        #region Declare Binding Command UC_ManageVehicle
+        public ICommand Quit_UC_ManageVehicle_Command { get; set; }
+        public ICommand AddVehicleCommand { get; set; }
+        public ICommand EditVehicleCommand { get; set; }
+        #endregion
+
+        #region Declare Binding Text UC_ManageVehicle
+        
+        private VEHICLE _SelectedVEHICLE;
+        public VEHICLE SelectedVEHICLE { get => _SelectedVEHICLE; set { _SelectedVEHICLE = value; OnPropertyChanged(); } }
+
+        private ObservableCollection<PHUONGTIEN> _VEHICLELIST;
+        public ObservableCollection<PHUONGTIEN> VEHICLELIST { get => _VEHICLELIST; set { _VEHICLELIST = value; OnPropertyChanged(); } }
+
+        private ObservableCollection<VEHICLE> _VEHICLELISTDTG;
+        public ObservableCollection<VEHICLE> VEHICLELISTDTG { get => _VEHICLELISTDTG; set { _VEHICLELISTDTG = value; OnPropertyChanged(); } }
         #endregion
 
         #region Declare Binding Command WDHotelList
@@ -100,7 +121,7 @@ namespace TourManagement.ViewModel.ManageTrip
             }, (p) =>
             {
                 ChucNang = (int)CHUCNANG.ManageVehicle;
-                LoadHotelList();
+                LoadVehicleList();
             });
             AddTripCommand = new RelayCommand<object>((p) =>
             {
@@ -230,6 +251,61 @@ namespace TourManagement.ViewModel.ManageTrip
                 }
             });
             #endregion
+
+            #region XỬ LÝ COMMAND QUẢN LÝ PHƯƠNG TIỆN - MANAGE VEHICLE
+            Quit_UC_ManageVehicle_Command = new RelayCommand<object>((p) =>
+            {
+                //if (AccountPower == 0 || AccountPower == 1)
+                //{
+                //    MessageBoxResult result = MessageBox.Show("Bạn không đủ quyền truy cập vào chức năng này!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                //    return false;
+                //}
+
+
+                return true;
+            }, (p) =>
+            {
+                ChucNang = (int)CHUCNANG.ManageTrip;
+            });
+
+            AddVehicleCommand = new RelayCommand<object>((p) =>
+            {
+                //if (AccountPower == 0 || AccountPower == 1)
+                //{
+                //    MessageBoxResult result = MessageBox.Show("Bạn không đủ quyền truy cập vào chức năng này!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                //    return false;
+                //}
+
+
+                return true;
+            }, (p) =>
+            {
+                WD_AddVehicle wd_AddVehicle = new WD_AddVehicle();
+                wd_AddVehicle.ShowDialog();
+                wd_AddVehicle.Close();
+                LoadVehicleList();
+            });
+            EditVehicleCommand = new RelayCommand<object>((p) =>
+            {
+                //if (AccountPower == 0 || AccountPower == 1)
+                //{
+                //    MessageBoxResult result = MessageBox.Show("Bạn không đủ quyền truy cập vào chức năng này!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                //    return false;
+                //}
+
+
+                return true;
+            }, (p) =>
+            {
+                WD_EditVehicle wd_EditVehicle = new WD_EditVehicle();
+                var wd_EditVehicle_DT = wd_EditVehicle.DataContext as WD_AddVehicleViewModel;
+                wd_EditVehicle_DT.SelectedVEHICLE = SelectedVEHICLE;
+                wd_EditVehicle_DT.LoadEditVehicle();
+                wd_EditVehicle.ShowDialog();
+                wd_EditVehicle.Close();
+                LoadVehicleList();
+            });
+            #endregion
         }
         #region Function ManageHotel
         public void LoadHotelList()
@@ -297,6 +373,29 @@ namespace TourManagement.ViewModel.ManageTrip
                 ProvinceNameList.Add(item.TENTT);
             }
             ProvinceNameList = new ObservableCollection<string>(ProvinceNameList.OrderBy(x => x));
+        }
+        #endregion
+
+        #region Function ManageVehicle
+        public void LoadVehicleList()
+        {
+            VEHICLELIST = new ObservableCollection<PHUONGTIEN>(DataProvider.Ins.DB.PHUONGTIEN);
+            VEHICLELISTDTG = new ObservableCollection<VEHICLE>();
+
+            foreach(var item in VEHICLELIST)
+            {
+                VEHICLE temp = new VEHICLE();
+                temp.phuongtien = item;
+                if(item.ISAVAILABLE == true)
+                {
+                    temp.STATUS = "Chưa được sử dụng";
+                }    
+                else
+                {
+                    temp.STATUS = "Đang được sử dụng";
+                }
+                VEHICLELISTDTG.Add(temp);
+            }    
         }
         #endregion
     }

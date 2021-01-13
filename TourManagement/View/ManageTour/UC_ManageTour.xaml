@@ -110,7 +110,6 @@
                             <DataGrid ItemsSource="{Binding TOURLISTDTG,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"
                                       AlternatingRowBackground="#e2e2e2"
                                       IsReadOnly="True"
-                                      Width="1450"
                                       ScrollViewer.VerticalScrollBarVisibility="Auto"
                                       AutoGenerateColumns="False"
                                       CanUserResizeColumns="False"
@@ -237,7 +236,7 @@
                                     <!--Cột MÔ TẢ-->
                                     <DataGridTextColumn Header="Mô tả"
                                                         Binding="{Binding tour.MOTA}"
-                                                        Width="350"></DataGridTextColumn>
+                                                        Width="680"></DataGridTextColumn>
                                 </DataGrid.Columns>
                             </DataGrid>
                         </ScrollViewer>

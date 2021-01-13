@@ -12,8 +12,9 @@
         ResizeMode="NoResize"
         x:Name="wd_AddTrip"
         Title="WD_AddTrip"
-        Height="900"
-        Width="1600">
+        WindowState="Maximized"
+        Height="1080"
+        Width="1920">
     <Grid>
         <Grid Background="#FFADD8E6">
             <materialDesign:ColorZone Mode="PrimaryMid"
@@ -56,7 +57,8 @@
                                             <RowDefinition Height="70"></RowDefinition>
                                             <RowDefinition Height="70"></RowDefinition>
                                             <RowDefinition Height="70"></RowDefinition>
-                                            <RowDefinition Height="430"></RowDefinition>
+                                            <RowDefinition Height="70"></RowDefinition>
+                                            <RowDefinition Height="360"></RowDefinition>
                                             <RowDefinition></RowDefinition>
                                         </Grid.RowDefinitions>
 
@@ -125,10 +127,37 @@
                                                 Chỉnh sửa
                                             </Button>
                                         </StackPanel>
-                                        <Border Grid.Row="3"
+                                        <StackPanel Grid.Row="3"
+                                                    Orientation="Horizontal"
+                                                    VerticalAlignment="Center"
+                                                    HorizontalAlignment="Left">
+                                            <DatePicker materialDesign:HintAssist.Hint="Ngày bắt đầu"
+                                                        Background="White"
+                                                        Height="55"
+                                                        Width="200"
+                                                        Text="{Binding StaffBirthdayDT, StringFormat=dd/MM/yyyy, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=Default}"
+                                                        SelectedDateFormat="Short"
+                                                        Margin="20,0,20,0"
+                                                        Padding="30,10,10,10"
+                                                        HorizontalAlignment="Left"
+                                                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                                        FontSize="20" />
+                                            <DatePicker materialDesign:HintAssist.Hint="Ngày kết thúc"
+                                                        Background="White"
+                                                        Height="55"
+                                                        Width="200"
+                                                        Text="{Binding StaffBirthdayDT, StringFormat=dd/MM/yyyy, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=Default}"
+                                                        SelectedDateFormat="Short"
+                                                        Margin="35,0,0,0"
+                                                        Padding="30,10,10,10"
+                                                        HorizontalAlignment="Left"
+                                                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                                        FontSize="20" />
+                                        </StackPanel>
+                                        <Border Grid.Row="4"
                                                 BorderBrush="Black"
                                                 BorderThickness="1"
-                                                Margin="20,10,20,0">
+                                                Margin="20,20,20,0">
                                             <TextBox materialDesign:HintAssist.Hint="Mô tả lịch trình"
                                                      materialDesign:ValidationAssist.HasError="True"
                                                      Text="{Binding TripDescription}"
@@ -137,78 +166,216 @@
                                                      TextWrapping="Wrap"
                                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                                         </Border>
-                                        <Grid Grid.Row="4">
+                                        <Grid Grid.Row="5" Margin="10,10,0,0">
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition></ColumnDefinition>
+                                                <ColumnDefinition Width="550"></ColumnDefinition>
                                                 <ColumnDefinition></ColumnDefinition>
                                             </Grid.ColumnDefinitions>
                                             <Grid Grid.Column="0">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition></RowDefinition>
                                                     <RowDefinition></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
                                                 </Grid.RowDefinitions>
-                                                <Border Grid.Row="0"
-                                                        HorizontalAlignment="Center"
-                                                        BorderBrush="Black"
-                                                        Height="60"
-                                                        Margin="10"
-                                                        BorderThickness="2">
-                                                    <TextBox materialDesign:HintAssist.Hint="Tổng chi phí"
-                                                             Width="300"
-                                                             materialDesign:ValidationAssist.HasError="True"
-                                                             Text="{Binding AllTripCost}"
-                                                             FontSize="18"
-                                                             Padding="5,0,0,0"
-                                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                                                </Border>
-                                                <Button Grid.Row="1"
-                                                        Height="60"
-                                                        Width="300"
-                                                        Background="#FFFFBC5B"
-                                                        HorizontalContentAlignment="Center"
-                                                        HorizontalAlignment="Center"
-                                                        FontSize="20"
-                                                        VerticalContentAlignment="Center"
-                                                        materialDesign:RippleAssist.Feedback="#FF03A9F4"
-                                                        Command="{Binding DetailCostCommand}"
-                                                        Style="{DynamicResource MaterialDesignRaisedButton}"
-                                                        materialDesign:ShadowAssist.ShadowDepth="Depth1">
-                                                    Chi tiết
-                                                </Button>
+                                                <Grid Grid.Row="0">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid Grid.Column="1">
+                                                        <Border HorizontalAlignment="Center"
+                                                                BorderBrush="Black"
+                                                                Height="60"
+                                                                BorderThickness="2">
+                                                            <TextBox materialDesign:HintAssist.Hint="Chi phí khách sạn"
+                                                                     Width="250"
+                                                                     IsReadOnly="True"
+                                                                     materialDesign:ValidationAssist.HasError="True"
+                                                                     Text="{Binding AllTripCost}"
+                                                                     FontSize="18"
+                                                                     Padding="5,0,0,0"
+                                                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                                                        </Border>
+                                                    </Grid>
+                                                    <Grid Grid.Column="0">
+                                                        <Button Height="60"
+                                                                Width="220"
+                                                                Margin="0,0,0,0"
+                                                                Background="#FFFFBC5B"
+                                                                HorizontalContentAlignment="Center"
+                                                                HorizontalAlignment="Center"
+                                                                FontSize="20"
+                                                                VerticalContentAlignment="Center"
+                                                                materialDesign:RippleAssist.Feedback="#FF03A9F4"
+                                                                Command="{Binding DetailCostCommand}"
+                                                                Style="{DynamicResource MaterialDesignRaisedButton}"
+                                                                materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                                                            Chi tiết khách sạn
+                                                        </Button>
+                                                    </Grid>
+                                                </Grid>
+                                                <Grid Grid.Row="1">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid Grid.Column="1">
+                                                        <Border HorizontalAlignment="Center"
+                                                                BorderBrush="Black"
+                                                                Height="60"
+                                                                BorderThickness="2">
+                                                            <TextBox materialDesign:HintAssist.Hint="Chi phí phương tiện"
+                                                                     Width="250"
+                                                                     IsReadOnly="True"
+                                                                     materialDesign:ValidationAssist.HasError="True"
+                                                                     Text="{Binding AllTripCost}"
+                                                                     FontSize="18"
+                                                                     Padding="5,0,0,0"
+                                                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                                                        </Border>
+                                                    </Grid>
+                                                    <Grid Grid.Column="0">
+                                                        <Button Height="60"
+                                                                Width="220"
+                                                                Margin="0,0,0,0"
+                                                                Background="#FFFFBC5B"
+                                                                HorizontalContentAlignment="Center"
+                                                                HorizontalAlignment="Center"
+                                                                FontSize="20"
+                                                                VerticalContentAlignment="Center"
+                                                                materialDesign:RippleAssist.Feedback="#FF03A9F4"
+                                                                Command="{Binding DetailCostCommand}"
+                                                                Style="{DynamicResource MaterialDesignRaisedButton}"
+                                                                materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                                                            Chi tiết phương tiện
+                                                        </Button>
+                                                    </Grid>
+                                                </Grid>
+                                                <Grid Grid.Row="2">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid Grid.Column="1">
+                                                        <Border HorizontalAlignment="Center"
+                                                                BorderBrush="Black"
+                                                                Height="60"
+                                                                BorderThickness="2">
+                                                            <TextBox materialDesign:HintAssist.Hint="Chi phí bữa ăn"
+                                                                     Width="250"
+                                                                     IsReadOnly="True"
+                                                                     materialDesign:ValidationAssist.HasError="True"
+                                                                     Text="{Binding AllTripCost}"
+                                                                     FontSize="18"
+                                                                     Padding="5,0,0,0"
+                                                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                                                        </Border>
+                                                    </Grid>
+                                                    <Grid Grid.Column="0">
+                                                        <Button Height="60"
+                                                                Width="220"
+                                                                Margin="0,0,0,0"
+                                                                Background="#FFFFBC5B"
+                                                                HorizontalContentAlignment="Center"
+                                                                HorizontalAlignment="Center"
+                                                                FontSize="20"
+                                                                VerticalContentAlignment="Center"
+                                                                materialDesign:RippleAssist.Feedback="#FF03A9F4"
+                                                                Command="{Binding DetailCostCommand}"
+                                                                Style="{DynamicResource MaterialDesignRaisedButton}"
+                                                                materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                                                            Chi tiết bữa ăn
+                                                        </Button>
+                                                    </Grid>
+                                                </Grid>
+                                                <Grid Grid.Row="3">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid Grid.Column="1">
+                                                        <Border HorizontalAlignment="Center"
+                                                                BorderBrush="Black"
+                                                                Height="60"
+                                                                BorderThickness="2">
+                                                            <TextBox materialDesign:HintAssist.Hint="Chi phí khác"
+                                                                     Width="250"
+                                                                     IsReadOnly="True"
+                                                                     materialDesign:ValidationAssist.HasError="True"
+                                                                     Text="{Binding AllTripCost}"
+                                                                     FontSize="18"
+                                                                     Padding="5,0,0,0"
+                                                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                                                        </Border>
+                                                    </Grid>
+                                                    <Grid Grid.Column="0">
+                                                        <Button Height="60"
+                                                                Width="220"
+                                                                Margin="0,0,0,0"
+                                                                Background="#FFFFBC5B"
+                                                                HorizontalContentAlignment="Center"
+                                                                HorizontalAlignment="Center"
+                                                                FontSize="20"
+                                                                VerticalContentAlignment="Center"
+                                                                materialDesign:RippleAssist.Feedback="#FF03A9F4"
+                                                                Command="{Binding DetailCostCommand}"
+                                                                Style="{DynamicResource MaterialDesignRaisedButton}"
+                                                                materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                                                            Thêm chi phí khác
+                                                        </Button>
+                                                    </Grid>
+                                                </Grid>
                                             </Grid>
                                             <Grid Grid.Column="1">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition></RowDefinition>
+                                                    <RowDefinition Height="140"></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
                                                     <RowDefinition></RowDefinition>
                                                 </Grid.RowDefinitions>
-                                                <Grid Grid.Row="0"> 
-                                                    
-                                                </Grid>
-                                                <StackPanel Orientation="Horizontal"
-                                                            Grid.Row="1">
-                                                    <Button Height="40"
+                                                <Border Grid.Row="1" 
+                                                        HorizontalAlignment="Center"
+                                                        BorderBrush="Black"
+                                                        Height="80"
+                                                        BorderThickness="2">
+                                                    <TextBox materialDesign:HintAssist.Hint="Tổng chi phí"
+                                                             IsReadOnly="True"
+                                                             Width="300"
+                                                             materialDesign:ValidationAssist.HasError="True"
+                                                             Text="{Binding AllTripCost}"
+                                                             FontSize="20"
+                                                             Padding="5,0,0,0"
+                                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                                                </Border>
+                                                <StackPanel Grid.Row="2" Orientation="Horizontal"
+                                                            HorizontalAlignment="Center">
+                                                    <Button Height="35"
                                                             Width="120"
-                                                            Margin="65,0,20,0"
+                                                            FontSize="15"
+                                                            Margin="5,0,20,0"
                                                             Background="#FFADD8E6"
                                                             HorizontalContentAlignment="Center"
                                                             VerticalContentAlignment="Center"
                                                             materialDesign:RippleAssist.Feedback="#FF03A9F4"
-                                                            Command="{Binding ResetParameterCommand}"
-                                                            Style="{DynamicResource MaterialDesignRaisedButton}"
-                                                            materialDesign:ShadowAssist.ShadowDepth="Depth1">
-                                                        Đặt lại
-                                                    </Button>
-                                                    <Button Height="40"
-                                                            Width="120"
-                                                            Margin="30,0,50,0"
-                                                            Background="#FFADD8E6"
-                                                            HorizontalContentAlignment="Center"
-                                                            VerticalContentAlignment="Center"
-                                                            materialDesign:RippleAssist.Feedback="#FF03A9F4"
-                                                            Command="{Binding AddTripCommand}"
+                                                            Command="{Binding Trip_Staff_Command}"
                                                             Style="{DynamicResource MaterialDesignRaisedButton}"
                                                             materialDesign:ShadowAssist.ShadowDepth="Depth1">
                                                         Thêm
+                                                    </Button>
+                                                    <Button Height="35"
+                                                            Width="120"
+                                                            FontSize="15"
+                                                            Margin="5,0,20,0"
+                                                            Background="#FFADD8E6"
+                                                            HorizontalContentAlignment="Center"
+                                                            VerticalContentAlignment="Center"
+                                                            materialDesign:RippleAssist.Feedback="#FF03A9F4"
+                                                            Command="{Binding Trip_Staff_Command}"
+                                                            Style="{DynamicResource MaterialDesignRaisedButton}"
+                                                            materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                                                        Đặt lại
                                                     </Button>
                                                 </StackPanel>
                                             </Grid>

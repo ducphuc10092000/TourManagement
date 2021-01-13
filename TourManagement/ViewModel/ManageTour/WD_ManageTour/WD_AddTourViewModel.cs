@@ -73,28 +73,34 @@ namespace TourManagement.ViewModel.ManageTour.WD_ManageTour
             TourType = null;
             TourDescription = null;
             TOUR_PLACELISTDTG = new ObservableCollection<PLACE>();
-            TOUR_HOTELLISTDTG = new ObservableCollection<HOTEL>();
         }
 
         public WD_AddTourViewModel()
         { 
             TOUR_PLACELISTDTG = new ObservableCollection<PLACE>();
 
-            TOUR_HOTELLISTDTG = new ObservableCollection<HOTEL>();
-
             AddNewTourCommand = new RelayCommand<Window>((p) =>
             {
                 return true;
             }, (p) =>
             {
-                TOURs newTour = new TOURs();
-                if(DataProvider.Ins.DB.TOUR.Where(x=>x.TENTOUR == TourName).Count() != 0)
-                {
-                    MessageBox.Show("Tên tour đã trùng lặp, vui lòng chọn tên tour khác!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                }    
-                newTour.AddNewTour(TourName, TourPrice, TourType, TourDescription, TOUR_PLACELISTDTG);
-                MessageBox.Show("Thêm lịch trình TOUR thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
-                p.Close();
+
+            if (string.IsNullOrEmpty(TourName) || string.IsNullOrEmpty(TourType) || string.IsNullOrEmpty(TourPrice) || string.IsNullOrEmpty(TourDescription) || TOUR_PLACELISTDTG == null)
+            {
+                MessageBox.Show("Hãy nhập đầy đủ thông tin!");
+                return;
+            }
+            else
+            {
+                    TOURs newTour = new TOURs();
+                    if (DataProvider.Ins.DB.TOUR.Where(x => x.TENTOUR == TourName).Count() != 0)
+                    {
+                        MessageBox.Show("Tên tour đã trùng lặp, vui lòng chọn tên tour khác!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                    newTour.AddNewTour(TourName, TourPrice, TourType, TourDescription, TOUR_PLACELISTDTG);
+                    MessageBox.Show("Thêm lịch trình TOUR thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                    p.Close();
+                }
             });
 
             QuitCommand = new RelayCommand<WD_AddTour>((p) =>

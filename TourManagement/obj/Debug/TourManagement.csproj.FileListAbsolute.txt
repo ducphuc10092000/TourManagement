@@ -82,3 +82,11 @@ D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageStaff\WD_
 D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageStaff\WD_EditStaff.g.cs
 D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageStaff\WD_AddStaff.baml
 D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageStaff\WD_EditStaff.baml
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTrip\WD_DetailCost.g.cs
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTrip\WD_DetailCost.baml
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTrip\ManageVehicle\UC_ManageVehicle.g.cs
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTrip\ManageVehicle\WD_AddVehicle.g.cs
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTrip\ManageVehicle\WD_EditVehicle.g.cs
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTrip\ManageVehicle\UC_ManageVehicle.baml
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTrip\ManageVehicle\WD_AddVehicle.baml
+D:\QUANLYTOURDULICH\TourManagement\TourManagement\obj\Debug\View\ManageTrip\ManageVehicle\WD_EditVehicle.baml

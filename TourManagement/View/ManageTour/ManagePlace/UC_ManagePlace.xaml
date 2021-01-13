@@ -190,7 +190,7 @@
                         <!--Tỉnh thành-->
                         <DataGridTextColumn Header="Tỉnh thành"
                                             Binding="{Binding diadiem.TINHTHANH}"
-                                    Width="250"></DataGridTextColumn>
+                                    Width="350"></DataGridTextColumn>
                         <!--Trạng thái-->
                         <DataGridTextColumn Header="Trạng thái"
                                             Width="200"

@@ -24,6 +24,8 @@ namespace TourManagement.Model
         public string LOAIPT { get; set; }
         public Nullable<int> SOGHE { get; set; }
         public Nullable<bool> ACTIVE { get; set; }
+        public Nullable<bool> ISAVAILABLE { get; set; }
+        public string BKS { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CT_DOAN_PHUONGTIEN> CT_DOAN_PHUONGTIEN { get; set; }

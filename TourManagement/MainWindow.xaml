@@ -16,6 +16,7 @@
         DataContext="{StaticResource MainVM}"
         x:Name="mainWD"
         WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
         WindowStyle="None"
         ResizeMode="NoResize"
         Title="MainWindow" Height="900" Width="1600">
@@ -91,9 +92,9 @@
                             </ListBoxItem>
                         </ListBox>
                     </materialDesign:PopupBox>
-                    <StackPanel  Orientation="Horizontal">
+                    <StackPanel  Orientation="Horizontal"
+                                 HorizontalAlignment="Right">
                         <TextBlock VerticalAlignment="Center"
-                                   Margin="1350 0 0 0"
                                    Height="auto"
                                    Style="{StaticResource tblButtonFeature}"
                                    FontSize="25"> TOUR MANAGEMENT

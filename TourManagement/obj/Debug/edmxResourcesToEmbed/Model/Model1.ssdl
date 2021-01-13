@@ -87,6 +87,7 @@
     <Property Name="SOLUONGPT" Type="int" />
     <Property Name="MOTA" Type="nvarchar(max)" />
     <Property Name="TONGCHIPHI" Type="nvarchar(max)" />
+    <Property Name="DOANHTHU" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="KHACHHANG">
     <Key>
@@ -150,6 +151,8 @@
     <Property Name="LOAIPT" Type="nvarchar(max)" />
     <Property Name="SOGHE" Type="int" />
     <Property Name="ACTIVE" Type="bit" />
+    <Property Name="ISAVAILABLE" Type="bit" />
+    <Property Name="BKS" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>

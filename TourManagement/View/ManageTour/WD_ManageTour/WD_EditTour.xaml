@@ -9,6 +9,7 @@
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
         x:Name="wd_EditTour"
         DataContext="{StaticResource WD_EditTourVM}"
         Title="WD_EditTour" Height="900" Width="1600">

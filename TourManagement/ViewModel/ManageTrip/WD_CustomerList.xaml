@@ -9,6 +9,8 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         WindowStyle="None"
         ResizeMode="NoResize"
+        WindowState="Maximized"
+        Topmost="True"
         x:Name="wd_CustomerList"
         DataContext="{StaticResource UC_ManageCustomerVM}"
         Title="WD_CustomerList" Height="900" Width="1600">

@@ -9,6 +9,7 @@
         WindowStyle="None"
         ResizeMode="NoResize"
         x:Name="wd_AddTour"
+        WindowState="Maximized"
         WindowStartupLocation="CenterScreen"
         DataContext="{StaticResource WD_AddTourVM}"
         Title="WD_AddTour" Height="900" Width="1600">

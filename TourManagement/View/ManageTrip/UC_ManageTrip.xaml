@@ -8,6 +8,7 @@
              Background="White"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
              xmlns:viewManageHotel="clr-namespace:TourManagement.View.ManageTour.ManageHotel"
+             xmlns:viewManageVehicle="clr-namespace:TourManagement.View.ManageTrip.ManageVehicle"
              DataContext="{StaticResource UC_ManageTripVM}"
              d:DesignHeight="900" d:DesignWidth="1500">
     <Grid>
@@ -107,7 +108,7 @@
                             <Button Content="QL PHƯƠNG TIỆN"
                     IsDefault="True"
                             Margin="20,10,0,10"
-                    Command="{Binding Path=BtnManageHotelCommand}"
+                    Command="{Binding Path=BtnManageVehicleCommand}"
                     Style="{DynamicResource MaterialDesignRaisedButton}"
                     materialDesign:ShadowAssist.ShadowDepth="Depth4" 
                     Foreground="Black"
@@ -267,6 +268,24 @@
                 </Style>
             </Grid.Style>
             <viewManageHotel:UC_ManageHotel></viewManageHotel:UC_ManageHotel>
+        </Grid>
+        
+        <!--ManageVehicle-->
+        <Grid>
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Setter Property="Visibility"
+                            Value="Collapsed"></Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ChucNang}"
+                                     Value="2">
+                            <Setter Property="Visibility"
+                                    Value="Visible"></Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <viewManageVehicle:UC_ManageVehicle></viewManageVehicle:UC_ManageVehicle>
         </Grid>
     </Grid>
 </UserControl>
