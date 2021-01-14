@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using TourManagement.Model;
 using TourManagement.Model.Staff;
@@ -24,10 +25,26 @@ namespace TourManagement.ViewModel.ManageStaff
 
         public ICommand AddStaffCommand { get; set; }
         public ICommand EditStaffCommand { get; set; }
+        public ICommand DoubleClickSelectStaffCommand { get; set; }
+        public ICommand QuitCommand { get; set; }
 
         public  UC_ManageStaffViewModel()
         {
             LoadStaffList();
+            DoubleClickSelectStaffCommand = new RelayCommand<Window>((p) =>
+            {
+                //if (AccountPower == 0 || AccountPower == 1)
+                //{
+                //    MessageBoxResult result = MessageBox.Show("Bạn không đủ quyền truy cập vào chức năng này!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                //    return false;
+                //}
+
+
+                return true;
+            }, (p) =>
+            {
+                p.Close();
+            });
             AddStaffCommand = new RelayCommand<object>((p) =>
             {
                 //if (AccountPower == 0 || AccountPower == 1)
@@ -41,6 +58,8 @@ namespace TourManagement.ViewModel.ManageStaff
             }, (p) =>
             {
                 WD_AddStaff wd_AddStaff = new WD_AddStaff();
+                var wd_AddStaff_DT = wd_AddStaff.DataContext as WD_AddStaffViewModel;
+                wd_AddStaff_DT.Reset();
                 wd_AddStaff.ShowDialog();
                 wd_AddStaff.Close();
                 LoadStaffList();
@@ -71,6 +90,20 @@ namespace TourManagement.ViewModel.ManageStaff
                     wd_EditStaff.Close();
                     LoadStaffList();
                 }    
+            });
+            QuitCommand = new RelayCommand<Window>((p) =>
+            {
+                //if (AccountPower == 0 || AccountPower == 1)
+                //{
+                //    MessageBoxResult result = MessageBox.Show("Bạn không đủ quyền truy cập vào chức năng này!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                //    return false;
+                //}
+
+
+                return true;
+            }, (p) =>
+            {
+                p.Close();
             });
 
         }

@@ -11,6 +11,7 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         x:Name="wd_TourList"
+        WindowState="Maximized"
         DataContext="{StaticResource UC_ManageTourVM}"
         Title="WD_TourList" Height="900" Width="1600">
     <Grid>
@@ -121,7 +122,6 @@
                                           AlternatingRowBackground="#e2e2e2"
                                           IsReadOnly="True"
                                           SelectedItem="{Binding SelectedTOURs,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"
-                                          Width="1550"
                                           ScrollViewer.VerticalScrollBarVisibility="Auto"
                                           AutoGenerateColumns="False"
                                           CanUserResizeColumns="False"

@@ -132,6 +132,9 @@
     <Property Name="IDDOAN" Type="Int32" />
     <Property Name="IDKS" Type="Int32" />
     <Property Name="CHIPHIKS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SOPHONGDON" Type="Int32" />
+    <Property Name="SOPHONGDOI" Type="Int32" />
+    <Property Name="SONGAYO" Type="Int32" />
     <NavigationProperty Name="DOAN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_KHACHSAN" FromRole="CT_DOAN_KHACHSAN" ToRole="DOAN" />
     <NavigationProperty Name="KHACHSAN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_KHACHSAN_KS" FromRole="CT_DOAN_KHACHSAN" ToRole="KHACHSAN" />
   </EntityType>
@@ -222,7 +225,8 @@
     <Property Name="TENKS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="MOTA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="AVATAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="GIAKS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="GIAPHONGDON" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="GIAPHONGDOI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="CT_DOAN_KHACHSAN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_KHACHSAN_KS" FromRole="KHACHSAN" ToRole="CT_DOAN_KHACHSAN" />
     <NavigationProperty Name="TINHTHANH1" Relationship="TOURMANAGEMENTModel.fk_KHACHSAN_TINHTHANH" FromRole="KHACHSAN" ToRole="TINHTHANH" />
   </EntityType>
@@ -263,6 +267,8 @@
     <Property Name="ACTIVE" Type="Boolean" />
     <Property Name="ISAVAILABLE" Type="Boolean" />
     <Property Name="BKS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BELONGTOCOMPANY" Type="Boolean" />
+    <Property Name="GIATHUE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="CT_DOAN_PHUONGTIEN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_PHUONGTIEN_PT" FromRole="PHUONGTIEN" ToRole="CT_DOAN_PHUONGTIEN" />
   </EntityType>
   <EntityType Name="sysdiagrams">

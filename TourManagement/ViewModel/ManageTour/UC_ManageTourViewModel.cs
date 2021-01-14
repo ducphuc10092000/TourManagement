@@ -32,6 +32,8 @@ namespace TourManagement.ViewModel.ManageTour
         public ICommand BtnManagePlaceCommand { get; set; }
         #endregion
 
+        public ICommand QuitCommand { get; set; }
+
         #region Declare Binding Command ManageTour
         public ICommand TourFindCommand { get; set; }
         public ICommand DefaultTourFindCommand { get; set; }
@@ -323,7 +325,6 @@ namespace TourManagement.ViewModel.ManageTour
                 }    
             });
             #endregion
-
             #region XỬ LÝ COMMAND WD_TOURLIST
             WD_TourList_QuitCommand = new RelayCommand<Window>((p) =>
             {
@@ -369,6 +370,30 @@ namespace TourManagement.ViewModel.ManageTour
                 }    
             });
             #endregion
+
+            QuitCommand = new RelayCommand<Window>((p) =>
+            {
+                //if (AccountPower == 0 || AccountPower == 1)
+                //{
+                //    MessageBoxResult result = MessageBox.Show("Bạn không đủ quyền truy cập vào chức năng này!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                //    return false;
+                //}
+
+
+                return true;
+            }, (p) =>
+            {
+                MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn muốn thoát", "Thông báo", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+
+                    p.Close();
+                }
+                else
+                {
+                    return;
+                }
+            });
         }
 
 

@@ -43,6 +43,9 @@
     <Property Name="IDDOAN" Type="int" />
     <Property Name="IDKS" Type="int" />
     <Property Name="CHIPHIKS" Type="nvarchar(max)" />
+    <Property Name="SOPHONGDON" Type="int" />
+    <Property Name="SOPHONGDOI" Type="int" />
+    <Property Name="SONGAYO" Type="int" />
   </EntityType>
   <EntityType Name="CT_DOAN_NHANVIEN">
     <Key>
@@ -117,7 +120,8 @@
     <Property Name="TENKS" Type="nvarchar(max)" />
     <Property Name="MOTA" Type="nvarchar(max)" />
     <Property Name="AVATAR" Type="nvarchar(max)" />
-    <Property Name="GIAKS" Type="nvarchar(max)" />
+    <Property Name="GIAPHONGDON" Type="nvarchar(max)" />
+    <Property Name="GIAPHONGDOI" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="NGUOIDUNG">
     <Key>
@@ -153,6 +157,8 @@
     <Property Name="ACTIVE" Type="bit" />
     <Property Name="ISAVAILABLE" Type="bit" />
     <Property Name="BKS" Type="nvarchar(max)" />
+    <Property Name="BELONGTOCOMPANY" Type="bit" />
+    <Property Name="GIATHUE" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>

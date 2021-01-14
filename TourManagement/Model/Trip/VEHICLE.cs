@@ -14,12 +14,15 @@ namespace TourManagement.Model.Trip
         private string _STATUS;
         public string STATUS { get => _STATUS; set { _STATUS = value; OnPropertyChanged(); } }
 
+        private string _BELONGTOCOMPANY;
+        public string BELONGTOCOMPANY { get => _BELONGTOCOMPANY; set { _BELONGTOCOMPANY = value; OnPropertyChanged(); } }
+
         public VEHICLE()
         {
 
         }
 
-        public void AddNewVehicle(string loaiPT, int soghe, string bks)
+        public void AddNewVehicle(string loaiPT, int soghe, string bks,bool isbelongtocompany, string giathue)
         {
             phuongtien  = new PHUONGTIEN();
             phuongtien.LOAIPT = loaiPT;
@@ -27,6 +30,8 @@ namespace TourManagement.Model.Trip
             phuongtien.BKS = bks;
             phuongtien.ACTIVE = true;
             phuongtien.ISAVAILABLE = true;
+            phuongtien.BELONGTOCOMPANY = isbelongtocompany;
+            phuongtien.GIATHUE = giathue;    
             DataProvider.Ins.DB.PHUONGTIEN.Add(phuongtien);
             DataProvider.Ins.DB.SaveChanges();
         }

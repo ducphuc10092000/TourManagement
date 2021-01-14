@@ -206,7 +206,7 @@
                             <!--Tỉnh thành-->
                             <DataGridTextColumn Header="Chức vụ"
                                                 Binding="{Binding nhanvien.CHUCVU}"
-                                                Width="150"></DataGridTextColumn>
+                                                Width="200"></DataGridTextColumn>
                             <!--Trạng thái-->
                             <DataGridTextColumn Header="SDT"
                                                 Width="150"
@@ -221,7 +221,7 @@
                             <!--Mô tả-->
                             <DataGridTextColumn Header="Địa chỉ"
                                                 Binding="{Binding nhanvien.DIACHI}"
-                                                Width="400"></DataGridTextColumn>
+                                                Width="350"></DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
                 </ScrollViewer>

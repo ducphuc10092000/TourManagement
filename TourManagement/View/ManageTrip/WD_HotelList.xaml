@@ -10,6 +10,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         ResizeMode="NoResize"
         DataContext="{StaticResource UC_ManageTripVM}"
+        WindowState="Maximized"
         x:Name="wd_HotelList"
         Title="WD_HotelList" Height="900" Width="1600">
     <Grid>
@@ -23,7 +24,7 @@
                 <!--Button Back-->
                 <Button Style="{DynamicResource MaterialDesignFloatingActionMiniButton}"
                         Margin="5"
-                        Command="{Binding Quit_WD_HotelListCommand}"
+                        Command="{Binding QuitCommand}"
                         CommandParameter="{Binding ElementName=wd_HotelList}"
                         Background="LightBlue"
                         materialDesign:ShadowAssist.ShadowDepth="Depth3">

@@ -29,7 +29,8 @@ namespace TourManagement.Model
         public string TENKS { get; set; }
         public string MOTA { get; set; }
         public string AVATAR { get; set; }
-        public string GIAKS { get; set; }
+        public string GIAPHONGDON { get; set; }
+        public string GIAPHONGDOI { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CT_DOAN_KHACHSAN> CT_DOAN_KHACHSAN { get; set; }

@@ -48,6 +48,9 @@
           <Property Name="IDDOAN" Type="int" />
           <Property Name="IDKS" Type="int" />
           <Property Name="CHIPHIKS" Type="nvarchar(max)" />
+          <Property Name="SOPHONGDON" Type="int" />
+          <Property Name="SOPHONGDOI" Type="int" />
+          <Property Name="SONGAYO" Type="int" />
         </EntityType>
         <EntityType Name="CT_DOAN_NHANVIEN">
           <Key>
@@ -122,7 +125,8 @@
           <Property Name="TENKS" Type="nvarchar(max)" />
           <Property Name="MOTA" Type="nvarchar(max)" />
           <Property Name="AVATAR" Type="nvarchar(max)" />
-          <Property Name="GIAKS" Type="nvarchar(max)" />
+          <Property Name="GIAPHONGDON" Type="nvarchar(max)" />
+          <Property Name="GIAPHONGDOI" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="NGUOIDUNG">
           <Key>
@@ -158,6 +162,8 @@
           <Property Name="ACTIVE" Type="bit" />
           <Property Name="ISAVAILABLE" Type="bit" />
           <Property Name="BKS" Type="nvarchar(max)" />
+          <Property Name="BELONGTOCOMPANY" Type="bit" />
+          <Property Name="GIATHUE" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -598,6 +604,9 @@
           <Property Name="IDDOAN" Type="Int32" />
           <Property Name="IDKS" Type="Int32" />
           <Property Name="CHIPHIKS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SOPHONGDON" Type="Int32" />
+          <Property Name="SOPHONGDOI" Type="Int32" />
+          <Property Name="SONGAYO" Type="Int32" />
           <NavigationProperty Name="DOAN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_KHACHSAN" FromRole="CT_DOAN_KHACHSAN" ToRole="DOAN" />
           <NavigationProperty Name="KHACHSAN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_KHACHSAN_KS" FromRole="CT_DOAN_KHACHSAN" ToRole="KHACHSAN" />
         </EntityType>
@@ -688,7 +697,8 @@
           <Property Name="TENKS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="MOTA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="AVATAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="GIAKS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GIAPHONGDON" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GIAPHONGDOI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CT_DOAN_KHACHSAN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_KHACHSAN_KS" FromRole="KHACHSAN" ToRole="CT_DOAN_KHACHSAN" />
           <NavigationProperty Name="TINHTHANH1" Relationship="TOURMANAGEMENTModel.fk_KHACHSAN_TINHTHANH" FromRole="KHACHSAN" ToRole="TINHTHANH" />
         </EntityType>
@@ -729,6 +739,8 @@
           <Property Name="ACTIVE" Type="Boolean" />
           <Property Name="ISAVAILABLE" Type="Boolean" />
           <Property Name="BKS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BELONGTOCOMPANY" Type="Boolean" />
+          <Property Name="GIATHUE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CT_DOAN_PHUONGTIEN" Relationship="TOURMANAGEMENTModel.fk_CT_DOAN_PHUONGTIEN_PT" FromRole="PHUONGTIEN" ToRole="CT_DOAN_PHUONGTIEN" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -1003,6 +1015,9 @@
           <EntitySetMapping Name="CT_DOAN_KHACHSAN">
             <EntityTypeMapping TypeName="TOURMANAGEMENTModel.CT_DOAN_KHACHSAN">
               <MappingFragment StoreEntitySet="CT_DOAN_KHACHSAN">
+                <ScalarProperty Name="SONGAYO" ColumnName="SONGAYO" />
+                <ScalarProperty Name="SOPHONGDOI" ColumnName="SOPHONGDOI" />
+                <ScalarProperty Name="SOPHONGDON" ColumnName="SOPHONGDON" />
                 <ScalarProperty Name="CHIPHIKS" ColumnName="CHIPHIKS" />
                 <ScalarProperty Name="IDKS" ColumnName="IDKS" />
                 <ScalarProperty Name="IDDOAN" ColumnName="IDDOAN" />
@@ -1078,7 +1093,8 @@
           <EntitySetMapping Name="KHACHSAN">
             <EntityTypeMapping TypeName="TOURMANAGEMENTModel.KHACHSAN">
               <MappingFragment StoreEntitySet="KHACHSAN">
-                <ScalarProperty Name="GIAKS" ColumnName="GIAKS" />
+                <ScalarProperty Name="GIAPHONGDOI" ColumnName="GIAPHONGDOI" />
+                <ScalarProperty Name="GIAPHONGDON" ColumnName="GIAPHONGDON" />
                 <ScalarProperty Name="AVATAR" ColumnName="AVATAR" />
                 <ScalarProperty Name="MOTA" ColumnName="MOTA" />
                 <ScalarProperty Name="TENKS" ColumnName="TENKS" />
@@ -1120,6 +1136,8 @@
           <EntitySetMapping Name="PHUONGTIEN">
             <EntityTypeMapping TypeName="TOURMANAGEMENTModel.PHUONGTIEN">
               <MappingFragment StoreEntitySet="PHUONGTIEN">
+                <ScalarProperty Name="GIATHUE" ColumnName="GIATHUE" />
+                <ScalarProperty Name="BELONGTOCOMPANY" ColumnName="BELONGTOCOMPANY" />
                 <ScalarProperty Name="BKS" ColumnName="BKS" />
                 <ScalarProperty Name="ISAVAILABLE" ColumnName="ISAVAILABLE" />
                 <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />

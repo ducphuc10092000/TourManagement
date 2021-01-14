@@ -45,7 +45,7 @@
                                  materialDesign:HintAssist.Hint="Nhập tên đoàn du lịch"
                                  TextAlignment="Left"
                                  Padding="5,0,0,0"
-                                 Text="{Binding CustomerNameFind, UpdateSourceTrigger=PropertyChanged , NotifyOnSourceUpdated=True}"
+                                 Text="{Binding TripNameFind, UpdateSourceTrigger=PropertyChanged , NotifyOnSourceUpdated=True}"
                                  Background="#E4E4E4"/>
                             </materialDesign:Card>
 
@@ -64,7 +64,7 @@
                             <!--Btn Tìm Kiếm-->
                             <Button Content="Tìm kiếm"
                     IsDefault="True"
-                    Command="{Binding Path=CustomerFindCommand}"
+                    Command="{Binding Path=TripFindCommand}"
                     Style="{DynamicResource MaterialDesignRaisedButton}"
                     materialDesign:ShadowAssist.ShadowDepth="Depth4" 
                     Foreground="Black"
@@ -74,7 +74,7 @@
                     Background="#FFF0EFEF" Margin="10,10,0,10"/>
                             <!--Btn Mặc Định-->
                             <Button Content="Mặc định"
-                    Command="{Binding Path=DefaultCustomerFindCommand}"
+                    Command="{Binding Path=DefaultTripFindCommand}"
                     Style="{DynamicResource MaterialDesignRaisedButton}"
                     materialDesign:ShadowAssist.ShadowDepth="Depth4" 
                     Foreground="Black"
@@ -119,26 +119,19 @@
                         </StackPanel>
                     </Grid>
 
-                    <!--List ĐIỂM THAM QUAN-->
                     <Grid Grid.Row="1" Margin="5,5,10,5">
                         <ScrollViewer>
                             <DataGrid ItemsSource="{Binding TRIPLISTDTG,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"
-                          AlternatingRowBackground="#e2e2e2"
-                          IsReadOnly="True"
-                          SelectedItem="{Binding SelectedPLACE,UpdateSourceTrigger=PropertyChanged,
-                            NotifyOnSourceUpdated=True}"
-                           ScrollViewer.VerticalScrollBarVisibility="Auto"
-                              BorderBrush="Black"
-                              BorderThickness="0,0,2,0"
-                          AutoGenerateColumns="False"
-                          CanUserResizeColumns="False"
-                          CanUserReorderColumns="False">
-                                <DataGrid.InputBindings>
-                                    <MouseBinding
-                                Gesture="LeftDoubleClick"
-                                Command="{Binding DoubleClickSelectPlaceCommand}"
-                                CommandParameter="{Binding ElementName=wd_PlaceList}"/>
-                                </DataGrid.InputBindings>
+                                      AlternatingRowBackground="#e2e2e2"
+                                      IsReadOnly="True"
+                                      SelectedItem="{Binding SelectedTRIP,UpdateSourceTrigger=PropertyChanged,
+                            NotifyOnSourceUpdated=True, Mode=TwoWay}"
+                                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                      BorderBrush="Black"
+                                      BorderThickness="0,0,2,0"
+                                      AutoGenerateColumns="False"
+                                      CanUserResizeColumns="False"
+                                      CanUserReorderColumns="False">
                                 <DataGrid.Resources>
                                     <Style TargetType="DataGridRow">
                                         <Setter Property="Height" Value="35"></Setter>
@@ -161,11 +154,11 @@
                                     <!--Cột Mã DTQ-->
                                     <DataGridTextColumn Header="Mã đoàn"
                                             Width="100"
-                                            Binding="{Binding khachhang.IDKH}">
+                                            Binding="{Binding doan.IDDOAN}">
                                     </DataGridTextColumn>
                                     <!--Cột THAO TÁC-->
                                     <DataGridTemplateColumn Header="Thao tác"
-                                        Width="100">
+                                        Width="110">
                                         <!--Mỗi dòng của cột chứa 2 button-->
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
@@ -178,9 +171,9 @@
                                                     <Button Grid.Column="0"
                                                 Background="{x:Null}"
                                                 BorderThickness="0"
-                                                Command="{Binding Path=DataContext.EditCustomerCommand,
+                                                Command="{Binding Path=DataContext.EditTripCommand,
                                                 RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}"
-                                                CommandParameter="{Binding Path= khachhang.IDKH}"
+                                                CommandParameter="{Binding Path= doan.IDDOAN}"
                                                 Height="Auto"
                                                 Width="20" Margin="6,0,5,0">
                                                         <!--Button EDIT-->
@@ -228,25 +221,29 @@
                                     </DataGridTemplateColumn>
                                     <!--Cột TÊN điểm tham quan-->
                                     <DataGridTextColumn Header="Tên đoàn du lịch"
-                                    Binding="{Binding khachhang.TENKH}"
-                                    Width="400"></DataGridTextColumn>
+                                    Binding="{Binding doan.TENDOAN}"
+                                    Width="300"></DataGridTextColumn>
+                                    <!--Cột TÊN điểm tham quan-->
+                                    <DataGridTextColumn Header="Doanh thu"
+                                                        Binding="{Binding doan.DOANHTHU}"
+                                                        Width="150"></DataGridTextColumn>
                                     <!--Tỉnh thành-->
                                     <DataGridTextColumn Header="SL khách hàng"
-                                            Binding="{Binding khachhang.CMND}"
+                                            Binding="{Binding doan.SOLUONGKH}"
                                     Width="150"></DataGridTextColumn>
                                     <!--Tỉnh thành-->
                                     <DataGridTextColumn Header="SL phương tiện"
-                                            Binding="{Binding khachhang.CMND}"
+                                            Binding="{Binding doan.SOLUONGPT}"
                                     Width="150"></DataGridTextColumn>
                                     <!--Trạng thái-->
                                     <DataGridTextColumn Header="Ngày bắt đầu"
-                                            Width="270"
-                                            Binding="{Binding khachhang.EMAIL}">
+                                            Width="250"
+                                            Binding="{Binding doan.NGAYBATDAU}">
                                     </DataGridTextColumn>
                                     <!--Mô tả-->
                                     <DataGridTextColumn Header="Ngày kết thúc"
-                                            Binding="{Binding khachhang.DIACHI}"
-                                            Width="270"></DataGridTextColumn>
+                                            Binding="{Binding doan.NGAYKETTHUC}"
+                                            Width="250"></DataGridTextColumn>
                                 </DataGrid.Columns>
                             </DataGrid>
                         </ScrollViewer>

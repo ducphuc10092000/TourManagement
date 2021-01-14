@@ -15,8 +15,19 @@ namespace TourManagement.ViewModel.ManageTrip.ManageVehicle
         public ICommand AddNewVehicleCommand { get; set; }
         public ICommand ConfirmEditVehicleCommand { get; set; }
 
+        private bool _BelongToCompanyIsChecked;
+        public bool BelongToCompanyIsChecked { get => _BelongToCompanyIsChecked; set { _BelongToCompanyIsChecked = value; OnPropertyChanged(); } }
+
+        private bool _NotBelongToCompanyIsChecked;
+        public bool NotBelongToCompanyIsChecked { get => _NotBelongToCompanyIsChecked; set { _NotBelongToCompanyIsChecked = value; OnPropertyChanged(); } }
+
+        private string _VehiclePrice;
+        public string VehiclePrice { get => _VehiclePrice; set { _VehiclePrice = value; OnPropertyChanged(); } }
+
+
         private VEHICLE _SelectedVEHICLE;
         public VEHICLE SelectedVEHICLE { get => _SelectedVEHICLE; set { _SelectedVEHICLE = value; OnPropertyChanged(); } }
+
 
         private string _VehicleNumber;
         public string VehicleNumber { get => _VehicleNumber; set { _VehicleNumber = value; OnPropertyChanged(); } }
@@ -55,8 +66,24 @@ namespace TourManagement.ViewModel.ManageTrip.ManageVehicle
                 return true;
             }, (p) =>
             {
-                VEHICLE newvehicle = new VEHICLE();
-                newvehicle.AddNewVehicle(VehicleType, VehicleSeatNumber, VehicleNumber);
+                if(BelongToCompanyIsChecked == true)
+                {
+                    VEHICLE newvehicle = new VEHICLE();
+                    newvehicle.AddNewVehicle(VehicleType, VehicleSeatNumber, VehicleNumber, BelongToCompanyIsChecked, 0.ToString());
+                }    
+                else
+                {
+                    if (string.IsNullOrEmpty(VehiclePrice))
+                    {
+                        MessageBox.Show("Bạn chưa nhập giá thuê của phương tiện!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+                    else
+                    {
+                        VEHICLE newvehicle = new VEHICLE();
+                        newvehicle.AddNewVehicle(VehicleType, VehicleSeatNumber, VehicleNumber, BelongToCompanyIsChecked, VehiclePrice);
+                    }    
+                }    
                 MessageBox.Show("Thêm thông tin phương tiện thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                 p.Close();
             });

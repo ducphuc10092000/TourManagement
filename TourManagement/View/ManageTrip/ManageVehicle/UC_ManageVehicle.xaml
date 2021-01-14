@@ -85,7 +85,7 @@
             </StackPanel>
         </Grid>
 
-        <!--List KHÁCH SẠN-->
+        <!--List Phương tiện-->
         <Grid Grid.Row="1"
               Margin="5,5,10,5">
             <ScrollViewer>
@@ -215,9 +215,14 @@
                                             Width="200"
                                             Binding="{Binding phuongtien.SOGHE}">
                         </DataGridTextColumn>
+                        <!--Trạng thái-->
+                        <DataGridTextColumn Header="Phương tiện"
+                                            Width="200"
+                                            Binding="{Binding BELONGTOCOMPANY}">
+                        </DataGridTextColumn>
                         <!--Mô tả-->
-                        <DataGridTextColumn Header="Tình trạng"
-                                            Binding="{Binding STATUS}"
+                        <DataGridTextColumn Header="Giá thuê"
+                                            Binding="{Binding phuongtien.GIATHUE}"
                                             Width="200"></DataGridTextColumn>
                     </DataGrid.Columns>
                 </DataGrid>

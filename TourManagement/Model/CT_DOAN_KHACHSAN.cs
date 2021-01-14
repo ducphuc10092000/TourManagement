@@ -18,6 +18,9 @@ namespace TourManagement.Model
         public Nullable<int> IDDOAN { get; set; }
         public Nullable<int> IDKS { get; set; }
         public string CHIPHIKS { get; set; }
+        public Nullable<int> SOPHONGDON { get; set; }
+        public Nullable<int> SOPHONGDOI { get; set; }
+        public Nullable<int> SONGAYO { get; set; }
     
         public virtual DOAN DOAN { get; set; }
         public virtual KHACHSAN KHACHSAN { get; set; }

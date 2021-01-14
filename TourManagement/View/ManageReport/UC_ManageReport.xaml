@@ -4,13 +4,456 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TourManagement.View.ManageReport"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
+             Language="vi-VN"
              Background="White"
-             d:DesignHeight="450" d:DesignWidth="800">
+             DataContext="{StaticResource UC_ManageTripVM}"
+             d:DesignHeight="900" d:DesignWidth="1500">
     <Grid>
-        <TextBlock FontSize="30"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   FontWeight="Bold">MANAGE REPORT</TextBlock>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="0"
+                Margin="5"
+                BorderBrush="Black"
+                BorderThickness="2">
+            <Grid>
+                <materialDesign:ColorZone Mode="PrimaryMid"
+                                          Height="50">
+                    <DockPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock VerticalAlignment="Center"
+                                       FontSize="20"
+                                       Margin="16 0 0 0">
+                                Thống kê doanh số TOUR
+                            </TextBlock>
+                        </StackPanel>
+                    </DockPanel>
+                </materialDesign:ColorZone>
+                <Grid Margin="0,50,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70"></RowDefinition>
+                        <RowDefinition Height="70"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="70"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0"
+                                Orientation="Horizontal">
+                        <TextBox materialDesign:HintAssist.Hint="Tên tour"
+                                 materialDesign:ValidationAssist.HasError="True"
+                                 Width="300"
+                                 Text="{Binding SelectedTOURs.tour.TENTOUR}"
+                                 Padding="0,-5,0,0"
+                                 Margin="20,15,0,10"
+                                 FontSize="20"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        <Button Height="35"
+                                Width="120"
+                                FontSize="15"
+                                Margin="5,0,20,0"
+                                Background="#FFADD8E6"
+                                HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                materialDesign:RippleAssist.Feedback="#FF03A9F4"
+                                Command="{Binding SelectTourCommand}"
+                                Style="{DynamicResource MaterialDesignRaisedButton}"
+                                materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                            Chọn Tour
+                        </Button>
+                        <Button Height="40"
+                                Width="150"
+                                Margin="30,0,0,0"
+                                Background="#FFADD8E6"
+                                Command="{Binding ResetTourCommand}"
+                                CommandParameter="{Binding ElementName=wd_AddCustomer}"
+                                Style="{DynamicResource MaterialDesignRaisedButton}"
+                                materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                            Reset
+                        </Button>
+                    </StackPanel>
+                    <Border BorderBrush="Black"
+                            Grid.Row="1"
+                            Margin="0,1,0,0"
+                            BorderThickness="0,2,0,2">
+                        <StackPanel  Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left">
+                            <DatePicker materialDesign:HintAssist.Hint="Từ ngày"
+                                        Background="White"
+                                        Height="55"
+                                        Width="200"
+                                        Text="{Binding TripStart_ReportTour_DT, StringFormat=dd/MM/yyyy, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=Default}"
+                                        SelectedDateFormat="Short"
+                                        Margin="20,0,20,0"
+                                        Padding="30,10,10,10"
+                                        HorizontalAlignment="Left"
+                                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                        FontSize="20" />
+                            <DatePicker materialDesign:HintAssist.Hint="Đến ngày"
+                                        Background="White"
+                                        Height="55"
+                                        Width="200"
+                                        Text="{Binding TripEnd_ReportTour_DT, StringFormat=dd/MM/yyyy, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=Default}"
+                                        SelectedDateFormat="Short"
+                                        Margin="35,0,0,0"
+                                        Padding="30,10,10,10"
+                                        HorizontalAlignment="Left"
+                                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                        FontSize="20" />
+                            <Button Height="40"
+                                    Width="150"
+                                    Margin="30,0,0,0"
+                                    Background="#FFADD8E6"
+                                    Command="{Binding ReportTourCommand}"
+                                    CommandParameter="{Binding ElementName=wd_AddCustomer}"
+                                    Style="{DynamicResource MaterialDesignRaisedButton}"
+                                    materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                Thống kê
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                    <Grid Grid.Row="2"
+                          Margin="5,5,10,5">
+                        <ScrollViewer>
+                            <DataGrid ItemsSource="{Binding TRIPLISTDTG_REPORTTOUR,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"
+                                      AlternatingRowBackground="#e2e2e2"
+                                      IsReadOnly="True"
+                                      SelectedItem="{Binding SelectedTRIP,UpdateSourceTrigger=PropertyChanged,
+                            NotifyOnSourceUpdated=True, Mode=TwoWay}"
+                                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                      BorderBrush="Black"
+                                      BorderThickness="2,0,2,2"
+                                      AutoGenerateColumns="False"
+                                      CanUserResizeColumns="False"
+                                      CanUserReorderColumns="False">
+                                <DataGrid.Resources>
+                                    <Style TargetType="DataGridRow">
+                                        <Setter Property="Height"
+                                                Value="35"></Setter>
+                                        <Setter Property="FontSize"
+                                                Value="13"></Setter>
+                                        <Setter Property="FontFamily"
+                                                Value="Arial"></Setter>
+                                    </Style>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Height"
+                                                Value="30"></Setter>
+                                        <Setter Property="FontFamily"
+                                                Value="Times New Roman"></Setter>
+                                        <Setter Property="FontSize"
+                                                Value="15"></Setter>
+                                        <Setter Property="FontWeight"
+                                                Value="Bold"></Setter>
+                                        <Setter Property="HorizontalContentAlignment"
+                                                Value="Center"></Setter>
+                                        <Setter Property="VerticalContentAlignment"
+                                                Value="Center"></Setter>
+                                        <Setter Property="Background"
+                                                Value="#e2e2e2"></Setter>
+                                        <Setter Property="BorderBrush"
+                                                Value="Black"></Setter>
+                                        <Setter Property="BorderThickness"
+                                                Value="1,1,0,1"></Setter>
+                                    </Style>
+                                </DataGrid.Resources>
+                                <DataGrid.Columns>
+                                    <!--Cột Mã DTQ-->
+                                    <DataGridTextColumn Header="Mã đoàn"
+                                                        Width="100"
+                                                        Binding="{Binding doan.IDDOAN}">
+                                    </DataGridTextColumn>
+                                    <!--Cột THAO TÁC-->
+                                    <DataGridTemplateColumn Header="Thao tác"
+                                                            Width="110">
+                                        <!--Mỗi dòng của cột chứa 2 button-->
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Grid>
+                                                    <Button Grid.Column="0"
+                                                            Background="{x:Null}"
+                                                            BorderThickness="0"
+                                                            Command="{Binding Path=DataContext.EditTripCommand,
+                                                RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}"
+                                                            CommandParameter="{Binding Path= doan.IDDOAN}"
+                                                            Height="Auto"
+                                                            Width="20"
+                                                            Margin="6,0,5,0">
+                                                        <!--Button EDIT-->
+                                                        <!--Ảnh hình EDIT-->
+                                                        <Grid>
+                                                            <Image Source="..\..\Photo\edit_icon.png"
+                                                                   Margin="-17,-4,1,-4"
+                                                                   RenderTransformOrigin="0.5,0.5">
+                                                                <Image.RenderTransform>
+                                                                    <TransformGroup>
+                                                                        <ScaleTransform ScaleX="-1" />
+                                                                        <SkewTransform />
+                                                                        <RotateTransform />
+                                                                        <TranslateTransform />
+                                                                    </TransformGroup>
+                                                                </Image.RenderTransform>
+                                                            </Image>
+                                                        </Grid>
+                                                    </Button>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <!--Cột TÊN điểm tham quan-->
+                                    <DataGridTextColumn Header="Tên đoàn du lịch"
+                                                        Binding="{Binding doan.TENDOAN}"
+                                                        Width="300"></DataGridTextColumn>
+                                    <!--Cột TÊN điểm tham quan-->
+                                    <DataGridTextColumn Header="Doanh thu"
+                                                        Binding="{Binding doan.DOANHTHU}"
+                                                        Width="370"></DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </ScrollViewer>
+                    </Grid>
+                    <Border Grid.Row="3"
+                            BorderBrush="Black"
+                            BorderThickness="2">
+                        <StackPanel Grid.Row="0"
+                                    Orientation="Horizontal">
+                            <TextBox materialDesign:HintAssist.Hint="Số đoàn tham quan"
+                                     materialDesign:ValidationAssist.HasError="True"
+                                     Width="200"
+                                     Text="{Binding NumberOfTrip_ReportTour}"
+                                     Padding="0,-5,0,0"
+                                     Margin="20,10,0,10"
+                                     FontSize="20"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                            <TextBox materialDesign:HintAssist.Hint="Tổng doanh số"
+                                     materialDesign:ValidationAssist.HasError="True"
+                                     Width="300"
+                                     Text="{Binding TotalSalesOfTrip_ReportTour}"
+                                     Padding="0,-5,0,0"
+                                     Margin="20,10,0,10"
+                                     FontSize="20"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Border>
+        <Border Grid.Column="1"
+                Margin="5"
+                BorderBrush="Black"
+                BorderThickness="2">
+            <Grid>
+                <materialDesign:ColorZone Mode="PrimaryMid"
+                                          Height="50">
+                    <DockPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock VerticalAlignment="Center"
+                                       FontSize="20"
+                                       Margin="16 0 0 0">
+                                Thống kê số lần đi TOUR của nhân viên
+                            </TextBlock>
+                        </StackPanel>
+                    </DockPanel>
+                </materialDesign:ColorZone>
+                <Grid Margin="0,50,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70"></RowDefinition>
+                        <RowDefinition Height="70"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="70"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0"
+                                Orientation="Horizontal">
+                        <TextBox materialDesign:HintAssist.Hint="Tên nhân viên"
+                                 materialDesign:ValidationAssist.HasError="True"
+                                 Width="300"
+                                 Text="{Binding SelectedSTAFF.nhanvien.TENNV}"
+                                 Padding="0,-5,0,0"
+                                 Margin="20,15,0,10"
+                                 FontSize="20"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        <Button Height="35"
+                                Width="150"
+                                FontSize="15"
+                                Margin="5,0,20,0"
+                                Background="#FFADD8E6"
+                                HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                materialDesign:RippleAssist.Feedback="#FF03A9F4"
+                                Command="{Binding SelectStaffCommand}"
+                                Style="{DynamicResource MaterialDesignRaisedButton}"
+                                materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                            Chọn nhân viên
+                        </Button>
+                        <Button Height="40"
+                                Width="150"
+                                Margin="30,0,0,0"
+                                Background="#FFADD8E6"
+                                Command="{Binding ResetStaffCommand}"
+                                CommandParameter="{Binding ElementName=wd_AddCustomer}"
+                                Style="{DynamicResource MaterialDesignRaisedButton}"
+                                materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                            Reset
+                        </Button>
+                    </StackPanel>
+                    <Border BorderBrush="Black"
+                            Grid.Row="1"
+                            Margin="0,1,0,0"
+                            BorderThickness="0,2,0,2">
+                        <StackPanel  Orientation="Horizontal"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Left">
+                            <DatePicker materialDesign:HintAssist.Hint="Từ ngày"
+                                        Background="White"
+                                        Height="55"
+                                        Width="200"
+                                        Text="{Binding TripStart_ReportStaff_DT, StringFormat=dd/MM/yyyy, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=Default}"
+                                        SelectedDateFormat="Short"
+                                        Margin="20,0,20,0"
+                                        Padding="30,10,10,10"
+                                        HorizontalAlignment="Left"
+                                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                        FontSize="20" />
+                            <DatePicker materialDesign:HintAssist.Hint="Đến ngày"
+                                        Background="White"
+                                        Height="55"
+                                        Width="200"
+                                        Text="{Binding TripEnd_ReportStaff_DT, StringFormat=dd/MM/yyyy, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=Default}"
+                                        SelectedDateFormat="Short"
+                                        Margin="35,0,0,0"
+                                        Padding="30,10,10,10"
+                                        HorizontalAlignment="Left"
+                                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                        FontSize="20" />
+                            <Button Height="40"
+                                    Width="150"
+                                    Margin="30,0,0,0"
+                                    Background="#FFADD8E6"
+                                    Command="{Binding ReportStaffCommand}"
+                                    CommandParameter="{Binding ElementName=wd_AddCustomer}"
+                                    Style="{DynamicResource MaterialDesignRaisedButton}"
+                                    materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                Thống kê
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                    <Grid Grid.Row="2"
+                          Margin="5,5,10,5">
+                        <ScrollViewer>
+                            <DataGrid ItemsSource="{Binding TRIPLISTDTG_REPORTSTAFF,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"
+                                      AlternatingRowBackground="#e2e2e2"
+                                      IsReadOnly="True"
+                                      SelectedItem="{Binding SelectedTRIP,UpdateSourceTrigger=PropertyChanged,
+                            NotifyOnSourceUpdated=True, Mode=TwoWay}"
+                                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                      BorderBrush="Black"
+                                      BorderThickness="0,0,2,0"
+                                      AutoGenerateColumns="False"
+                                      CanUserResizeColumns="False"
+                                      CanUserReorderColumns="False">
+                                <DataGrid.Resources>
+                                    <Style TargetType="DataGridRow">
+                                        <Setter Property="Height"
+                                                Value="35"></Setter>
+                                        <Setter Property="FontSize"
+                                                Value="13"></Setter>
+                                        <Setter Property="FontFamily"
+                                                Value="Arial"></Setter>
+                                    </Style>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Height"
+                                                Value="30"></Setter>
+                                        <Setter Property="FontFamily"
+                                                Value="Times New Roman"></Setter>
+                                        <Setter Property="FontSize"
+                                                Value="15"></Setter>
+                                        <Setter Property="FontWeight"
+                                                Value="Bold"></Setter>
+                                        <Setter Property="HorizontalContentAlignment"
+                                                Value="Center"></Setter>
+                                        <Setter Property="VerticalContentAlignment"
+                                                Value="Center"></Setter>
+                                        <Setter Property="Background"
+                                                Value="#e2e2e2"></Setter>
+                                        <Setter Property="BorderBrush"
+                                                Value="Black"></Setter>
+                                        <Setter Property="BorderThickness"
+                                                Value="1,1,0,1"></Setter>
+                                    </Style>
+                                </DataGrid.Resources>
+                                <DataGrid.Columns>
+                                    <!--Cột Mã DTQ-->
+                                    <DataGridTextColumn Header="Mã đoàn"
+                                                        Width="100"
+                                                        Binding="{Binding doan.IDDOAN}">
+                                    </DataGridTextColumn>
+                                    <!--Cột THAO TÁC-->
+                                    <DataGridTemplateColumn Header="Thao tác"
+                                                            Width="110">
+                                        <!--Mỗi dòng của cột chứa 2 button-->
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Grid>
+                                                    <Button Grid.Column="0"
+                                                            Background="{x:Null}"
+                                                            BorderThickness="0"
+                                                            Command="{Binding Path=DataContext.EditTripCommand,
+                                                RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}"
+                                                            CommandParameter="{Binding Path= doan.IDDOAN}"
+                                                            Height="Auto"
+                                                            Width="20"
+                                                            Margin="6,0,5,0">
+                                                        <!--Button EDIT-->
+                                                        <!--Ảnh hình EDIT-->
+                                                        <Grid>
+                                                            <Image Source="..\..\Photo\edit_icon.png"
+                                                                   Margin="-17,-4,1,-4"
+                                                                   RenderTransformOrigin="0.5,0.5">
+                                                                <Image.RenderTransform>
+                                                                    <TransformGroup>
+                                                                        <ScaleTransform ScaleX="-1" />
+                                                                        <SkewTransform />
+                                                                        <RotateTransform />
+                                                                        <TranslateTransform />
+                                                                    </TransformGroup>
+                                                                </Image.RenderTransform>
+                                                            </Image>
+                                                        </Grid>
+                                                    </Button>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <!--Cột TÊN điểm tham quan-->
+                                    <DataGridTextColumn Header="Tên đoàn du lịch"
+                                                        Binding="{Binding doan.TENDOAN}"
+                                                        Width="300"></DataGridTextColumn>
+                                    <!--Cột TÊN điểm tham quan-->
+                                    <DataGridTextColumn Header="Doanh thu"
+                                                        Binding="{Binding doan.DOANHTHU}"
+                                                        Width="370"></DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </ScrollViewer>
+                    </Grid>
+                    <Border Grid.Row="3"
+                            BorderBrush="Black"
+                            BorderThickness="2">
+                        <StackPanel Grid.Row="0"
+                                    Orientation="Horizontal">
+                            <TextBox materialDesign:HintAssist.Hint="Tổng số lần đi tour"
+                                     materialDesign:ValidationAssist.HasError="True"
+                                     Width="200"
+                                     Text="{Binding NumberOfTrip_ReportStaff}"
+                                     Padding="0,-5,0,0"
+                                     Margin="20,10,0,10"
+                                     FontSize="20"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>

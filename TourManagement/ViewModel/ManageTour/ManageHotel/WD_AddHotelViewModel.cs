@@ -47,8 +47,18 @@ namespace TourManagement.ViewModel.ManageTour.ManageHotel
         public string HotelPhoneNumber { get => _HotelPhoneNumber; set { _HotelPhoneNumber = value; OnPropertyChanged(); } }
         private string _ProvinceNameHotel;
         public string ProvinceNameHotel { get => _ProvinceNameHotel; set { _ProvinceNameHotel = value; OnPropertyChanged(); } }
+
         private string _HotelDescription;
         public string HotelDescription { get => _HotelDescription; set { _HotelDescription = value; OnPropertyChanged(); } }
+
+        private string _SingleRoomPrice;
+        public string SingleRoomPrice { get => _SingleRoomPrice; set { _SingleRoomPrice = value; OnPropertyChanged(); } }
+
+        private string _DoubleRoomPrice;
+        public string DoubleRoomPrice { get => _DoubleRoomPrice; set { _DoubleRoomPrice = value; OnPropertyChanged(); } }
+        
+
+        
 
         public WD_AddHotelViewModel()
         {
@@ -95,7 +105,7 @@ namespace TourManagement.ViewModel.ManageTour.ManageHotel
                 else
                 {
                     HOTEL newhotel = new HOTEL();
-                    newhotel.AddNewHotel(HotelName, HotelAddress, HotelPhoneNumber, ProvinceNameHotel, HotelDescription, Avatar);
+                    newhotel.AddNewHotel(HotelName, HotelAddress, HotelPhoneNumber, ProvinceNameHotel, HotelDescription, Avatar,SingleRoomPrice,DoubleRoomPrice);
                     MessageBox.Show("Thêm thông tin khách sạn thành công", "Thông báo", MessageBoxButton.OK);
                 }
                 p.Close();

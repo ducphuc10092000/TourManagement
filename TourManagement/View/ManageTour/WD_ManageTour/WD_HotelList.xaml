@@ -23,7 +23,7 @@
                 <!--Button Back-->
                 <Button Style="{DynamicResource MaterialDesignFloatingActionMiniButton}"
                         Margin="5"
-                        Command="{Binding BackToAddTourCommand}"
+                        Command="{Binding QuitCommand}"
                         CommandParameter="{Binding ElementName=wd_HotelList}"
                         Background="LightBlue"
                         materialDesign:ShadowAssist.ShadowDepth="Depth3">

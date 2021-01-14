@@ -60,7 +60,6 @@
                                         Style="{DynamicResource MaterialDesignRaisedButton}"
                                         Height="50"
                                         Width="150"
-                                        Margin="-5,-5,-5,-5"
                                         ToolTip="Resource name: MaterialDesignRaisedAccentButton"
                                         materialDesign:RippleAssist.Feedback="#FF0EAEC7"
                                         Background="#FF81D4FA"
@@ -73,7 +72,6 @@
                                         Height="50"
                                         Width="150"
                                         Background="#FF81D4FA"
-                                        Margin="-5,-5,-5,-5"
                                         ToolTip="Resource name: MaterialDesignRaisedAccentButton"
                                         materialDesign:RippleAssist.Feedback="#FF0EAEC7">
                                     Help
@@ -84,7 +82,6 @@
                                         Height="50"
                                         Width="150"
                                         Background="#FF81D4FA"
-                                        Margin="-5,-5,-5,-5"
                                         ToolTip="Resource name: MaterialDesignRaisedAccentButton"
                                         materialDesign:RippleAssist.Feedback="#FF0EAEC7">
                                     About us
@@ -140,7 +137,7 @@
                             </Grid.RowDefinitions>
                             <!--Icon để tại đây-->
                             <Image Grid.Row="0"
-                           Height="50" Source=""
+                           Height="50"
                            >
                             </Image>
                             <!--Content-->
@@ -268,6 +265,49 @@
 
                 <!--BUTTON 6 - THỐNG KÊ-->
                 <Grid Grid.Row="5">
+                    <materialDesign:PopupBox DockPanel.Dock="Right"
+                                             PopupMode="Click"
+                                             materialDesign:ColorZoneAssist.Background="#FF81D4FA"
+                                             Background="#FF81D4FA"
+                                             PlacementMode="BottomAndAlignRightEdges">
+                        <ListBox>
+                            <ListBoxItem Margin="0,0,0,0">
+                                <Button Command="{Binding QuitCommand}"
+                                        Style="{DynamicResource MaterialDesignRaisedButton}"
+                                        Height="50"
+                                        Width="150"
+                                        Margin="-5,-5,-5,-5"
+                                        ToolTip="Resource name: MaterialDesignRaisedAccentButton"
+                                        materialDesign:RippleAssist.Feedback="#FF0EAEC7"
+                                        Background="#FF81D4FA"
+                                        CommandParameter="{Binding ElementName=mainWD}">
+                                    Quit
+                                </Button>
+                            </ListBoxItem>
+                            <ListBoxItem Margin="0,0,0,0">
+                                <Button Style="{DynamicResource MaterialDesignRaisedButton}"
+                                        Height="50"
+                                        Width="150"
+                                        Background="#FF81D4FA"
+                                        Margin="-5,-5,-5,-5"
+                                        ToolTip="Resource name: MaterialDesignRaisedAccentButton"
+                                        materialDesign:RippleAssist.Feedback="#FF0EAEC7">
+                                    Help
+                                </Button>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <Button Style="{DynamicResource MaterialDesignRaisedButton}"
+                                        Height="50"
+                                        Width="150"
+                                        Background="#FF81D4FA"
+                                        Margin="-5,-5,-5,-5"
+                                        ToolTip="Resource name: MaterialDesignRaisedAccentButton"
+                                        materialDesign:RippleAssist.Feedback="#FF0EAEC7">
+                                    About us
+                                </Button>
+                            </ListBoxItem>
+                        </ListBox>
+                    </materialDesign:PopupBox>
                     <Button Height="auto" materialDesign:ShadowAssist.ShadowDepth="Depth2"
                         Style="{StaticResource ButtonFeature}"
                     Command="{Binding BtnManageReportCommand}"
@@ -339,7 +379,7 @@
                             </Image>
                             <!--Content-->
                             <TextBlock Grid.Row="1"
-                                   Text="SOMETHING"
+                                   Text="QUẢN TRỊ"
                                    Margin="-10,0,-10,0"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"

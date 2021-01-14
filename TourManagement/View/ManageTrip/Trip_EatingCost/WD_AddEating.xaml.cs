@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace TourManagement.ViewModel.ManageTrip
+namespace TourManagement.View.ManageTrip.Trip_EatingCost
 {
     /// <summary>
-    /// Interaction logic for WD_CustomerList.xaml
+    /// Interaction logic for WD_AddEating.xaml
     /// </summary>
-    public partial class WD_CustomerList : Window
+    public partial class WD_AddEating : Window
     {
-        public WD_CustomerList()
+        public WD_AddEating()
         {
             InitializeComponent();
         }

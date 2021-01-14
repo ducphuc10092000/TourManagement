@@ -144,6 +144,17 @@ namespace TourManagement.ViewModel.ManageStaff
             StaffRolesList.Add("Nhân viên phòng nhân sự");
             StaffRolesList.Add("Nhân viên phòng điều hành - hướng dẫn");
         }
-
+        public void Reset()
+        {
+            Avatar = null;
+            AvatarSource = null;
+            StaffName = null;
+            IdentificationStaff = null;
+            StaffBirthday = null;
+            StaffPhoneNumber = null;
+            StaffEmail = null;
+            StaffAddress = null;
+            StaffRole = null;
+        }
     }
 }

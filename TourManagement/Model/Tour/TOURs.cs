@@ -34,11 +34,12 @@ namespace TourManagement.Model.Tour
                 tour.ACTIVE = true;
                 DataProvider.Ins.DB.TOUR.Add(tour);
                 DataProvider.Ins.DB.SaveChanges();
+
                 foreach (var item in placelist)
                 {
                     PLACE_TOUR_DETAIL place_tour_detail = new PLACE_TOUR_DETAIL();
                     place_tour_detail.AddNewPlace_Tour_Detail(tour.IDTOUR, item.diadiem.IDDIADIEM);
-                }
+                } 
         }
         public void EditTour(int idtour, string tentour, string giatour, string loaihinh, string mota, ObservableCollection<PLACE> placelist)
         {

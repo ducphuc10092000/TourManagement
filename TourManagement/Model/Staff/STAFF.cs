@@ -10,6 +10,8 @@ namespace TourManagement.Model.Staff
     public class STAFF : BaseViewModel
     {
         public NHANVIEN nhanvien { get; set; }
+
+        public string NHIEMVU { get; set; }
         public STAFF()
         {
 

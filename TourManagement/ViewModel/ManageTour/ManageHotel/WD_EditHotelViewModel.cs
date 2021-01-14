@@ -54,6 +54,11 @@ namespace TourManagement.ViewModel.ManageTour.ManageHotel
 
         private int _SelectedIDHotel;
         public int SelectedIDHotel { get => _SelectedIDHotel; set { _SelectedIDHotel = value; OnPropertyChanged(); } }
+        private string _SingleRoomPrice;
+        public string SingleRoomPrice { get => _SingleRoomPrice; set { _SingleRoomPrice = value; OnPropertyChanged(); } }
+
+        private string _DoubleRoomPrice;
+        public string DoubleRoomPrice { get => _DoubleRoomPrice; set { _DoubleRoomPrice = value; OnPropertyChanged(); } }
 
         public WD_EditHotelViewModel()
         {
@@ -67,7 +72,7 @@ namespace TourManagement.ViewModel.ManageTour.ManageHotel
                 if (result == MessageBoxResult.Yes)
                 {
                     HOTEL SelectedHOTEL = new HOTEL();
-                    SelectedHOTEL.EditHotel(SelectedIDHotel, HotelName, HotelAddress, HotelPhoneNumber, ProvinceNameHotel, HotelDescription, ActiveIsChecked, Avatar);
+                    SelectedHOTEL.EditHotel(SelectedIDHotel, HotelName, HotelAddress, HotelPhoneNumber, ProvinceNameHotel, HotelDescription, ActiveIsChecked, Avatar, SingleRoomPrice, DoubleRoomPrice);
                     p.Close();
                 }
                 else
@@ -159,6 +164,8 @@ namespace TourManagement.ViewModel.ManageTour.ManageHotel
             ProvinceNameHotel = selectedHotel.TINHTHANH;
             HotelDescription = selectedHotel.MOTA;
             Avatar = selectedHotel.AVATAR;
+            SingleRoomPrice = selectedHotel.GIAPHONGDON;
+            DoubleRoomPrice = selectedHotel.GIAPHONGDOI;
             if(selectedHotel.ACTIVE == true)
             {
                 ActiveIsChecked = true;

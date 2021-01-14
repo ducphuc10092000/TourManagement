@@ -6,13 +6,16 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using TourManagement.View.ManageCustomer;
+using TourManagement.View.ManageReport;
 using TourManagement.View.ManageStaff;
 using TourManagement.View.ManageTour;
 using TourManagement.View.ManageTour.WD_ManageTour;
+using TourManagement.View.ManageTrip;
 using TourManagement.ViewModel.ManageCustomer;
 using TourManagement.ViewModel.ManageStaff;
 using TourManagement.ViewModel.ManageTour;
 using TourManagement.ViewModel.ManageTour.WD_ManageTour;
+using TourManagement.ViewModel.ManageTrip;
 
 namespace TourManagement.ViewModel
 {
@@ -73,6 +76,7 @@ namespace TourManagement.ViewModel
                 //Gọi hàm LoadTourList() từ UC_ManageTourViewModel
                 UC_ManageTour uc_ManageTour = new UC_ManageTour();
                 var uc_ManageTour_DT = uc_ManageTour.DataContext as UC_ManageTourViewModel;
+                uc_ManageTour_DT.ChucNang = 0;
                 uc_ManageTour_DT.LoadTourList();
             });
             BtnManageTripCommand = new RelayCommand<object>((p) =>
@@ -88,6 +92,11 @@ namespace TourManagement.ViewModel
             }, (p) =>
             {
                 ChucNang = (int)CHUCNANG.ManageTrip;
+
+                UC_ManageTrip uc_ManageTrip = new UC_ManageTrip();
+                var uc_ManageTrip_DT = uc_ManageTrip.DataContext as UC_ManageTripViewModel;
+                uc_ManageTrip_DT.ChucNang = 0;
+                uc_ManageTrip_DT.LoadTripList();
             });
             BtnManageCustomerCommand = new RelayCommand<object>((p) =>
             {
@@ -136,6 +145,9 @@ namespace TourManagement.ViewModel
             }, (p) =>
             {
                 ChucNang = (int)CHUCNANG.ManageReport;
+                UC_ManageReport uc_ManageReport = new UC_ManageReport();
+                var uc_ManageReport_DT = uc_ManageReport.DataContext as UC_ManageTripViewModel;
+                uc_ManageReport_DT.LoadTimeReport();
             });
             BtnManageAccountCommand = new RelayCommand<object>((p) =>
             {

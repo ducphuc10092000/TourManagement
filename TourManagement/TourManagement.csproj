@@ -150,8 +150,16 @@
     <Compile Include="Model\Tour\PLACE_TOUR_DETAIL.cs" />
     <Compile Include="Model\Tour\PROVINCE.cs" />
     <Compile Include="Model\Tour\TOURs.cs" />
+    <Compile Include="Model\Trip\CUSTOMER_TRIP_DETAIL.cs" />
+    <Compile Include="Model\Trip\EATING.cs" />
+    <Compile Include="Model\Trip\EATING_TRIP_DETAIL.cs" />
+    <Compile Include="Model\Trip\HOTEL_TRIP_DETAIL.cs" />
+    <Compile Include="Model\Trip\OTHERCOST.cs" />
+    <Compile Include="Model\Trip\OTHERCOST_TRIP_DETAIL.cs" />
+    <Compile Include="Model\Trip\STAFF_TRIP_DETAIL.cs" />
     <Compile Include="Model\Trip\TRIP.cs" />
     <Compile Include="Model\Trip\VEHICLE.cs" />
+    <Compile Include="Model\Trip\VEHICLE_TRIP_DETAIL.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\ImageProvider.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -173,11 +181,7 @@
     <Compile Include="ViewModel\ManageTrip\ManageVehicle\WD_AddVehicleViewModel.cs" />
     <Compile Include="ViewModel\ManageTrip\ManageVehicle\WD_EditVehicleViewModel.cs" />
     <Compile Include="ViewModel\ManageTrip\UC_ManageTripViewModel.cs" />
-    <Compile Include="ViewModel\ManageTrip\ManageVehicle\UC_ManageVehicleViewModel.cs" />
     <Compile Include="ViewModel\ManageTrip\WD_AddTripViewModel.cs" />
-    <Compile Include="ViewModel\ManageTrip\WD_CustomerList.xaml.cs">
-      <DependentUpon>WD_CustomerList.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\DashBoard\UC_DashBoard.xaml.cs">
       <DependentUpon>UC_DashBoard.xaml</DependentUpon>
     </Compile>
@@ -253,14 +257,47 @@
     <Compile Include="View\ManageTrip\ManageVehicle\WD_EditVehicle.xaml.cs">
       <DependentUpon>WD_EditVehicle.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ManageTrip\Trip_EatingCost\WD_AddEating.xaml.cs">
+      <DependentUpon>WD_AddEating.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageTrip\Trip_EatingCost\WD_ManageTrip_EatingCost.xaml.cs">
+      <DependentUpon>WD_ManageTrip_EatingCost.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageTrip\Trip_Hotel\WD_ManageTrip_Hotel.xaml.cs">
+      <DependentUpon>WD_ManageTrip_Hotel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageTrip\Trip_OtherCost\WD_AddOtherCost.xaml.cs">
+      <DependentUpon>WD_AddOtherCost.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageTrip\Trip_OtherCost\WD_ManageTrip_OtherCost.xaml.cs">
+      <DependentUpon>WD_ManageTrip_OtherCost.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageTrip\Trip_Staff\WD_ManageTrip_Staff.xaml.cs">
+      <DependentUpon>WD_ManageTrip_Staff.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageTrip\Trip_Staff\WD_StaffList.xaml.cs">
+      <DependentUpon>WD_StaffList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageTrip\Trip_Vehicle\WD_ManageTrip_Vehicle.xaml.cs">
+      <DependentUpon>WD_ManageTrip_Vehicle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageTrip\Trip_Vehicle\WD_VehicleList.xaml.cs">
+      <DependentUpon>WD_VehicleList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ManageTrip\UC_ManageTrip.xaml.cs">
       <DependentUpon>UC_ManageTrip.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ManageTrip\WD_AddTrip.xaml.cs">
       <DependentUpon>WD_AddTrip.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ManageTrip\WD_CustomerList.xaml.cs">
+      <DependentUpon>WD_CustomerList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ManageTrip\WD_DetailCost.xaml.cs">
       <DependentUpon>WD_DetailCost.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageTrip\WD_EditTrip.xaml.cs">
+      <DependentUpon>WD_EditTrip.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ManageTrip\WD_HotelList.xaml.cs">
       <DependentUpon>WD_HotelList.xaml</DependentUpon>
@@ -281,10 +318,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ResourceXAML\MainResource.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ViewModel\ManageTrip\WD_CustomerList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -388,6 +421,42 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ManageTrip\Trip_EatingCost\WD_AddEating.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManageTrip\Trip_EatingCost\WD_ManageTrip_EatingCost.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManageTrip\Trip_Hotel\WD_ManageTrip_Hotel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManageTrip\Trip_OtherCost\WD_AddOtherCost.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManageTrip\Trip_OtherCost\WD_ManageTrip_OtherCost.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManageTrip\Trip_Staff\WD_ManageTrip_Staff.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManageTrip\Trip_Staff\WD_StaffList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManageTrip\Trip_Vehicle\WD_ManageTrip_Vehicle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManageTrip\Trip_Vehicle\WD_VehicleList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ManageTrip\UC_ManageTrip.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -396,7 +465,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ManageTrip\WD_CustomerList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ManageTrip\WD_DetailCost.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManageTrip\WD_EditTrip.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -457,6 +534,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Photo\Dashboard.jpg" />
     <Resource Include="Photo\delete_icon.png" />
     <Resource Include="Photo\edit_icon.png" />
   </ItemGroup>

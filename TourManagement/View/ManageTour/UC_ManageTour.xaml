@@ -110,10 +110,16 @@
                             <DataGrid ItemsSource="{Binding TOURLISTDTG,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"
                                       AlternatingRowBackground="#e2e2e2"
                                       IsReadOnly="True"
+                                      SelectedItem="{Binding SelectedTOURs}"
                                       ScrollViewer.VerticalScrollBarVisibility="Auto"
                                       AutoGenerateColumns="False"
                                       CanUserResizeColumns="False"
                                       CanUserReorderColumns="False">
+                                <DataGrid.InputBindings>
+                                    <MouseBinding Gesture="LeftDoubleClick"
+                                                  Command="{Binding DoubleClickSelectStaffCommand}"
+                                                  CommandParameter="{Binding ElementName=wd_StaffList}" />
+                                </DataGrid.InputBindings>
                                 <DataGrid.Resources>
                                     <Style TargetType="DataGridRow">
                                         <Setter Property="Height"

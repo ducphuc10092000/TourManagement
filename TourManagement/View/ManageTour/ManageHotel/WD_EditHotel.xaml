@@ -10,7 +10,7 @@
         x:Name="wd_EditHotel"
         WindowStartupLocation="CenterScreen"
         DataContext="{StaticResource WD_EditHotelVM}"
-        Title="WD_EditHotel" Height="650" Width="900">
+        Title="WD_EditHotel" Height="750" Width="900">
     <Grid>
         <materialDesign:ColorZone Mode="PrimaryMid" Height="50">
             <DockPanel>
@@ -83,6 +83,25 @@
                                         Background="#FFADD8E6" Content="Thêm"/>
                             </StackPanel>
                         </Grid>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center">
+                            <TextBox materialDesign:HintAssist.Hint="Giá phòng đơn"
+                                     Height="50"
+                                     Width="240"
+                                     Text="{Binding SingleRoomPrice}"
+                                     Padding="5,-5,0,0"
+                                     Margin="0,20,0,0"
+                                     FontSize="20"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                            <TextBox materialDesign:HintAssist.Hint="Giá phòng đôi"
+                                     Height="50"
+                                     Width="240"
+                                     Text="{Binding DoubleRoomPrice}"
+                                     Padding="5,-5,0,0"
+                                     Margin="20,20,0,0"
+                                     FontSize="20"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        </StackPanel>
                         <TextBox materialDesign:HintAssist.Hint="Mô tả"
                                  Text="{Binding HotelDescription}"
                                  Height="170"

@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TourManagement.View.ManageTrip"
         mc:Ignorable="d"
+        Language="vi-VN"
         WindowStyle="None"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         DataContext="{StaticResource WD_AddTripVM}"
@@ -108,6 +109,7 @@
                                             <TextBox materialDesign:HintAssist.Hint="Số lượng nhân viên"
                                                      materialDesign:ValidationAssist.HasError="True"
                                                      Width="500"
+                                                     IsReadOnly="True"
                                                      Text="{Binding NumberStaff}"
                                                      Padding="5,-5,0,0"
                                                      Margin="20,15,0,10"
@@ -121,10 +123,10 @@
                                                     HorizontalContentAlignment="Center"
                                                     VerticalContentAlignment="Center"
                                                     materialDesign:RippleAssist.Feedback="#FF03A9F4"
-                                                    Command="{Binding Trip_Staff_Command}"
+                                                    Command="{Binding ManageTrip_Staff_Command}"
                                                     Style="{DynamicResource MaterialDesignRaisedButton}"
                                                     materialDesign:ShadowAssist.ShadowDepth="Depth1">
-                                                Chỉnh sửa
+                                                Chi tiết
                                             </Button>
                                         </StackPanel>
                                         <StackPanel Grid.Row="3"
@@ -135,7 +137,7 @@
                                                         Background="White"
                                                         Height="55"
                                                         Width="200"
-                                                        Text="{Binding StaffBirthdayDT, StringFormat=dd/MM/yyyy, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=Default}"
+                                                        Text="{Binding TripStartDT, StringFormat=dd/MM/yyyy, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=Default}"
                                                         SelectedDateFormat="Short"
                                                         Margin="20,0,20,0"
                                                         Padding="30,10,10,10"
@@ -146,7 +148,7 @@
                                                         Background="White"
                                                         Height="55"
                                                         Width="200"
-                                                        Text="{Binding StaffBirthdayDT, StringFormat=dd/MM/yyyy, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=Default}"
+                                                        Text="{Binding TripEndDT, StringFormat=dd/MM/yyyy, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=Default}"
                                                         SelectedDateFormat="Short"
                                                         Margin="35,0,0,0"
                                                         Padding="30,10,10,10"
@@ -193,7 +195,7 @@
                                                                      Width="250"
                                                                      IsReadOnly="True"
                                                                      materialDesign:ValidationAssist.HasError="True"
-                                                                     Text="{Binding AllTripCost}"
+                                                                     Text="{Binding HotelCost}"
                                                                      FontSize="18"
                                                                      Padding="5,0,0,0"
                                                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
@@ -209,7 +211,7 @@
                                                                 FontSize="20"
                                                                 VerticalContentAlignment="Center"
                                                                 materialDesign:RippleAssist.Feedback="#FF03A9F4"
-                                                                Command="{Binding DetailCostCommand}"
+                                                                Command="{Binding DetailHotelCommand}"
                                                                 Style="{DynamicResource MaterialDesignRaisedButton}"
                                                                 materialDesign:ShadowAssist.ShadowDepth="Depth1">
                                                             Chi tiết khách sạn
@@ -230,7 +232,7 @@
                                                                      Width="250"
                                                                      IsReadOnly="True"
                                                                      materialDesign:ValidationAssist.HasError="True"
-                                                                     Text="{Binding AllTripCost}"
+                                                                     Text="{Binding VehicleCost}"
                                                                      FontSize="18"
                                                                      Padding="5,0,0,0"
                                                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
@@ -246,7 +248,7 @@
                                                                 FontSize="20"
                                                                 VerticalContentAlignment="Center"
                                                                 materialDesign:RippleAssist.Feedback="#FF03A9F4"
-                                                                Command="{Binding DetailCostCommand}"
+                                                                Command="{Binding DetailVehicleCommand}"
                                                                 Style="{DynamicResource MaterialDesignRaisedButton}"
                                                                 materialDesign:ShadowAssist.ShadowDepth="Depth1">
                                                             Chi tiết phương tiện
@@ -267,7 +269,7 @@
                                                                      Width="250"
                                                                      IsReadOnly="True"
                                                                      materialDesign:ValidationAssist.HasError="True"
-                                                                     Text="{Binding AllTripCost}"
+                                                                     Text="{Binding EatingCost}"
                                                                      FontSize="18"
                                                                      Padding="5,0,0,0"
                                                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
@@ -283,7 +285,7 @@
                                                                 FontSize="20"
                                                                 VerticalContentAlignment="Center"
                                                                 materialDesign:RippleAssist.Feedback="#FF03A9F4"
-                                                                Command="{Binding DetailCostCommand}"
+                                                                Command="{Binding DetailEatingCommand}"
                                                                 Style="{DynamicResource MaterialDesignRaisedButton}"
                                                                 materialDesign:ShadowAssist.ShadowDepth="Depth1">
                                                             Chi tiết bữa ăn
@@ -304,7 +306,7 @@
                                                                      Width="250"
                                                                      IsReadOnly="True"
                                                                      materialDesign:ValidationAssist.HasError="True"
-                                                                     Text="{Binding AllTripCost}"
+                                                                     Text="{Binding OtherCost}"
                                                                      FontSize="18"
                                                                      Padding="5,0,0,0"
                                                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
@@ -320,7 +322,7 @@
                                                                 FontSize="20"
                                                                 VerticalContentAlignment="Center"
                                                                 materialDesign:RippleAssist.Feedback="#FF03A9F4"
-                                                                Command="{Binding DetailCostCommand}"
+                                                                Command="{Binding DetailOtherCostCommand}"
                                                                 Style="{DynamicResource MaterialDesignRaisedButton}"
                                                                 materialDesign:ShadowAssist.ShadowDepth="Depth1">
                                                             Thêm chi phí khác
@@ -359,7 +361,8 @@
                                                             HorizontalContentAlignment="Center"
                                                             VerticalContentAlignment="Center"
                                                             materialDesign:RippleAssist.Feedback="#FF03A9F4"
-                                                            Command="{Binding Trip_Staff_Command}"
+                                                            Command="{Binding AddTripCommand}"
+                                                            CommandParameter="{Binding ElementName=wd_AddTrip}"
                                                             Style="{DynamicResource MaterialDesignRaisedButton}"
                                                             materialDesign:ShadowAssist.ShadowDepth="Depth1">
                                                         Thêm
@@ -372,7 +375,7 @@
                                                             HorizontalContentAlignment="Center"
                                                             VerticalContentAlignment="Center"
                                                             materialDesign:RippleAssist.Feedback="#FF03A9F4"
-                                                            Command="{Binding Trip_Staff_Command}"
+                                                            Command="{Binding ResetCommand}"
                                                             Style="{DynamicResource MaterialDesignRaisedButton}"
                                                             materialDesign:ShadowAssist.ShadowDepth="Depth1">
                                                         Đặt lại
@@ -393,11 +396,36 @@
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="50"></RowDefinition>
+                                        <RowDefinition Height="50"></RowDefinition>
                                         <RowDefinition></RowDefinition>
                                     </Grid.RowDefinitions>
-                                    <Border Grid.Row="0"
+                                    <Border Grid.Row="0">
+                                        <Border Grid.Row="0"
+                                                BorderBrush="Black"
+                                                BorderThickness="0,0,2,0">
+                                            <StackPanel Orientation="Horizontal"
+                                                        Margin="20,0,0,0">
+                                                <TextBlock Text="Tổng doanh thu"
+                                                           FontSize="20"
+                                                           VerticalAlignment="Center">
+                                                    
+                                                </TextBlock>
+                                                <TextBox Padding="10,0,0,0"
+                                                         IsReadOnly="True"
+                                                         Width="200"
+                                                         materialDesign:ValidationAssist.HasError="True"
+                                                         VerticalContentAlignment="Center"
+                                                         HorizontalContentAlignment="Left"
+                                                         Text="{Binding RevenueSum}"
+                                                         FontSize="20"
+                                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                                         Margin="0,-10,0,7" />
+                                            </StackPanel>
+                                        </Border>
+                                    </Border>
+                                    <Border Grid.Row="1"
                                             BorderBrush="Black"
-                                            BorderThickness="0,0,0,2">
+                                            BorderThickness="0,2,0,2">
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="350"></ColumnDefinition>
@@ -444,7 +472,7 @@
                                             </StackPanel>
                                         </Grid>
                                     </Border>
-                                    <Grid Grid.Row="1"
+                                    <Grid Grid.Row="2"
                                           Margin="5,5,5,5">
                                         <ScrollViewer>
                                             <DataGrid ItemsSource="{Binding TRIP_CUSTOMERLISTDTG,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"

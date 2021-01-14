@@ -43,6 +43,9 @@
     <EntitySetMapping Name="CT_DOAN_KHACHSAN">
       <EntityTypeMapping TypeName="TOURMANAGEMENTModel.CT_DOAN_KHACHSAN">
         <MappingFragment StoreEntitySet="CT_DOAN_KHACHSAN">
+          <ScalarProperty Name="SONGAYO" ColumnName="SONGAYO" />
+          <ScalarProperty Name="SOPHONGDOI" ColumnName="SOPHONGDOI" />
+          <ScalarProperty Name="SOPHONGDON" ColumnName="SOPHONGDON" />
           <ScalarProperty Name="CHIPHIKS" ColumnName="CHIPHIKS" />
           <ScalarProperty Name="IDKS" ColumnName="IDKS" />
           <ScalarProperty Name="IDDOAN" ColumnName="IDDOAN" />
@@ -118,7 +121,8 @@
     <EntitySetMapping Name="KHACHSAN">
       <EntityTypeMapping TypeName="TOURMANAGEMENTModel.KHACHSAN">
         <MappingFragment StoreEntitySet="KHACHSAN">
-          <ScalarProperty Name="GIAKS" ColumnName="GIAKS" />
+          <ScalarProperty Name="GIAPHONGDOI" ColumnName="GIAPHONGDOI" />
+          <ScalarProperty Name="GIAPHONGDON" ColumnName="GIAPHONGDON" />
           <ScalarProperty Name="AVATAR" ColumnName="AVATAR" />
           <ScalarProperty Name="MOTA" ColumnName="MOTA" />
           <ScalarProperty Name="TENKS" ColumnName="TENKS" />
@@ -160,6 +164,8 @@
     <EntitySetMapping Name="PHUONGTIEN">
       <EntityTypeMapping TypeName="TOURMANAGEMENTModel.PHUONGTIEN">
         <MappingFragment StoreEntitySet="PHUONGTIEN">
+          <ScalarProperty Name="GIATHUE" ColumnName="GIATHUE" />
+          <ScalarProperty Name="BELONGTOCOMPANY" ColumnName="BELONGTOCOMPANY" />
           <ScalarProperty Name="BKS" ColumnName="BKS" />
           <ScalarProperty Name="ISAVAILABLE" ColumnName="ISAVAILABLE" />
           <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
